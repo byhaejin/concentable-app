@@ -1,2 +1,2 @@
 # concentable-app
-concentable APP
+Demo: https://byhaejin.github.io/concentable-app/front/dist/
