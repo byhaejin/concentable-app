@@ -1,0 +1,61 @@
+<!-- component template -->
+<template>
+    <div class="page">
+        <div class="page-content login-screen-content">
+            <div class="login-screen-title">로그인</div>
+            <form id="login-form">
+                <div class="list">
+                    <ul>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">이메일</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" name="username" placeholder="user@mailadress">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">비밀번호</div>
+                                <div class="item-input-wrap">
+                                    <input type="password" name="password" placeholder="비밀번호 (8 ~ 15 숫자,영문자,특수문자)">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block">
+                    <button type="button"
+                            class="col button button-fill button-outline button-round"
+                            @click="signIn">로그인</button>
+
+                    <div class="block-footer">
+                        <a class="link" href="/auth/finduser/email/">이메일찾기</a> |
+                        <a class="link" href="/auth/finduser/pass/">비밀번호찾기</a> |
+                        <a class="link" href="/auth/agree/">회원가입</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>s
+</template>
+<!-- component styles -->
+<script>
+    return {
+        methods: {
+            signIn: function () {
+                var formData = app.form.convertToData('#login-form');
+                console.log('formData', formData)
+                setLogin(formData.username);
+                mainView.router.navigate('/');
+                // app.dialog.alert(`Username: ${username}<br>Password: ${password}`, () => {
+                //     app.loginScreen.close();
+                // });
+                // app.request.promise.post('login.pho', formData)
+                //     .then(function (res) {
+                //         console.log(res.data);
+                //     });
+            },
+        },
+    }
+</script>

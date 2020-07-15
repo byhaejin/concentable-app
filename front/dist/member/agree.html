@@ -1,0 +1,209 @@
+<!-- component template -->
+<template>
+    <div class="page">
+        <sub-header title="회원가입"  nomenu="true"></sub-header>
+        <div class="page-content">
+            <br>
+            <div class="login-screen-title">컨센터블 약관 동의</div>
+
+            <div class="list">
+                <form id="agree-form">
+                <ul>
+                    <li>
+                        <div class="item-inner">
+                            <div class="item-title">
+                                <label class="item-checkbox item-content">
+                                    <input type="checkbox" name="checkbox-agrees" />
+                                    <i class="icon icon-checkbox"></i>
+                                    전체동의
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-inner">
+                            <div class="item-title">
+                                <label class="item-checkbox item-content">
+                                    <input type="checkbox" name="checkbox-agree" value="concentable"/>
+                                    <i class="icon icon-checkbox"></i>
+                                    [필수]컨센터블 스페이스 이용약관 동의
+                                </label>
+                            </div>
+                            <div class="item-after">
+                                <a href="#" data-popup=".concentable-popup" class="popup-open">[보기]</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-inner">
+                            <div class="item-title">
+                                <label class="item-checkbox item-content">
+                                    <input type="checkbox" name="checkbox-agree" value="position"/>
+                                    <i class="icon icon-checkbox"></i>
+                                    [필수]위치기반 서비스 이용약관 동의
+                                </label>
+                            </div>
+                            <div class="item-after">
+                                <a href="#" data-popup=".position-popup" class="popup-open">[보기]</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-inner">
+                            <div class="item-title">
+                                <label class="item-checkbox item-content">
+                                    <input type="checkbox" name="checkbox-agree" value="personal"/>
+                                    <i class="icon icon-checkbox"></i>
+                                    [필수]개인정보처리방침 동의
+                                </label>
+                            </div>
+                            <div class="item-after">
+                                <a href="#" data-popup=".personal-popup" class="popup-open">[보기]</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="block">
+                    <button type="button"
+                            class="col button button-fill button-outline button-round"
+                            @click="agreeNext">다음</button>
+                </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="popup concentable-popup">
+            <div class="view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-bg"></div>
+                        <div class="navbar-inner">
+                            <div class="title">
+                                컨센터블 스패이스 이용약관
+                            </div>
+                            <div class="right">
+                                <!-- Link to close popup -->
+                                <a class="link popup-close">
+                                    <i class="f7-icons">clear_fill</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <br>
+                        <div class="block">
+                            ...
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup position-popup">
+            <div class="view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-bg"></div>
+                        <div class="navbar-inner">
+                            <div class="title">
+                                위치기반 서비스 이용약관
+                            </div>
+                            <div class="right">
+                                <!-- Link to close popup -->
+                                <a class="link popup-close">
+                                    <i class="f7-icons">clear_fill</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <br>
+                        <div class="block">
+                            ...
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup personal-popup">
+            <div class="view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-bg"></div>
+                        <div class="navbar-inner">
+                            <div class="title">
+                                개인정보처리방침
+                            </div>
+                            <div class="right">
+                                <!-- Link to close popup -->
+                                <a class="link popup-close">
+                                    <i class="f7-icons">clear_fill</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <br>
+                        <div class="block">
+                            ...
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<!-- component styles -->
+
+<script>
+    return {
+        methods: {
+            agreeNext: function () {
+                const formData = app.form.convertToData('#agree-form');
+                if(formData['checkbox-agree'].length < $$('[name="checkbox-agree"]').length) {
+                    this.$app.dialog.alert('약관모두 동의해 주세요!','');
+                } else {
+                    mainView.router.navigate('/auth/agreetype/');
+                }
+            },
+        },
+        on: {
+            pageInit: function () {
+                // do something on page init
+                const jsDom = [];
+                jsDom["agrees"] = $$('[name="checkbox-agrees"]');
+                jsDom["agree"] = $$('[name="checkbox-agree"]');
+
+                jsDom["agree"].on('change', function (e) {
+                    var totalChecked = $$('[name="checkbox-agree"]:checked').length;
+
+                    if (totalChecked < jsDom["agree"].length) {
+                        jsDom["agrees"].prop('indeterminate', true);
+                    } else {
+                        jsDom["agrees"].prop('indeterminate', false);
+                    }
+
+                    if (totalChecked === 0) {
+                        jsDom["agrees"].prop('indeterminate', false);
+                        jsDom["agrees"].prop('checked', false);
+                    } else if (totalChecked === jsDom["agree"].length) {
+                        jsDom["agrees"].prop('checked', true);
+                    }
+                });
+
+                jsDom["agrees"].on('change', function (e) {
+                    if (e.target.checked) {
+                        jsDom["agree"].prop('checked', true);
+                    } else {
+                        jsDom["agree"].prop('checked', false);
+                    }
+                });
+            },
+        }
+    }
+</script>

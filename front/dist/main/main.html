@@ -1,0 +1,170 @@
+<!-- App root element -->
+<template>
+    <div data-name="home" class="page">
+
+        <!-- Top Navbar -->
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+                <div class="row align-items-center width-100">
+                    <div class="title">My App</div>
+                    <div class="row">
+                        <button class="button col panel-open width-auto" data-panel=".panel-left">
+                            <i class="f7-icons">bars</i>
+                        </button>
+
+                        <button class="button col panel-open width-auto" data-panel=".panel-right">
+                            <i class="f7-icons">person_crop_circle_fill</i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom Toolbar -->
+        <div class="toolbar toolbar-bottom">
+            <div class="toolbar-inner">
+                <!-- Toolbar links -->
+                <a href="#" class="link">Link 1</a>
+                <a href="#" class="link">Link 2</a>
+                <a class="link popup-open" href="#" data-popup=".popup-about">Open About Popup</a>
+            </div>
+        </div>
+
+        <!-- page content -->
+        <div class="page-content">
+
+            <!-- Link to another page -->
+            <div class="block-title">Page content goes here</div>
+            <div class="block">
+                <p></p>
+                {{isLogin}}
+                {{#if isLogin}}
+                <a href="/expand/">expand</a>
+                {{else}}
+                <a href="/login/">login app</a>
+                {{/if}}
+            </div>
+
+            <div class="card data-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="label-cell">Desert (100g serving)</th>
+                        <th class="numeric-cell">Calories</th>
+                        <th class="numeric-cell">Fat (g)</th>
+                        <th class="numeric-cell">Carbs</th>
+                        <th class="numeric-cell">Protein (g)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="label-cell">Frozen yogurt</td>
+                        <td class="numeric-cell">159</td>
+                        <td class="numeric-cell">6.0</td>
+                        <td class="numeric-cell">24</td>
+                        <td class="numeric-cell">4.0</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="data-table-footer">
+                    <div class="data-table-rows-select">
+                        Per page:
+                        <div class="input input-dropdown">
+                            <select>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="all">All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="data-table-pagination">
+                        <span class="data-table-pagination-label">1-5 of 10</span>
+                        <a href="#" class="link disabled">
+                            <i class="icon icon-prev color-gray"></i>
+                        </a>
+                        <a href="#" class="link">
+                            <i class="icon icon-next color-gray"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="list">
+                <ul>
+                    <!-- Single checkbox item -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <!-- Checkbox input -->
+                            <input type="checkbox"/>
+                            <!-- Checkbox icon -->
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <!-- Checkbox Title -->
+                                <div class="item-title">Books</div>
+                            </div>
+                        </label>
+                    </li>
+                    <!-- Another checkbox item -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <!-- Checked by default -->
+                            <input type="checkbox" checked/>
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-title">Music</div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Header</div>
+                <div class="card-content card-content-padding">
+                    Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing u
+                </div>
+                <div class="card-footer">Footer</div>
+            </div>
+
+            <div class="block block-strong">
+                <div class="block-header">Block Header</div>
+                <p>Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. </p>
+                <div class="block-footer">Block Footer</div>
+            </div>
+
+            <div class="block-header">Block Header</div>
+            <div class="block block-strong">
+                <p>Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. </p>
+            </div>
+            <div class="block-footer">Block Footer</div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+                isLogin: false,
+            }
+        },
+        methods: {
+            login() {
+                this.$setState({ isLogin: true });
+            },
+            logout() {
+                this.$setState({ isLogin: false });
+            },
+        },
+        on: {
+            pageInit: function () {
+                if (sessionStorage.getItem('isLogin') === 'true') {
+                    this.login();
+                }
+            }
+        },
+    }
+</script>

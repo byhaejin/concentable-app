@@ -1,0 +1,29 @@
+<!-- component template -->
+<template>
+    <div class="page">
+        <sub-header title="{{title}}"></sub-header>
+        <div class="page-content">
+
+            <h1>404 Not Found Page !!</h1>
+            <p>원하시는 페이지를 찾을수 없습니다.</p>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+                title: '404 Page',
+            }
+        },
+        methods: {
+
+        },
+        on: {
+            pageInit: function () {
+                // do something on page init
+                console.log('page init')
+            },
+        }
+    }
+</script>

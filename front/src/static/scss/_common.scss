@@ -1,0 +1,61 @@
+/** common */
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+img { vertical-align: top}
+
+strong {
+  font-weight:700;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+ul {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.display-inline-block,
+.iB, .inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.DH4 {height: 4px}
+.DH10 {height: 10px}
+.DH50 {height: 50px}
+.DH100 {height: 100px}
+.W40 { width: 40px }
+.W80 { width: 80px }
+
+.small {
+  font-size: 12px;
+}
+
+.v-box {
+  position: relative;
+  top:50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+.pre-box {
+  white-space: pre-line;
+}
+
+.circle-radius {
+  border-radius: 50%;
+  overflow: hidden;
+}
