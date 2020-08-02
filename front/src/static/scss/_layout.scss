@@ -175,6 +175,11 @@ html, body {
   }
 }
 
+html.with-panel-left-cover .panel-backdrop-in,
+html.with-panel-right-cover .panel-backdrop-in {
+  background-color: rgba(0,0,0,.5)
+}
+
 .sidebar-nav__header {
   padding: 24px;
 }

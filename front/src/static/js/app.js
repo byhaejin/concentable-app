@@ -32,9 +32,6 @@ const app = new Framework7({
     name: 'concentable App',
     theme: 'auto',
     componentUrl: componentsPath + 'layout.component.html',
-    panel: {
-        swipe: true,
-    },
     on: {
         init: function () {
             console.log("app start")
