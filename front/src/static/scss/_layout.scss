@@ -1,21 +1,45 @@
+//html, body {
+//  height: 100%;
+//  margin: 0;
+//  padding: 0;
+//  -webkit-text-size-adjust: none;
+//  font-family: $base-font-family;
+//  font-size: $base-font-size;
+//  color: $base-color-71;
+//  font-weight: normal;
+//  font-smoothing: antialiased;
+//  -webkit-font-smoothing: antialiased;
+//  -webkit-text-size-adjust: none;
+//  background-color: #fff;
+//  input[type=text], input[type=tel], select, textarea, button {
+//    -webkit-appearance: none;
+//    font-family: $form-font-family;
+//    font-size: $form-font-size;
+//    font-weight: $form-font-weight;
+//    text-shadow: none;
+//    text-stroke: none;
+//    font-smoothing: antialiased;
+//    -webkit-font-smoothing: antialiased;
+//    -webkit-text-size-adjust: none;
+//    transition: none;
+//  }
+//}
+
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
   -webkit-text-size-adjust: none;
   font-family: $base-font-family;
-  font-size: $base-font-size;
-  color: $base-color-71;
-  font-weight: normal;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: none;
-  background-color: #fff;
-  input[type=text], input[type=tel], select, textarea, button {
+
+  input[type=text],
+  input[type=tel],
+  select,
+  textarea,
+  button {
     -webkit-appearance: none;
     font-family: $form-font-family;
-    font-size: $form-font-size;
-    font-weight: $form-font-weight;
     text-shadow: none;
     text-stroke: none;
     font-smoothing: antialiased;
@@ -24,6 +48,7 @@ html, body {
     transition: none;
   }
 }
+
 
 #app {
   max-width: 768px;

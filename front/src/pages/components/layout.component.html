@@ -3,7 +3,7 @@
     <div id="app">
 
         <!-- side menu -->
-        <div class="panel panel-left panel-reveal">
+        <div class="panel panel-left panel-cover panel-resizable panel-init">
             <div class="sidebar-nav__header">
                 <h3>왼쪽 메뉴 (사이트 링크)</h3>
             </div>
@@ -23,13 +23,23 @@
         </div>
 
         <!-- user info -->
-        <div class="panel panel-right panel-reveal">
-            <div class="user_login_info">
+        <div class="panel panel-right panel-right-1 panel-cover panel-resizable panel-init">
+            <div class="block">
+                <p>Right Panel content here</p>
                 {{#if isLogin}}
                 사용자 프로파일
                 {{else}}
                 로그인이 필요합니다 !!
                 {{/if}}
+            </div>
+        </div>
+
+        <div class="panel panel-right panel-right-2 panel-cover panel-init theme-dark">
+            <div class="page">
+                <div class="block">
+                    <p>Here comes another 3rd panel.</p>
+                    <p><a class="panel-close" href="#">Close me</a></p>
+                </div>
             </div>
         </div>
 

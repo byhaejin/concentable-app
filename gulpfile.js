@@ -27,8 +27,15 @@ var paths = {
 //웹서버를 실행한다.
 gulp.task('SERVER:local', () => {
     return new Promise( resolve => {
-        gulp.src(dist + '/').pipe(webserver());
-
+        gulp.src(dist + '/')
+            .pipe(webserver({
+                livereload: true,
+                open: true,
+                port: 8000,
+                livereload: {
+                    enable: true,
+                }
+            }));
         resolve();
     });
 });
@@ -88,6 +95,18 @@ gulp.task('IMAGES:copy', () => {
     });
 });
 
+//webfont 복사
+gulp.task('WEBFONT:copy', () => {
+    return new Promise( resolve => {
+        gulp.src([
+            src + '/static/fonts/*.*',
+        ])
+        .pipe(gulp.dest(dist + '/static/fonts/'));
+
+        resolve();
+    });
+});
+
 //SCSS 파일을 css 컴파일
 gulp.task('SCSS:compile', () => {
     return new Promise( resolve => {
@@ -115,7 +134,6 @@ gulp.task('INDEX:indexCopy', () => {
     return new Promise( resolve => {
         gulp.src([
             src + '/pages/*.html',
-            src + '/pages/*/main.html'
         ])
         .pipe(gulp.dest(dist+'/'));
 
@@ -128,7 +146,6 @@ gulp.task('HTML:Combine', () => {
     return new Promise( resolve => {
         gulp.src([
             src + '/pages/*/*.*',
-            '!' + src + '/pages/main/main.html'
         ])
         .pipe(includer())
         .pipe(gulp.dest(dist+'/'));
@@ -156,6 +173,7 @@ gulp.task( 'default', gulp.series([
     'JS:combine',
     'IMAGES:copy',
     'SCSS:compile',
+    'WEBFONT:copy',
     'INDEX:indexCopy',
     'HTML:Combine'
 ]));
