@@ -1,3 +1,10 @@
 .member {
-   
+    .page-content {background-color: #f5f6f7;}
+    .list ul {border: 1px solid #dadada;}
+    .icon-checkbox {border-radius:60%;}
+    .icon-checkbox::after {font-size: 12px;}
+    label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {
+        border-color: #397e43; 
+        background-color: #397e43;
+     }
 }
