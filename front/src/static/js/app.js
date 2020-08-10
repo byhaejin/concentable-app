@@ -42,6 +42,7 @@ const app = new Framework7({
                         // intro 화면을 확인했을 경우
                         if (localStorage.getItem('isIntro') === 'true') {
                             this.router.navigate('/auth/login/',{ animate: false });
+                            // this.router.navigate('/auth/join/high3-step4/',{ animate: false });
                         } else {
                             this.router.navigate('/intro/',{ animate: false });
                         }
@@ -98,7 +99,7 @@ const app = new Framework7({
         {//이메일가입 step1 인증
             name: 'email-step1',
             path: '/auth/join/email-step1/',
-            componentUrl: '../member/email-step1.html',
+            componentUrl: '../join/email-step1.html',
             options: {
                 transition: 'f7-cover',
             },
@@ -106,15 +107,39 @@ const app = new Framework7({
         {//이메일가입 step2 이메일 입력
             name: 'email-step2',
             path: '/auth/join/email-step2/',
-            componentUrl: '../member/email-step2.html',
+            componentUrl: '../join/email-step2.html',
             options: {
                 transition: 'f7-cover',
             },
         },
-        {//고3 인증
+        {//고3 이용 신청 step1 인증
             name: 'high3-step1',
             path: '/auth/join/high3-step1/',
-            componentUrl: '../member/high3-step1.html',
+            componentUrl: '../join/high3-step1.html',
+            options: {
+                transition: 'f7-cover',
+            },
+        },
+        {//고3 이용 신청 step2 이용 지점 선택
+            name: 'high3-step2',
+            path: '/auth/join/high3-step2/',
+            componentUrl: '../join/high3-step2.html',
+            options: {
+                transition: 'f7-cover',
+            },
+        },
+        {//고3 이용 신청 step3 이용 목적
+            name: 'high3-step3',
+            path: '/auth/join/high3-step3/',
+            componentUrl: '../join/high3-step3.html',
+            options: {
+                transition: 'f7-cover',
+            },
+        },
+        {//고3 이용 신청 step4 이용 동의
+            name: 'high3-step4',
+            path: '/auth/join/high3-step4/',
+            componentUrl: '../join/high3-step4.html',
             options: {
                 transition: 'f7-cover',
             },

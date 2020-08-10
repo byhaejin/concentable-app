@@ -1,0 +1,61 @@
+<!-- component template -->
+<template>
+    <div class="page member">
+        <sub-header title="고3 회원가입/이용지점 선택" nomenu="true"></sub-header>
+        <div class="page-content">
+            <br>
+            <div class="block">
+                <form id="emailcertification-form">
+                    <div class="zone">
+                        <div class="map" style="height: 40vh; background: darkolivegreen">
+                               지도
+                        </div>
+
+                        <select class="select-box">
+                            <option>지점 선택</option>
+                            <option value="ad1">컨센터블 24시 독서실 1호점(주엽역)</option>
+                            <option value="ad2">컨센터블 24시 독서실 1호점(주엽역)</option>
+                            <option value="ad3">컨센터블 24시 독서실 1호점(주엽역)</option>
+                            <option value="ad4">컨센터블 24시 독서실 1호점(주엽역)</option>
+                        </select>
+
+                        <div class="sub-zone">
+
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <button type="button"
+                            class="col button button-fill button-round"
+                            @click="nextStep">다음</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</template>
+<!-- component styles -->
+<style scoped>
+
+    .select-box {
+        width: 100%;
+    }
+
+</style>
+<script>
+    return {
+        methods: {
+            //'인증번호 확인'
+            nextStep: function() {
+                mainView.router.navigate('/auth/join/high3-step3/');
+            },
+        },
+        on: {
+            pageInit: function () {
+                // 파라메타가 email 일경우 이메일 확인
+
+            },
+        }
+    }
+</script>

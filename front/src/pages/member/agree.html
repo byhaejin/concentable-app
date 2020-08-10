@@ -100,11 +100,11 @@
                     </li>
                 </ul>
                 <div class="block">
-                    <a href="/auth/join/email-step1/" class="col button button-fill button-large button-outline color-green">
+                    <a @click="agreeNext('/auth/join/email-step1/')" class="col button button-fill button-large button-outline color-green">
                         <i class="f7-icons">envelope</i>
                         이메일 주소로 가입하기
                     </a>                    
-                    <a href="/auth/join/high3-step1/" class="col button button-fill button-large button-outline color-green">
+                    <a @click="agreeNext('/auth/join/high3-step1/')" class="col button button-fill button-large button-outline color-green">
                         <i class="f7-icons size-22">lightbulb</i>
                         고3 이용 신청하기
                     </a>
@@ -150,12 +150,12 @@
 <script>
     return {
         methods: {
-            agreeNext: function () {
+            agreeNext: function (url) {
                 const formData = app.form.convertToData('#agree-form');
                 if(formData['checkbox-agree'].length < $$('[name="checkbox-agree"]').length) {
                     this.$app.dialog.alert('약관모두 동의해 주세요!','');
                 } else {
-                    mainView.router.navigate('/auth/agreetype/');
+                    mainView.router.navigate(url);
                 }
             },
         },

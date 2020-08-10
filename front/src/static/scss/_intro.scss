@@ -1,5 +1,39 @@
 .intro {
-    .swiper-container {background-color: #fff;;}
-    .swiper-wrapper { height:60%; margin-bottom: 10px;;}
-    .swiper-pagination-bullets { bottom: unset;}
+    background-color: #fff;
+
+    .swiper-container {
+        height: calc(64vh + 20px);
+        background-color: #fff;
+    }
+    .swiper-wrapper {
+        height:60vh;
+        margin-bottom: 4vh;
+    }
+    .swiper-pagination-bullets {
+        bottom: unset;
+    }
+
+    .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        margin: 0 15px !important;
+    }
+
+    .logo {
+        padding-bottom: 5vh;
+        text-align: center;
+        img {
+            height: 10vh;
+        }
+    }
+
+    .js-start {
+        width: 56vw;
+        height: 7vh;
+        margin: 0 auto;
+        font-size: 3.4vh;
+        background-color: #ffb100;
+    }
+
+
 }
