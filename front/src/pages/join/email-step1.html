@@ -26,7 +26,7 @@
                                 <div class="item-inner">
                                     <div class="item-title item-floating-label">성명</div>
                                     <div class="item-input-wrap">
-                                        <input type="text" placeholder="Your name" required="" validate="" data-error-message="이름을 입력하세요.">
+                                        <input type="text" placeholder="성명" required="" validate="" data-error-message="이름을 입력하세요.">
                                         <span class="input-clear-button"></span>
                                         <div class="item-input-info">Default "required" validation</div>
                                     </div>
@@ -34,9 +34,9 @@
                             </li>
                             <li class="item-content item-input item-input-outline">                                
                                 <div class="item-inner">
-                                    <div class="item-title item-floating-label">주민등록번호</div>
+                                    <div class="item-title item-floating-label">생년월일</div>
                                     <div class="item-input-wrap">
-                                        <input type="text" placeholder="Enter number" required="" validate="" pattern="[0-9]*" data-error-message="숫자 만 입력가능합니다.">
+                                        <input type="text" placeholder="생년월일" required="" validate="" pattern="[0-9]*" data-error-message="숫자 만 입력가능합니다.">
                                         <span class="input-clear-button"></span>
                                         <div class="item-input-info">With custom error message</div>
                                     </div>
@@ -46,13 +46,13 @@
                                 <div class="item-inner">
                                     <div class="item-title item-floating-label">E-mail</div>
                                     <div class="item-input-wrap">
-                                        <input type="email" placeholder="Your e-mail" required="" validate="" data-error-message="이메일주소를 입력하세요.">
+                                        <input type="email" placeholder="E-mail" required="" validate="" data-error-message="이메일주소를 입력하세요.">
                                         <span class="input-clear-button"></span>
                                         <div class="item-input-info">Default e-mail validation</div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-content item-input">
+                            <!-- <li class="item-content item-input">
                                 <div class="item-media">주민등록번호</div>
                                 <div class="item-inner item-cell">
                                     <div class="item-row">
@@ -76,11 +76,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="item-content item-input">
-                                <div class="item-inner flex-direction-row item-cell">
-                                    <select class="select-box data-table-rows-select" name="gender">
-                                        <option>통신사</option>
+                            </li> -->
+                            <li class="">
+                                <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+                                    <select name="mac-windows">
+                                        <option>선택</option>
                                         <option value="skt">SKT</option>
                                         <option value="kt">KT</option>
                                         <option value="lgu">LG U+</option>
@@ -88,16 +88,16 @@
                                         <option value="kct">KCT</option>
                                         <option value="sk7">SK7mobile</option>
                                     </select>
-                                    <div class="item-input-wrap certification-input">
-                                        <input type="tel" maxlength="11" name="tel" placeholder="-없이 입력">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">통신사</div>
+                                            <div class="item-after">선택</div>                                            
+                                        </div>
                                     </div>
-                                    <button type="button"
-                                            class="button button-fill width-auto"
-                                            >인증번호 발송</button>
-                                </div>
+                                </a>
                             </li>
                             <li class="item-content item-input">
-                                <div class="item-media">인증번호</div>
+                                <div class="item-media"><button type="button" class="button button-fill width-auto">인증번호 발송</button></div>
                                 <div class="item-inner">
                                     <div class="item-input-wrap">
                                         <input type="number" name="certificationNumber">
