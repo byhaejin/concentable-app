@@ -12,7 +12,13 @@
     .color-white {border-color: #397e43; color:#397e43;}
     //회원가입 
     //.item-input-focused .item-floating-label {color: #397e43;}
+    .item-input-outline .item-inner { padding-bottom: 3px;}
+    .item-input-invalid {padding-bottom:0PX !important;}
     
-    .item-input-info{display: none;}
+    .smart-select-init  .item-title {font-size: var(--f7-input-font-size);}
+    .smart-select-init .item-inner {border-bottom: 1px solid #dadada; margin-bottom: var(--f7-list-item-padding-vertical);}
+    .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left));}
+    .tel-box .width-auto {height: var(--f7-input-height);}
     
 }
+
