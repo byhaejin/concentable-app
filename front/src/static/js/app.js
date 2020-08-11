@@ -39,10 +39,11 @@ const app = new Framework7({
                 dynamicNavbar: true,
                 on: {
                     init: function () {
+
+                        // this.router.navigate('/',{ animate: false });
                         // intro 화면을 확인했을 경우
                         if (localStorage.getItem('isIntro') === 'true') {
                             this.router.navigate('/auth/login/',{ animate: false });
-                            // this.router.navigate('/auth/join/high3-step4/',{ animate: false });
                         } else {
                             this.router.navigate('/intro/',{ animate: false });
                         }
@@ -184,5 +185,6 @@ function componentLoadScript(url) {
     script.src = url;
     document.body.appendChild(script);
 }
-
-componentLoadScript(componentsPath + 'subheader.template.component.js')
+let template = '';
+componentLoadScript(componentsPath + 'header.template.component.js');
+componentLoadScript(componentsPath + 'subheader.template.component.js');

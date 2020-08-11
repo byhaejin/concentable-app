@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ghyvyv');
+  src:  url('fonts/icomoon.eot?ghyvyv#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ghyvyv') format('truetype'),
+    url('fonts/icomoon.woff?ghyvyv') format('woff'),
+    url('fonts/icomoon.svg?ghyvyv#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon-logo-1:before {
+  content: "\e900";
+}
+.icon-icon-logo-2:before {
+  content: "\e901";
+}
+.icon-icon-logo-3:before {
+  content: "\e902";
+  color: #fff;
+}
+.icon-icon-card:before {
+  content: "\e903";
+}
+.icon-icon-login:before {
+  content: "\e904";
+}
+.icon-icon-desk:before {
+  content: "\e905";
+}
+.icon-icon-inform-1:before {
+  content: "\e906";
+}
+.icon-icon-inform-2:before {
+  content: "\e907";
+}
+.icon-icon-inform-3:before {
+  content: "\e908";
+}
+.icon-icon-link:before {
+  content: "\e909";
+}
+.icon-icon-info-1:before {
+  content: "\e90a";
+}
+.icon-icon-info-2:before {
+  content: "\e90b";
+}
+.icon-icon-info-3:before {
+  content: "\e90c";
+}
+.icon-icon-coffee-1:before {
+  content: "\e90d";
+}
+.icon-icon-coffee-2:before {
+  content: "\e90e";
+}
+.icon-icon-pc-1:before {
+  content: "\e90f";
+}
+.icon-icon-pc-2:before {
+  content: "\e910";
+}
+.icon-icon-candy-1:before {
+  content: "\e911";
+}
+.icon-icon-candy-2:before {
+  content: "\e912";
+}
+.icon-icon-fast-food-1:before {
+  content: "\e913";
+}
+.icon-icon-fast-food-2:before {
+  content: "\e914";
+}
+.icon-icon-tak-1:before {
+  content: "\e915";
+}
+.icon-icon-tak-2:before {
+  content: "\e916";
+}
+.icon-icon-speaker-1:before {
+  content: "\e917";
+}
+.icon-icon-speaker-2:before {
+  content: "\e918";
+}
