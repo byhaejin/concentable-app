@@ -22,12 +22,33 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-content item-input">
-                                <div class="item-media">성명</div>
+                            <li class="item-content item-input item-input-outline">
                                 <div class="item-inner">
+                                    <div class="item-title item-floating-label">성명</div>
                                     <div class="item-input-wrap">
-                                        <input type="text" name="name">
+                                        <input type="text" placeholder="Your name" required="" validate="" data-error-message="이름을 입력하세요.">
                                         <span class="input-clear-button"></span>
+                                        <div class="item-input-info">Default "required" validation</div>
+                                    </div>
+                                </div>                                
+                            </li>
+                            <li class="item-content item-input item-input-outline">                                
+                                <div class="item-inner">
+                                    <div class="item-title item-floating-label">주민등록번호</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="Enter number" required="" validate="" pattern="[0-9]*" data-error-message="숫자 만 입력가능합니다.">
+                                        <span class="input-clear-button"></span>
+                                        <div class="item-input-info">With custom error message</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input item-input-outline">                                
+                                <div class="item-inner">
+                                    <div class="item-title item-floating-label">E-mail</div>
+                                    <div class="item-input-wrap">
+                                        <input type="email" placeholder="Your e-mail" required="" validate="" data-error-message="이메일주소를 입력하세요.">
+                                        <span class="input-clear-button"></span>
+                                        <div class="item-input-info">Default e-mail validation</div>
                                     </div>
                                 </div>
                             </li>
@@ -90,7 +111,7 @@
                 <br>
 
                 <button type="button"
-                        class="col button button-fill button-round"
+                        class="col button button-fill button-large button-outline color-green"
                         @click="nextStep">인증</button>
                 </form>
             </div>
