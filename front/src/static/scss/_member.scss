@@ -9,16 +9,23 @@
         border-color: #397e43; 
         background-color: #397e43;
      }
-    .color-white {border-color: #397e43; color:#397e43;}
+    .color-white {border-color: #397e43; color:#397e43;}    
+}
+
+#emailcertification-form {
     //회원가입 
     //.item-input-focused .item-floating-label {color: #397e43;}
-    .item-input-outline .item-inner { padding-bottom: 3px;}
-    .item-input-invalid {padding-bottom:0PX !important;}
+    //.item-input-outline { padding-bottom: 10px;}
+    .item-inner {padding-top: 0px;}
+    //.item-floating-label {transform: scale(1) translateY(50%) !important;}
+    .item-input-invalid .item-inner {padding-bottom: 5px;}
+    .list .item-floating-label {color:#7a7a7a !important;}
+    .list .item-title {}
+    .md .item-input-with-error-message {padding-bottom: 10px;}
     
     .smart-select-init  .item-title {font-size: var(--f7-input-font-size);}
     .smart-select-init .item-inner {border-bottom: 1px solid #dadada; margin-bottom: var(--f7-list-item-padding-vertical);}
-    .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left));}
+    .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical) ;}
     .tel-box .width-auto {height: var(--f7-input-height);}
-    
+    .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
 }
-

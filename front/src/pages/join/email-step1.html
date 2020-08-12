@@ -2,14 +2,13 @@
 <template>
     <div class="page member">
         <sub-header title="회원가입/이메일 회원가입" nomenu="true"></sub-header>
-        <div class="page-content">
-            <br>
+        <div class="page-content">            
             <div class="block">
                 <form id="emailcertification-form">
                     <div class="list">
                         <ul>
                             <li>
-                                <div class="item-inner" style="border-bottom: 1px solid #dadada;">
+                                <div class="item-inner" style="border-bottom: 1px solid #dadada; padding-top: var(--f7-list-item-padding-vertical);">
                                     <div class="item-title item-content-dropdown-expanded">
                                         <label class="item-checkbox item-content">
                                             <input type="checkbox" name="checkbox-agree" value="concentable"/>
@@ -23,7 +22,7 @@
                                 </div>
                             </li>
                             <li class="item-content item-input item-input-outline">
-                                <div class="item-inner">
+                                <div class="item-inner" style="padding-top: var(--f7-list-item-padding-vertical);">
                                     <div class="item-title item-floating-label">성명</div>
                                     <div class="item-input-wrap">
                                         <input type="text" placeholder="성명" required="" validate="" data-error-message="이름을 입력하세요.">
@@ -31,6 +30,28 @@
                                     </div>
                                 </div>                                
                             </li>
+                            <li class="item-content item-input item-input-outline">                                
+                                <div class="item-inner">
+                                    <div class="item-title item-floating-label">성별 선택</div>
+                                    <div class="item-input-wrap input-dropdown-wrap">
+                                        <select name="gender" placeholder="Please choose..." class="input-with-value">                                            
+                                            <option value="남성">남성</option>
+                                            <option value="여성">여성</option>
+                                         </select>                                        
+                                    </div>
+                                </div>
+                            </li>                            
+                            <!-- <li class="item-content item-input item-input-with-value">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Gender</div>
+                                    <div class="item-input-wrap input-dropdown-wrap">
+                                        <select name="gender" placeholder="Please choose..." class="input-with-value">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                             </li> -->                            
                             <li class="item-content item-input item-input-outline">                                
                                 <div class="item-inner">
                                     <div class="item-title item-floating-label">생년월일</div>
@@ -49,13 +70,12 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-content item-input item-input-outline" style="padding-bottom: var(--f7-list-item-padding-vertical);">                                
+                            <li class="item-content item-input item-input-outline">                                
                                 <div class="item-inner">
                                     <div class="item-title item-floating-label">비밀번호</div>
                                     <div class="item-input-wrap">
-                                        <input type="password" placeholder="비밀번호 입력" required="" validate="" data-error-message="비밀번호를 입력하세요.">
-                                        <span class="input-clear-button"></span>
-                                        <div class="item-input-info">8~15자리숫자, 영문자, 특수문자</div>
+                                        <input type="password" placeholder="8~15자리숫자, 영문자, 특수문자" required="" validate="" data-error-message="비밀번호를 입력하세요.">
+                                        <span class="input-clear-button"></span>                                        
                                     </div>
                                 </div>
                             </li>
@@ -112,7 +132,7 @@
                                     </div>
                                 </a>
                             </li>
-                            <li class="item-content item-input tel-box item-input-outline">                                
+                            <li class="item-content item-input item-input-outline tel-box">                                
                                 <div class="item-inner">                                    
                                     <div class="item-input-wrap">
                                         <input type="tel" placeholder="전화번호 입력">
@@ -133,8 +153,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                    <br>
+                    </div>                   
                     <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">회원가입</button>
                 </form>
             </div>
