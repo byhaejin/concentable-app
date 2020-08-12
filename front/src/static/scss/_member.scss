@@ -1,4 +1,5 @@
 .member {
+    //약관
     .page-content {background-color: #f5f6f7;}
     .list ul {border: 1px solid #dadada;}
     .list .item-title {font-size:14px;}
@@ -9,13 +10,9 @@
         border-color: #397e43; 
         background-color: #397e43;
      }
-    .color-white {border-color: #397e43; color:#397e43;}    
-}
+    .color-white {border-color: #397e43; color:#397e43;}
 
-#emailcertification-form {
-    //회원가입 
-    //.item-input-focused .item-floating-label {color: #397e43;}
-    //.item-input-outline { padding-bottom: 10px;}
+    //회원가입    
     .item-inner {padding-top: 0px;}
     //.item-floating-label {transform: scale(1) translateY(50%) !important;}
     .item-input-invalid .item-inner {padding-bottom: 5px;}
@@ -28,4 +25,10 @@
     .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical) ;}
     .tel-box .width-auto {height: var(--f7-input-height);}
     .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
+}
+
+#finduser-form {
+    .swiper-container {background-color: #f5f6f7 !important;}
+    .list {margin-top: 15px;}
+    .tabbar .tab-link-active {font-size: 15px; font-weight: bold;;}
 }

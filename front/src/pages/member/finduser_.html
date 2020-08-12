@@ -1,0 +1,164 @@
+<!-- component template -->
+<template>
+    <div class="page member">
+        <sub-header title="이메일/비밀번호 찾기" nomenu="true"></sub-header>
+        <div class="page-content">
+            <div class="block">
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        {{#if isEmail}}
+                            이메일 찾아보기
+                        {{else}}
+                            비밀번호 찾아보기
+                        {{/if}}
+                    </div>
+                    <div class="card-content">
+                        <br>
+                        <form id="find-form">
+                            <div class="block">
+                                <label class="radio width-auto">
+                                    <input type="radio" value="email" name="type" @click="changeIsEmail(true)" {{#if isEmail}}checked{{/if}}>
+                                    <i class="icon icon-radio"></i>
+                                    <span>이메일 찾기</span>
+                                </label> &nbsp; &nbsp;
+                                <label class="radio width-auto">
+                                    <input type="radio" value="pass" name="type" @click="changeIsEmail(false)" {{#unless isEmail}}checked{{/unless}}>
+                                    <i class="icon icon-radio"></i>
+                                    <span>비밀번호 찾기</span>
+                                </label>
+                            </div>
+                            <div class="list">
+                                <ul>
+                                    {{#unless isEmail}}
+                                    <li class="item-content item-input">
+                                        <div class="item-media">이메일</div>
+                                        <div class="item-inner">
+                                            <div class="item-input-wrap">
+                                                <input type="text" name="email">
+                                                <span class="input-clear-button"></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {{/unless}}
+                                    <li class="item-content item-input">
+                                        <div class="item-media">성명</div>
+                                        <div class="item-inner">
+                                            <div class="item-input-wrap">
+                                                <input type="text" name="name">
+                                                <span class="input-clear-button"></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">주민등록번호</div>
+                                        <div class="item-inner item-cell">
+                                            <div class="item-row">
+                                                <div class="item-cell">
+                                                    <div class="item-input-wrap">
+                                                        <input type="text" maxlength="6" name="name">
+                                                    </div>
+                                                </div>
+                                                <div class="item-cell">
+                                                    <div class="item-input-wrap iB" style="width: 18px">
+                                                        <input type="password" maxlength="1" name="name">
+                                                    </div>
+                                                    <div class="iB">
+                                                        <i class="f7-icons size-14">circle_fill</i>
+                                                        <i class="f7-icons size-14">circle_fill</i>
+                                                        <i class="f7-icons size-14">circle_fill</i>
+                                                        <i class="f7-icons size-14">circle_fill</i>
+                                                        <i class="f7-icons size-14">circle_fill</i>
+                                                        <i class="f7-icons size-14">circle_fill</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-inner flex-direction-row item-cell">
+                                            <select class="select-box data-table-rows-select" name="gender">
+                                                <option>통신사</option>
+                                                <option value="skt">SKT</option>
+                                                <option value="kt">KT</option>
+                                                <option value="lgu">LG U+</option>
+                                                <option value="hlm">헬로모바일</option>
+                                                <option value="kct">KCT</option>
+                                                <option value="sk7">SK7mobile</option>
+                                            </select>
+                                            <div class="item-input-wrap certification-input">
+                                                <input type="tel" maxlength="11" name="tel" placeholder="-없이 입력">
+                                            </div>
+                                            <button type="button"
+                                                    class="button button-fill width-auto"
+                                                    @click="certificationCheck">인증번호 발송</button>
+                                        </div>
+                                    </li>
+                                    <li class="item-content item-input">
+                                        <div class="item-media">인증번호</div>
+                                        <div class="item-inner">
+                                            <div class="item-input-wrap">
+                                                <input type="number" name="certificationNumber">
+                                                <span class="input-clear-button"></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                        <br>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button"
+                                class="col button button-fill button-round"
+                                @click="findInfo">찾기</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
+<!-- component styles -->
+<style scoped>
+    .item-media {
+        width: 90px
+    }
+
+    .select-box {
+        width: 100px;
+    }
+
+    .certification-input {
+        width: calc(100% - 216px);
+    }
+</style>
+<script>
+    return {
+        data: function () {
+            return {
+                isEmail : false,
+            }
+        },
+        methods: {
+            //'인증번호 확인'
+            certificationCheck: function() {
+              console.log('인증번호 확인')
+            },
+            // 검색대상 확인 : isEmail = true 이메일 확인, isEmail = false 비밀번호 확인
+            changeIsEmail: function (Is) {
+                this.$setState({ isEmail: Is });
+            },
+            // 검색 하기
+            findInfo: function () {
+
+            },
+        },
+        on: {
+            pageInit: function () {
+                // 파라메타가 email 일경우 이메일 확인
+                this.changeIsEmail((this.$route.params.tab === 'email'));
+            },
+        }
+    }
+</script>
