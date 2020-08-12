@@ -65,7 +65,7 @@
                                 <div class="item-inner">
                                     <div class="item-title item-floating-label">E-mail</div>
                                     <div class="item-input-wrap">
-                                        <input type="email" placeholder="E-mail" required="" validate="" data-error-message="이메일주소를 입력하세요.">
+                                        <input type="email" placeholder="E-mail" required="" validate="" data-error-message="사용할수없는이메일입니다.">
                                         <span class="input-clear-button"></span>                                        
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                 <div class="item-inner">
                                     <div class="item-title item-floating-label">비밀번호</div>
                                     <div class="item-input-wrap">
-                                        <input type="password" placeholder="8~15자리숫자, 영문자, 특수문자" required="" validate="" data-error-message="비밀번호를 입력하세요.">
+                                        <input type="password" placeholder="8~15자리숫자, 영문자, 특수문자" required="" validate="" data-error-message="숫자, 영문, 기호를모두사용하여8자리이상입력해주세요">
                                         <span class="input-clear-button"></span>                                        
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                 <div class="item-inner">
                                     <div class="item-title item-floating-label">비밀번호 재확인</div>
                                     <div class="item-input-wrap">
-                                        <input type="password" placeholder="비밀번호 재입력" required="" validate="" data-error-message="비밀번호를 재입력하세요.">
+                                        <input type="password" placeholder="비밀번호 재입력" required="" validate="" data-error-message="비밀번호가일치하지않습니다.">
                                         <span class="input-clear-button"></span>                                        
                                     </div>
                                 </div>
@@ -143,13 +143,15 @@
                                     <button type="button" class="button button-fill width-auto">인증번호 발송</button>
                                 </div>
                             </li>
-
-                            <li class="item-content item-input item-input-outline">                                
+                            <li class="item-content item-input item-input-outline tel-box">                                
                                 <div class="item-inner" style="margin-bottom: 15px;">
                                     <div class="item-input-wrap">
                                         <input type="text" placeholder="인증번호 입력">
                                         <span class="input-clear-button"></span>
                                     </div>
+                                </div>
+                                <div class="item-media">
+                                    <button type="button" class="button button-fill width-auto">인증</button>
                                 </div>
                             </li>
                         </ul>
