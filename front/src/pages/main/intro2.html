@@ -2,19 +2,29 @@
 <template>
     <div data-name="intro" class="page intro">
         <div class="page-content">
-
-            <div data-pagination='{"el": ".swiper-pagination", "hideOnClick": "true"}' class="swiper-container swiper-init introduction vh-100" data-speed="400" data-space-between="0">
+            <div data-pagination='{"el": ".swiper-pagination", "clickable": "true"}'
+                 class="swiper-container swiper-init"
+                 data-speed="400"
+                 data-space-between="0">
                 <!-- Slides wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
                     <div class="swiper-slide" style="background-image: url(../static/images/intro/img1.jpg)"></div>
-                    <div class="swiperb-slide" style="background-image: url(../static/images/intro/img2.jpg)"></div>
+                    <div class="swiper-slide" style="background-image: url(../static/images/intro/img2.jpg)"></div>
                     <div class="swiper-slide" style="background-image: url(../static/images/intro/img3.jpg)"></div>
                     <div class="swiper-slide" style="background-image: url(../static/images/intro/img4.jpg)"></div>
                 </div>
                 <!-- Pagination, if required -->
                 <div class="swiper-pagination"></div>
-            </div>            
+            </div>
+            <div class="block">
+                <div class="logo">
+                    <img alt="concentable" src="../static/images/sample-logo.png" />
+                </div>
+                <button type="button"
+                        class="col button button-fill button-round js-start"
+                        @click="goStart">시작하기</button>
+            </div>
         </div>
     </div>
 </template>
