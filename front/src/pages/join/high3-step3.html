@@ -15,102 +15,66 @@
                 <p>
                     절대 어휘력과 문장력을 보려고 하는 것이 아니니 부담 갖지 않으시길 바랍니다. 두서없거나 맞춤법 좀 틀리면 어때요. 진심은 전달되기 마련입니다.
                 </p>
-                <p>
+                <p class="padding-bottom">
                     글자 수를 충족시켜야 하는 2개의 질문(각각 500자, 100자)이 있는데, 작성하다 보면 느끼실 거예요. '500자 순식간에 넘어가는구나!'
                 </p>
-            </div>
+                <!--  -->
+                <form id="high3-step3-form">
+                    <div class="card">
+                        <div class="card-header">본인은 왜 공부를 하시나요? 최대한 구체적으로 적어주세요.</div>
+                        <div class="card-content card-content-padding">
+                            <textarea class="long" placeholder="(필수) 장문형 텍스트 500자 이상 / 띄어쓰기 포함"></textarea>
+                        </div>                        
+                    </div>
+                    <div class="card">
+                        <div class="card-header">컨센터블의 어떤점이 마음에 드세요?</div>
+                        <div class="card-content card-content-padding">
+                            <textarea class="" placeholder="(필수) 글자수 제한없음 / 일반적으로 100자 미만작성"></textarea>
+                        </div>                        
+                    </div>
+                    <div class="card">
+                        <div class="card-header">10년뒤, 오늘이 시간에 29세의 본인은 어디서 무슨일을 하고 있을것 같나요?</div>
+                        <div class="card-content card-content-padding">
+                            <textarea class="" placeholder="(필수) 글자수 제한없음 / 일반적으로 100자 미만작성"></textarea>
+                        </div>                        
+                    </div>
+                    <div class="card">
+                        <div class="card-header">30년뒤, 오늘이 시간에 49세의 본인은 어디서 무슨일을 하고 있을것 같나요?</div>
+                        <div class="card-content card-content-padding">
+                            <textarea class="" placeholder="(필수) 글자수 제한없음 / 일반적으로 100자 미만작성"></textarea>
+                        </div>                        
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            중3보다는 고3이 훨씬 얌전하지만, 성인들은 그것도 산만하다고 생각 할수 있습니다. 컨센터블을 어떤마음으로 이용할건지 본인의 다짐을 적어주세요.
+                        </div>
+                        <div class="card-content card-content-padding">
+                            <textarea class="" placeholder="(필수) 장문형 텍스트 100자 이상 / 띄어쓰기 포함"></textarea>
+                        </div>                        
+                    </div>
+                    <div class="card">
+                        <div class="card-header">마지막으로, 컨센터블운영진에게 하고 싶은말이 있으면 적어주세요.</div>
+                        <div class="card-content card-content-padding">
+                            <textarea class="" placeholder="(필수) 장문형 텍스트 글자수 제한없음 / 일반적으로 100자 미만작성"></textarea>
+                        </div>                        
+                    </div>
+                </form>                
+                <br>
+                <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">다음</button>
 
-            <div class="list block">
-                <form id="agree-form">
-                    <ul>
-                        <li>
-                            <div class="qa-box">
-                                <p class="q">(500자 이상)본인은 왜 공부를 하시나요? 최대한 구체적으로 적어주세요.</p>
-                                <div class="a">
-                                    <textarea class="long" placeholder="(필수) 장문형 텍스트 500자 이상(띄어쓰기 포함)"></textarea>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="qa-box">
-                                <p class="q">컨센터블의 어떤 점이 마음에 드세요?</p>
-                                <div class="a">
-                                    <textarea placeholder="(필수) 장문형 텍스트 글자수 제한 없음 (일반적으로 100자 미만 작성)"></textarea>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="qa-box">
-                                <p class="q">10년 뒤, 오늘 이 시간에 29세의 본인은 어디서 무슨 일을 하고 있을 것 같나요?</p>
-                                <div class="a">
-                                    <textarea placeholder="(필수) 장문형 텍스트 글자수 제한 없음 (일반적으로 100자 미만 작성)"></textarea>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="qa-box">
-                                <p class="q">30년 뒤, 오늘 이 시간에 49세의 본인은 어디서 무슨 일을 하고 있을 것 같나요?</p>
-                                <div class="a">
-                                    <textarea placeholder="(필수) 장문형 텍스트 글자수 제한 없음 (일반적으로 100자 미만 작성)"></textarea>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="qa-box">
-                                <p class="q">(100자 이상)중3보다는 고3이 훨씬 얌전하지만, 성인들은 그 것도 산만하다고 생각할 수 있습니다. 컨센터블을 어떤 마음으로 이용할건지 본인의 다짐을 적어주세요.</p>
-                                <div class="a">
-                                    <textarea placeholder="(필수) 장문형 텍스트 100자 이상(띄어쓰기 포함)"></textarea>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="qa-box">
-                                <p class="q">마지막으로, 컨센터블 운영진에게 하고 싶은 말이 있으면 적어주세요.</p>
-                                <div class="a">
-                                    <textarea placeholder="(필수) 장문형 텍스트 글자수 제한 없음 (일반적으로 100자 미만 작성)"></textarea>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </form>
-                <br />
-                <button type="button"
-                        class="col button button-fill button-round"
-                        @click="nextStep">다음</button>
+
             </div>
+            
+            
+           
+           
 
         </div>
     </div>
 </template>
 <!-- component styles -->
 <style scoped>
-    ul {
-        padding: 24px;
-    }
-    .list-quadrangle {
-        padding-left: 36px;
-    }
-    .list-quadrangle li {
-        list-style: square;
-        padding-bottom: 8px;
-    }
-
-    .qa-box {
-        padding: 12px 0;
-    }
-    .qa-box q {
-        padding-bottom: 4px
-    }
-    .qa-box .a textarea {
-        width: 100%;
-        height: 100px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
-    .qa-box .a textarea.long {
-        height: 40vh;
-    }
+    
 </style>
 <script>
     return {
