@@ -1,7 +1,7 @@
 template = `<div class="navbar">
             <div class="navbar-bg"></div>
             <div class="navbar-inner">
-                <div class="row align-items-center width-100">
+                <div class="row align-items-center width-100 color-theme-teal">
                     <div class="title">{{$props.title}}</div>
                     <div class="row">
                     {{#unless $props.nomenu}}
