@@ -2,19 +2,21 @@
 <template>
     <div data-name="home" class="page home">
 
-<!--    <main-header title="Home" nomenu=""></main-header>-->
+     <main-header title="" nomenu="">
+        <div class="home-top-link">
+            <button class="button inline-block">
+                <i class="f7-icons">person_circle</i>
+            </button>
+            <button class="button inline-block panel-open" data-panel=".panel-left">
+                <i class="f7-icons">bars</i>
+            </button>
+        </div>
+     </main-header>
 
         <!-- page content -->
         <div class="page-content">
             <div class="home-top">
-                <div class="home-top-link">
-                    <button class="button inline-block">
-                        <i class="f7-icons">person_circle</i>
-                    </button>
-                    <button class="button inline-block panel-open" data-panel=".panel-left">
-                        <i class="f7-icons">bars</i>
-                    </button>
-                </div>
+                
                 <div class="logo">
 <!--                    <i class="icon icon-icon-logo-1"></i>-->
                    <img alt="concentable" src="../static/images/sample-logo.png" />
