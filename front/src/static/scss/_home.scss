@@ -2,9 +2,7 @@
 .home {
   background: #173228;
 
-  &-top {
-    height: 31.6vh;
-    padding-top: 7vh;
+  &-top {    
     background: #fff;
 
     &-link {
@@ -19,7 +17,7 @@
     }
 
     .logo {
-      padding-top: 5vh;
+      padding: 5vh 0;
       color: #085837;
       text-align: center;
       font-size: 11.46vh;
@@ -29,7 +27,7 @@
   }
 
   &-user {
-    padding: 4vh 40px;
+    padding: 4vh 30px;
     border-top: 3px solid #dcdedd;
     background-color: #f6f7f6;
 
@@ -42,6 +40,11 @@
       background: url(../images/home/photo-no-user.png) no-repeat center center;
       background-size: 100%;
     }
+
+    .infor-icon {font-size: 94px; line-height: 0; color: #d6d6d6;}
+    .infor-txt { font-weight: bold;}
+    .infor-txt .title { color: #000; margin: 0; padding-bottom: 0.2em;}
+    .infor-txt P {color: #085837; margin: 0 0 0.5em; font-size: 13px;}
 
     .button {
       font-size: 2.608vh;

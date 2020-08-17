@@ -171,8 +171,10 @@ html, body {
   background-color: #397e43;
 
   a {
-    color: #fff;
+    color: #7aff91;
   }
+  .links-list ul {background-color: #397e43;}
+  .links-list a::before {color: #4cd964;}
 }
 
 html.with-panel-left-cover .panel-backdrop-in,
@@ -181,7 +183,8 @@ html.with-panel-right-cover .panel-backdrop-in {
 }
 
 .sidebar-nav__header {
-  padding: 24px;
+  padding: 24px 24px 0px;
+  h3 {font-size: 30px; margin-bottom: 0px;}
 }
 
 .panel-right {

@@ -10,7 +10,9 @@
           img {height: 10vh;}
     }
 
-    .js-start {width: 56vw; height: 7vh; margin: 0 auto; font-size: 3.4vh; background-color: #ffb100;}   
+    .js-start {width: 56vw; height: 7vh; margin: 0 auto; font-size: 3.4vh; background-color: #ffb100;}
+
+    .button {font-weight: bold;}
    
 }   
 
@@ -36,5 +38,5 @@
     .swiper-pagination-bullet {border-radius: 3px; width: 20px; height: 6px;}
     .bullets-white .swiper-pagination-bullet {background-color: #ffffff;}
 
-    .button-fab.right-bottom {position: absolute; right: 20px; right: calc(env(safe-area-inset-right) + 20px); bottom: 20px;}
+    .button-fab.right-bottom {position: absolute; right: 20px; right: calc(env(safe-area-inset-right) + 20px); bottom: 20px;}    
 }
