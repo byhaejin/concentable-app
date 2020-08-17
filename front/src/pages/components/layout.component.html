@@ -29,21 +29,37 @@
         <!-- user info -->
         <div class="panel panel-right panel-right-1 panel-cover panel-resizable panel-init">
             <div class="block">
+                <div class="list">
+                    <div class="item-inner">
+                        <a href="#" class="item-item">
+                            <div class="item-item-content">
+                              <i class="icon-icon-inform-1"></i>
+                            </div>
+                          </a>
+                          <a href="#" class="item-item icon-only">
+                            <div class="item-item-content">
+                              <i class="f7-icons" data-icon="arrow_right_square_fill"></i>
+                            </div>
+                          </a>
+                    </div>
+                </div>
+                <p>Here comes another 3rd panel.</p>
+                <p><a class="panel-close" href="#">Close me</a></p>
+                <div class="block-title block-title-medium">Medium Title</div>
                 <!-- <p>Right Panel content here</p>
                 {{#if isLogin}}
                 사용자 프로파일
                 {{else}}
                 로그인이 필요합니다 !!
                 {{/if}} -->
-                
+
             </div>
         </div>
 
         <div class="panel panel-right panel-right-2 panel-cover panel-init theme-dark">
             <div class="page">
                 <div class="block">
-                    <p>Here comes another 3rd panel.</p>
-                    <p><a class="panel-close" href="#">Close me</a></p>
+                    
                 </div>
             </div>
         </div>
@@ -76,5 +92,19 @@
                 }
             }
         }
+    }
+
+    var icons = document.querySelectorAll('.content .f7-icons');
+    function showPreview(e) {
+        var icon = e.target.textContent;
+        var previewIcons = document.querySelectorAll('.icon-preview .f7-icons');
+        for (var j = 0; j < previewIcons.length; j++) {
+            previewIcons[j].textContent = icon;
+        }
+        document.querySelector('.icon-preview').style.display = 'block';
+        document.querySelector('.icon-preview-name b').textContent = icon;        
+    }
+    for (var i = 0; i < icons.length; i++) {
+      icons[i].addEventListener('click', showPreview);
     }
 </script>

@@ -1,6 +1,7 @@
 .member {
     //약관
     .page-content {background-color: #f5f6f7;}
+    .list {margin-top: 20px;}
     .list ul {border: 1px solid #dadada;}
     .list .item-title {font-size:14px;}
     .list .item-content {min-height: 24px;}  
@@ -35,10 +36,9 @@
         width: auto;
     }
     .toolbar-inner {padding: 0px;}
-    .tabbar .tab-link {font-size:16px; font-weight: bold; border: 2px solid #4cd964; color: #4cd964;}
-    .tabbar .tab-link-active { background-color: #4cd964; color: #fff;}
-
-    
+    .tabbar .tab-link {font-size:16px; font-weight: bold; border: 2px solid #397e43; color: #397e43;}
+    .tabbar .tab-link-active { background-color: #397e43; color: #fff;}
+    .color-green {font-size: 20px; height: 60px; font-weight: bold;}    
 }
 
 #high3-step3-form {

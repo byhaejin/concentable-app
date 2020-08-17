@@ -192,6 +192,10 @@ html.with-panel-right-cover .panel-backdrop-in {
   padding: 24px;
   color: var(--f7-block-text-color);
   background-color: #fff;
+
+  .block {margin-top: 0; padding: 0;}
+  .list {margin-top: 0;}
+  .list .item-inner {padding: 0;}
 }
 
 .page{
