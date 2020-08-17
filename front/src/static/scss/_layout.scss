@@ -171,7 +171,7 @@ html, body {
   background-color: #397e43;
 
   a {
-    color: #7aff91;
+    color: #a2fb9c;
   }
   .links-list ul {background-color: #397e43;}
   .links-list a::before {color: #4cd964;}
@@ -195,16 +195,35 @@ html.with-panel-right-cover .panel-backdrop-in {
 
   .block {
     margin-top: 0; padding: 0;
-    .list {margin-top: 0;}
+    .list {margin:0 0 20px;}
     .list .item-inner {padding: 0;}
   }
   
-  .top-bar .item-inner a {font-size:28px;}
+  .top-bar {
+    .item-inner a {font-size:28px; }
+    .item-inner .icon-bell_fill {}
+  } 
   
   .infor-box {
+    .item-media { padding: 0;}
     .item-media i {font-size: 70px; color: #8e8e93;}
     .item-title {font-size: 24px; font-weight: bold;}
-  }  
+  }
+
+  .infor-list { color: #8e8e93; margin-bottom:20px;
+    li {padding-bottom: var(--f7-list-item-padding-vertical);}
+    .item-title { color: #080e14; font-weight: bold; padding-bottom: 3px;}
+    .item-title i {padding-right:6px; color: #000;}
+    .infor-btn a { font-weight: normal; font-size: 11px;}
+    .infor-btn button { padding:2px;}
+  }
+
+  .links-list {
+    a {padding: 0;}
+
+  }
+
+  .color-green {--f7-theme-color: #397e43;}
 }
 
 .page{

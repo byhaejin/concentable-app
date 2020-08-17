@@ -161,6 +161,14 @@ const app = new Framework7({
                 transition: 'f7-cover-v',
             },
         },
+        {//출입하기            
+            name: 'barcode',
+            path: '/main/barcode/',
+            componentUrl: '../main/barcode.html',
+            options: {
+                transition: 'f7-cover',
+            },
+        },
         {
             name: 'expand',
             path: '/expand/',
