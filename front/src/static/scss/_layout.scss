@@ -193,9 +193,18 @@ html.with-panel-right-cover .panel-backdrop-in {
   color: var(--f7-block-text-color);
   background-color: #fff;
 
-  .block {margin-top: 0; padding: 0;}
-  .list {margin-top: 0;}
-  .list .item-inner {padding: 0;}
+  .block {
+    margin-top: 0; padding: 0;
+    .list {margin-top: 0;}
+    .list .item-inner {padding: 0;}
+  }
+  
+  .top-bar .item-inner a {font-size:28px;}
+  
+  .infor-box {
+    .item-media i {font-size: 70px; color: #8e8e93;}
+    .item-title {font-size: 24px; font-weight: bold;}
+  }  
 }
 
 .page{
