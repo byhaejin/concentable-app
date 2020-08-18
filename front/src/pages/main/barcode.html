@@ -4,13 +4,33 @@
         <sub-header title="바코드"  nomenu="true"></sub-header>
         <div class="page-content">
             <div class="list block">
-                <div class="item-content">
-                    <div class="item-media"><i class="icon icon-f7"></i></div>
+                <div class="item-content barode-title">
+                    <div class="item-media"><i class="icon-barcode_viewfinder"></i></div>
                     <div class="item-inner">
-                    <div class="item-title">Ivan Petrov</div>
-                    <div class="item-after">CEO</div>
+                        <div class="item-title">지점</div>                    
                     </div>
                 </div>
+                <div class="item-content">                    
+                    <div class="item-inner">
+                        <div class="item-title">
+                            <span>이용권</span><br>
+                            테스트 1234
+                        </div>
+                        <div class="item-after">
+                            기간<br>
+                            122345678
+                        </div>
+                    </div>
+                </div>
+                <div class="card no-margin-horizontal">
+                    <div class="card-content card-content-padding">
+                        img    
+                    </div>
+                </div>  
+            </div>
+            <div class="block">
+                <button type="button" class="col button button-fill button-large button-outline color-green margin-bottom" @click="nextStep">버튼 1</button>
+                <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">버튼 2</button>
             </div>
         </div>
     </div>
@@ -20,7 +40,13 @@
  
 </style>
 <!-- component styles -->
-
 <script>
-   
+   return {
+        methods: {
+            //'인증번호 확인'
+            nextStep: function() {
+                mainView.router.navigate('/auth/join/high3-step2/');
+            },
+        }
+    }
 </script>

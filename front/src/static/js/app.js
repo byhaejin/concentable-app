@@ -182,6 +182,7 @@ const app = new Framework7({
 });
 
 
+
 $$(document).on('page:init', function (e, page) {
     console.log(page.route.name);
 });
@@ -196,3 +197,5 @@ function componentLoadScript(url) {
 let template = '';
 componentLoadScript(componentsPath + 'header.template.component.js');
 componentLoadScript(componentsPath + 'subheader.template.component.js');
+
+
