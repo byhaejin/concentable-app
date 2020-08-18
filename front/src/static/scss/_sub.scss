@@ -1,8 +1,12 @@
-.sub {
+.sub {background-color: #f5f6f7;
     .item-content {background-color:#fff;}
-    .barode-title {background-color: #009688; color: #fff;
+    .barode-title {background-color: #009688; color: #fff; height: 60px;
         .item-media i {font-size: 36px;}
-        .item-after p {}
+        .item-inner {margin-left: 6px;}
+        .item-title {font-size: 18px;}        
     }
-    
+    .barcode_img {
+        img { max-width: 100%;}
+        p { font-size: 14px; margin: 0; color: #8e8e93; padding-top: 0px !important;}
+    }
 }

@@ -163,10 +163,10 @@ const app = new Framework7({
         },
         {//출입하기            
             name: 'barcode',
-            path: '/main/barcode/',
-            componentUrl: '../main/barcode.html',
+            path: '/sub/barcode/',
+            componentUrl: '../sub/barcode.html',
             options: {
-                transition: 'f7-cover',
+                transition: 'f7-dive',
             },
         },
         {

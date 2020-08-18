@@ -7,30 +7,29 @@
                 <div class="item-content barode-title">
                     <div class="item-media"><i class="icon-barcode_viewfinder"></i></div>
                     <div class="item-inner">
-                        <div class="item-title">지점</div>                    
+                        <div class="item-title">1호점 (주엽역)</div>                    
                     </div>
                 </div>
                 <div class="item-content">                    
                     <div class="item-inner">
-                        <div class="item-title">
-                            <span>이용권</span><br>
-                            테스트 1234
+                        <div class="item-title">                            
+                            무료체험
                         </div>
-                        <div class="item-after">
-                            기간<br>
-                            122345678
+                        <div class="item-after">                            
+                            24시간
                         </div>
                     </div>
                 </div>
-                <div class="card no-margin-horizontal">
+                <div class="card no-margin-horizontal barcode_img">
                     <div class="card-content card-content-padding">
-                        img    
+                        <img src="../static/images/barcode_img.jpg">    
                     </div>
+                    <p class="text-align-center padding">출입구 근처 바코드 리더기에 인식해주세요.</p>
                 </div>  
             </div>
             <div class="block">
-                <button type="button" class="col button button-fill button-large button-outline color-green margin-bottom" @click="nextStep">버튼 1</button>
-                <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">버튼 2</button>
+                <button type="button" class="col button button-fill button-large button-outline color-green margin-bottom" @click="nextStep">지점 변경</button>
+                <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">자리문의</button>
             </div>
         </div>
     </div>
@@ -45,7 +44,7 @@
         methods: {
             //'인증번호 확인'
             nextStep: function() {
-                mainView.router.navigate('/auth/join/high3-step2/');
+                mainView.router.navigate('/');
             },
         }
     }
