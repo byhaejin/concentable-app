@@ -26,6 +26,10 @@
     .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical) ;}
     .tel-box .width-auto {height: var(--f7-input-height);}
     .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
+
+    .map { overflow: hidden;
+        img {max-width: 100%;}
+    } 
 }
 
 #finduser-form {
@@ -38,7 +42,7 @@
     .toolbar-inner {padding: 0px;}
     .tabbar .tab-link {font-size:16px; font-weight: bold; border: 2px solid #397e43; color: #397e43;}
     .tabbar .tab-link-active { background-color: #397e43; color: #fff;}
-    .color-green {font-size: 20px; height: 60px; font-weight: bold;}    
+    .color-green {font-size: 20px; font-weight: bold;}    
 }
 
 #high3-step3-form {
