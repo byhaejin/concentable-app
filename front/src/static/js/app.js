@@ -34,13 +34,13 @@ const app = new Framework7({
     componentUrl: componentsPath + 'layout.component.html',
     on: {
         init: function () {
-            console.log("app start")
+            //앱 시작
             mainView = app.views.create('.view-main',{
                 dynamicNavbar: true,
                 on: {
                     init: function () {
 
-                        // this.router.navigate('/',{ animate: false });
+                        // this.router.navigate({ name: 'payment', animate: false });
                         // intro 화면을 확인했을 경우
                         if (localStorage.getItem('isIntro') === 'true') {
                             this.router.navigate('/auth/login/',{ animate: false });
@@ -167,6 +167,24 @@ const app = new Framework7({
             componentUrl: '../sub/barcode.html',
             options: {
                 transition: 'f7-dive',
+            },
+        },
+        {// 결제하기
+            name: 'payment',
+            path: '/payment/payment/',
+            componentUrl: '../payment/payment.html',
+            // beforeEnter: checkAuth,//로그인 이후 가능
+            options: {
+                transition: 'f7-cover',
+            },
+        },
+        {// 결제하기/무인매점 결제
+            name: 'snack',
+            path: '/payment/snack/',
+            componentUrl: '../payment/snack.html',
+            // beforeEnter: checkAuth,//로그인 이후 가능
+            options: {
+                transition: 'f7-cover',
             },
         },
         {

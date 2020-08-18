@@ -2,6 +2,12 @@
 //:root {
   //--f7-font-size: 12px;
 //}
+/** root color **/
+:root {
+  --f7-button-fill-bg-color: #397E43;
+  --f7-button-fill-pressed-bg-color: #469852;
+}
+
 /** icon */
 .material-icons { vertical-align: middle}
 
@@ -60,3 +66,26 @@ label.item-checkbox>.icon-checkbox {
 
 //navbar 
 .navbar-current {z-index: 10 !important;}
+
+//button
+.button-circle {
+  height: auto;
+  padding: 0;
+  border-radius: 50%;
+
+  &:after { /* after로 반응형 정사각형 만들기 */
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+  & > span {
+    position: absolute;
+    left: 0; top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 200%;
+  }
+}

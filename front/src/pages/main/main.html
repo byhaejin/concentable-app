@@ -34,7 +34,8 @@
                         <p>무료 체험 (24시간)</p>
                     </div>
                 </div> -->
-                <button class="col button button-large button-raised button-fill">
+                <button class="col button button-large button-raised button-fill"
+                        @click="goPay">
                     <i class="icon icon-icon-card"> </i>결제하기
                 </button>
             </div>
@@ -63,18 +64,13 @@
             }
         },
         methods: {
-            login() {
-                this.$setState({ isLogin: true });
-            },
-            logout() {
-                this.$setState({ isLogin: false });
+            goPay() {
+                mainView.router.navigate({name: 'payment'});
             },
         },
         on: {
             pageInit: function () {
-                if (sessionStorage.getItem('isLogin') === 'true') {
-                    this.login();
-                }
+
             }
         },
     }

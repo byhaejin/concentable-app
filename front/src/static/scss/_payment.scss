@@ -1,0 +1,56 @@
+.payment {
+
+  .snack {
+    $height-snack-barcoderead: 150px;
+
+    .data-table.card .card-content.snack-list {
+      height: calc(88vh - #{$height-snack-barcoderead} - #{$sub-header-height});
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+
+
+    &-ea {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .button {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &-submit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px 15px;
+
+      $width-title: 50px;
+      $width-btn: 140px;
+      .title {
+        width: $width-title;
+      }
+
+      .total {
+        box-sizing: border-box;
+        width: calc(100% - #{$width-title} - #{$width-btn});
+        padding-right: 10px;
+        text-align: right;
+        font-size:2em;
+        font-weight: bold;
+      }
+
+      .button {
+        width: $width-btn;
+      }
+    }
+
+    &-barcoderead {
+      height: $height-snack-barcoderead;
+    }
+  }
+}
