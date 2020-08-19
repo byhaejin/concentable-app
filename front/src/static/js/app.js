@@ -166,7 +166,7 @@ const app = new Framework7({
             path: '/sub/barcode/',
             componentUrl: '../sub/barcode.html',
             options: {
-                transition: 'f7-dive',
+                transition: 'f7-cover-v',
             },
         },
         {// 결제하기

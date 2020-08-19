@@ -42,12 +42,13 @@
     }
 
     .infor-icon {font-size: 110px; line-height: 0; color: #d6d6d6;}
-    .infor-txt { font-weight: bold;}
-    .infor-txt .title { color: #000; margin: 0; padding-bottom: 0.2em;}
-    .infor-txt P {color: #085837; margin: 0 0 0.9em; font-size: 13px;}
-
-    .button {font-size: 2.608vh; font-weight: bolder; background: #397e43; height: 60px; padding: 8px 0; }
-    .button i {font-size: 3.6vh; margin-right: 8px;}
+    .infor-txt { font-weight: bold;
+      .title { color: #000; margin: 0; padding-bottom: 0.2em;}
+      P {color: #085837; margin: 0 0 0.9em; font-size: 13px;}
+    }
+    .button {font-size: 2.608vh; font-weight: bolder; background: #397e43; height: 60px; padding: 8px 0; 
+      i {font-size: 3.6vh; margin-right: 8px;}
+    }    
   }
 
   &-bottom {
@@ -90,9 +91,10 @@
 .actions-modal {bottom:17%; opacity: 0; width: auto; left: 22%; right: 22%;
   .block {padding: 0 23%;}
   .actions {width: auto;}
-  .actions-button {margin: 0 0 30px; border-radius:200px; width: 200px; height: 200px; background-color: #4cd964;}
-  .actions-button a { width: 100%; color: #fff; font-weight: bold; font-size: 26px; line-height: 190px; text-align: center;}
-  .actions-button i {margin-right: 10px;}
+  .actions-button {margin: 0 0 30px; border-radius:200px; width: 200px; height: 200px; background-color: #4cd964;
+    a { width: 100%; color: #fff; font-weight: bold; font-size: 26px; line-height: 190px; text-align: center;}
+    i {margin-right: 10px;}
+  }   
 }
 
 /** //home */

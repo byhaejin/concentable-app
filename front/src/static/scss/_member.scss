@@ -1,10 +1,11 @@
 .member {
     //약관
     .page-content {background-color: #f5f6f7;}
-    .list {margin-top: 20px;}
-    .list ul {border: 1px solid #dadada;}
-    .list .item-title {font-size:14px;}
-    .list .item-content {min-height: 24px;}  
+    .list {margin-top: 20px;
+        ul {border: 1px solid #dadada;}
+        .item-title {font-size:14px;}
+        .item-content {min-height: 24px;}
+    }
     .icon-checkbox {border-radius:60%;}
     .icon-checkbox::after {font-size: 12px;}
     label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {
@@ -17,10 +18,8 @@
     .item-inner {padding-top: 0px;}
     //.item-floating-label {transform: scale(1) translateY(50%) !important;}
     .item-input-invalid .item-inner {padding-bottom: 5px;}
-    .list .item-floating-label {color:#7a7a7a !important;}
-    .list .item-title {}
-    .md .item-input-with-error-message {padding-bottom: 10px;}
-    
+    .list .item-floating-label {color:#7a7a7a !important;}   
+    .md .item-input-with-error-message {padding-bottom: 10px;}    
     .smart-select-init  .item-title {font-size: var(--f7-input-font-size);}
     .smart-select-init .item-inner {border-bottom: 1px solid #dadada; margin-bottom: var(--f7-list-item-padding-vertical);}
     .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical) ;}
