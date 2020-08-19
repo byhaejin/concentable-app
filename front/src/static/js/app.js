@@ -175,7 +175,7 @@ const app = new Framework7({
             componentUrl: '../payment/payment.html',
             // beforeEnter: checkAuth,//로그인 이후 가능
             options: {
-                transition: 'f7-cover',
+                transition: 'f7-dive',
             },
         },
         {// 결제하기/무인매점 결제
@@ -184,7 +184,7 @@ const app = new Framework7({
             componentUrl: '../payment/snack.html',
             // beforeEnter: checkAuth,//로그인 이후 가능
             options: {
-                transition: 'f7-cover',
+                transition: 'f7-dive',
             },
         },
         {
@@ -215,5 +215,7 @@ function componentLoadScript(url) {
 let template = '';
 componentLoadScript(componentsPath + 'header.template.component.js');
 componentLoadScript(componentsPath + 'subheader.template.component.js');
+
+
 
 
