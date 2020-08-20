@@ -19,9 +19,13 @@
     //.item-floating-label {transform: scale(1) translateY(50%) !important;}
     .item-input-invalid .item-inner {padding-bottom: 5px;}
     .list .item-floating-label {color:#7a7a7a !important;}   
-    .md .item-input-with-error-message {padding-bottom: 10px;}    
-    .smart-select-init  .item-title {font-size: var(--f7-input-font-size);}
-    .smart-select-init .item-inner {border-bottom: 1px solid #dadada; margin-bottom: var(--f7-list-item-padding-vertical);}
+    .md .item-input-with-error-message {padding-bottom: 10px;}
+    
+    .smart-select-init {
+        .item-title {font-size: var(--f7-input-font-size);}
+        .item-inner {border-bottom: 1px solid #dadada; margin-bottom: var(--f7-list-item-padding-vertical);}
+    }  
+    
     .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical) ;}
     .tel-box .width-auto {height: var(--f7-input-height);}
     .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}

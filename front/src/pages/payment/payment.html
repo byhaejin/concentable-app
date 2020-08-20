@@ -1,19 +1,195 @@
 <template>
 <div class="page payment">
     <sub-header title="결제하기"  nomenu="true"></sub-header>
-    <div class="page-content">
-        <br>
-        <div class="login-screen-title"></div>
+    <div class="page-content">        
         <div class="block">
-            <div class="row">
-                <a href="/payment/snack/" class="col button button-circle button-fill">
-                    <span>무인매점</span>
-                </a>
-                <a class="col button button-circle button-fill">
-                    <span>이용권</span>
-                </a>
-            </div>
+            <form id="payment-form">
+                <div class="block-title">이용지점</div>
+                <div class="list no-hairlines-md">
+                    <ul>                        
+                        <li>                            
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="이용지점 선택" readonly="readonly" id="point-picker"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block-title">요금제</div>
+                <div class="list no-hairlines-md">
+                    <ul>                        
+                        <li>                            
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="요금제 선택" readonly="readonly" id="pay-picker"/>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block-title">사물함</div>
+                <div class="list no-hairlines-md">
+                    <ul>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="사물함 이용을 확인하세요" readonly="readonly" id="cabinet-picker"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>지점별로 유무 및 수량이 상이하니 지점을 이용하시다가 추가결제 하시는걸 추천 드립니다!</p>
+                    <p>
+                        <strong>일반사물함</strong><br>
+                        일반적으로사용되는사물함크기입니다. 너비30*높이30*깊이32(cm)
+                    </p>
+                    <p>
+                        <strong>큰사물함</strong><br>
+                        일반사물함의2배크기이며,내부에구분칸이있습니다. 너비30*높이60*깊이32(cm)
+                    </p>
+                </div>                
+                <div class="block-title">쿠폰 사용</div>
+                <div class="list">
+                    <ul>
+                        <li class="item-content item-input item-input-outline tel-box">                                
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="쿠폰번호를‘-’없이입력하세요.">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                            <div class="item-media">
+                                <button type="button" class="button button-fill width-auto">인증</button>
+                            </div>                            
+                        </li>
+                        <li class="item-content item-input item-input-outline">                                
+                            <div class="item-inner" style="padding-top: var(--f7-list-item-padding-vertical);">
+                                <div class="item-title item-floating-label">쿠폰 선택</div>
+                                <div class="item-input-wrap input-dropdown-wrap">
+                                    <select name="gender" placeholder="Please choose..." class="input-with-value">
+                                        <option>사용가능쿠폰2장/ 보유4장</option>
+                                        <option value="01">[쿠폰]10%할인 2020.00.00</option>
+                                        <option value="02">[쿠폰]10000할인 기간 제한없음</option>
+                                        <option value="03">[쿠폰]10000할인 2020.00.00</option>
+                                        <option value="04">[쿠폰]20%할인 2020.00.00</option>                                        
+                                     </select>                                        
+                                </div>
+                            </div>
+                        </li>                                                
+                    </ul>
+                    <p>*쿠폰의유효기간을꼭확인해주세요.</p>
+                </div>                
+                <div class="block-title">결재 방식</div>
+                <div class="list media-list">
+                    <ul>
+                        <li>
+                            <label class="radio item-radio-icon-start item-content">
+                                <input type="radio" name="pay-radio" value="radio-1" />
+                                <i class="icon icon-radio"></i>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">일반결제<br><span class="">1회 결제</span></div>
+                                        <div class="item-after">4주(28일)</div>
+                                    </div>                                                                        
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="radio item-radio-icon-start item-content">
+                                <input type="radio" name="pay-radio" value="radio-2"/>
+                                <i class="icon icon-radio"></i>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">정기구독<br>매월자동결제</div>
+                                        <div class="item-after">1개월(최대31일)<br>언제든해지가능</div>
+                                    </div>
+                                    <!-- <div class="item-subtitle">매월자동결제</div> -->
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
 </template>
+<script>
+    return {
+        data: function () {
+            return {
+
+            }
+        },
+        methods: {
+            minus() {
+                console.log('minus')
+            },
+            plus() {
+                console.log('plus')
+            },
+        },
+        on: {
+            pageInit: function () {
+                var pickerDevice = app.picker.create({
+                    inputEl: '#point-picker',
+                    backdrop: true,
+                    toolbarCloseText: '선택',
+                    cols: [
+                        {
+                            textAlign: 'center',                            
+                            values: ['1호점 ()', '2호점 ()', '3호점 ()', '4호점 ()', '5호점 ()', '6호점 ()', '7호점 ()', '8호점 ()', '9호점 ()', '10호점 ()']
+                        }
+                    ]                    
+                });
+                var pickerDevice = app.picker.create({
+                    inputEl: '#pay-picker',
+                    backdrop: true,
+                    toolbarCloseText: '선택',
+                    cols: [
+                        {
+                            textAlign: 'center',                            
+                            values: ['무료체험 - 0원', '개인석 - 149,000원/월 (개인사물함포함)', '무제한 - 89,000원/월', '라이트 - 49,000원/월 (100시간)', '고3 - 79,000원/월 (무제한)']
+                        }
+                    ]                    
+                });
+                var carVendors = {
+                    사물함미사용 : ['사물함을 이용하지 않습니다'],
+                    사물함사용 : ['일반:1칸 (10,000원/월)', '일반:2칸 (20,000원/월)', '일반:3칸 (30,000원/월)', '일반:4칸 (40,000원/월)'],
+                    큰사물함사용 : ['대형:1칸 (20,000원/월)', '대형:2칸 (40,000원/월)'] 
+                };
+                var pickerDependent = app.picker.create({
+                    inputEl: '#cabinet-picker',
+                    rotateEffect: true,
+                    backdrop: true,
+                    formatValue: function (values) {
+                        return values[1];
+                    },
+                    cols: [
+                        {
+                            textAlign: 'left',
+                            values: ['사물함미사용', '사물함사용','큰사물함사용'],
+                            onChange: function (picker, country) {
+                                if(picker.cols[1].replaceValues){
+                                picker.cols[1].replaceValues(carVendors[country]);
+                                }
+                            }
+                        },
+                        {
+                            values: carVendors.사물함미사용,
+                            width: 160,
+                        },
+                    ]
+                });
+            }
+        },
+    }
+</script>

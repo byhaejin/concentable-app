@@ -53,4 +53,15 @@
       height: $height-snack-barcoderead;
     }
   }
+
+  // payment
+  #payment-form {
+    .block-title {margin-top: 0; margin-left: 0; margin-right: 0;}
+    .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical);
+      .width-auto {height: var(--f7-input-height);}
+      .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
+    }
+     
+  }
+
 }
