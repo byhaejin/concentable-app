@@ -8,9 +8,6 @@
       overflow-x: hidden;
       overflow-y: auto;
     }
-
-
-
     &-ea {
       display: flex;
       align-items: center;
@@ -22,7 +19,6 @@
         padding: 0;
       }
     }
-
     &-submit {
       display: flex;
       align-items: center;
@@ -34,7 +30,6 @@
       .title {
         width: $width-title;
       }
-
       .total {
         box-sizing: border-box;
         width: calc(100% - #{$width-title} - #{$width-btn});
@@ -43,7 +38,6 @@
         font-size:2em;
         font-weight: bold;
       }
-
       .button {
         width: $width-btn;
       }
@@ -51,6 +45,10 @@
 
     &-barcoderead {
       height: $height-snack-barcoderead;
+    }
+
+    .stepper {
+      .item-subtitle {display: block;}
     }
   }
 

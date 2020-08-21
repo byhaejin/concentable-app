@@ -68,7 +68,7 @@ const app = new Framework7({
         {//앱소개 인트로, 스타트 후엔 뜨지 않음
             name: 'intro',
             path: '/intro/',
-            componentUrl: '../main/intro.html',
+            componentUrl: '../main/intro_.html',
             options: {
                 transition: 'f7-flip',
             },

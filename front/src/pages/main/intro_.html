@@ -1,20 +1,65 @@
 <!-- App root element -->
 <template>
-    <div data-name="intro" class="page intro">
+    <div data-name="intro" class="page-content intro2">
+        <div class="navbar  navbar-transparent">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    logo
+                </div>
+            </div>
+        </div>
         <div class="page-content">
-
-            <div data-pagination='{"el": ".swiper-pagination", "hideOnClick": "true"}' class="swiper-container swiper-init introduction vh-100" data-speed="400" data-space-between="0">
+            <div data-pagination='{"el": ".swiper-pagination", "hideOnClick": true}' class="swiper-container swiper-init introduction vh-100">
                 <!-- Slides wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="swiper-slide" style="background-image: url(../static/images/intro/img1.jpg)"></div>
-                    <div class="swiperb-slide" style="background-image: url(../static/images/intro/img2.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(../static/images/intro/img3.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(../static/images/intro/img4.jpg)"></div>
+                    <div class="swiper-slide overflow-hidden text-white g1">
+                        <div class="row no-gutters h-100">
+                            <div class="col align-self-center text-align-center">
+                                <img src="img/turtle.png" alt="" class="mw-100 mx-auto mb-4">
+                                <br><br>
+                                <h2 class="text-uppercase font-weight-light">타이틀1</h2>
+                                <p class="text-mute">설명</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide overflow-hidden text-white g2">
+                        
+                        <div class="row no-gutters h-100">
+                            <div class="col align-self-center text-align-center">
+                                <img src="img/turtle.png" alt="" class="mw-100 mx-auto mb-4">
+                                <br><br>
+                                <h2 class="text-uppercase font-weight-light">타이틀2</h2>
+                                <p class="text-mute">설명</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide overflow-hidden text-white g1">
+                        <div class="row no-gutters h-100">
+                            <div class="col align-self-center text-align-center">
+                                <img src="img/turtle.png" alt="" class="mw-100 mx-auto mb-4">
+                                <br><br>
+                                <h2 class="text-uppercase font-weight-light">타이틀3</h2>
+                                <p class="text-mute">설명</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide overflow-hidden text-white g2">
+                        <div class="row no-gutters h-100">
+                            <div class="col align-self-center text-align-center">
+                                <img src="img/turtle.png" alt="" class="mw-100 mx-auto mb-4">
+                                <br><br>
+                                <h2 class="text-uppercase font-weight-light">타이틀4</h2>
+                                <p class="text-mute">설명</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Pagination, if required -->
-                <div class="swiper-pagination"></div>
-            </div>            
+                <div class="swiper-pagination bullets-white text-align-left"></div>                
+            </div>
+            <a href="/auth/login/" class="button button-light button-large button-fab right-bottom text-uppercase">Login <i class="material-icons vm"></i></a>
         </div>
     </div>
 </template>

@@ -1,5 +1,5 @@
 template = `<div class="navbar">
-            <div class="navbar-bg" style="background-color: #fff; no-hairlines "></div>
+            <div class="navbar-bg no-hairlines"></div>
             <div class="navbar-inner">
                 <div class="row align-items-center width-100 color-theme-teal">
                     <div class="title">{{$props.title}}</div>

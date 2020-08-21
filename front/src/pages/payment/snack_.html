@@ -1,0 +1,140 @@
+<template>
+    <div class="page payment">
+        <sub-header title="결제하기/무인매점"  nomenu="true"></sub-header>
+        <div class="page-content snack">
+            <div class="card data-table data-table-collapsible data-table-init">
+                <div class="card-content snack-list">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="label-cell">상품</th>
+                            <th class="numeric-cell">단가</th>
+                            <th class="numeric-cell">수량</th>
+                            <th class="numeric-cell">금액</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="label-cell">바나나 우유</td>
+                            <td class="numeric-cell">1200</td>
+                            <td class="numeric-cell">
+                                <div class="snack-ea">
+                                    <span class="ea">1</span>
+                                    <div class="snack-ea-btns">
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons minus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons plus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons multiply_circle_fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="numeric-cell">1200</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">바나나 우유</td>
+                            <td class="numeric-cell">1200</td>
+                            <td class="numeric-cell">
+                                <div class="snack-ea">
+                                    <span class="ea">1</span>
+                                    <div class="snack-ea-btns">
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons minus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons plus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons multiply_circle_fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="numeric-cell">1200</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">바나나 우유</td>
+                            <td class="numeric-cell">1200</td>
+                            <td class="numeric-cell">
+                                <div class="snack-ea">
+                                    <span class="ea">1</span>
+                                    <div class="snack-ea-btns">
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons minus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons plus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons multiply_circle_fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="numeric-cell">1200</td>
+                        </tr>
+                        <tr>
+                            <td class="label-cell">바나나 우유</td>
+                            <td class="numeric-cell">1200</td>
+                            <td class="numeric-cell">
+                                <div class="snack-ea">
+                                    <span class="ea">1</span>
+                                    <div class="snack-ea-btns">
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons minus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons plus_circle_fill"></i>
+                                        </button>
+                                        <button type="button" class="button iB">
+                                            <i class="f7-icons multiply_circle_fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="numeric-cell">1200</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="snack-submit">
+                <span class="title">합계 : </span>
+                <span class="total">1200</span>
+                <button type="button" class="button button-large button-fill">
+                    결제하기
+                </button>
+            </div>
+
+            <div class="card snack-barcoderead">
+
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+
+            }
+        },
+        methods: {
+            minus() {
+                console.log('minus')
+            },
+            plus() {
+                console.log('plus')
+            },
+        },
+        on: {
+            pageInit: function () {
+
+            }
+        },
+    }
+</script>
