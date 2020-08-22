@@ -7,12 +7,13 @@
                     물건 선택
                 </div>
                 <div class="card-content list">
-                    <ul class="" style="height: 100vh">
+                    <ul>
                         {{#each snackList }}
                         <li class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">
-                                    <span class="iB">{{name}}</span> : <span class="iB" id="food{{@index}}-count"></span>
+                                    <span class="iB">{{name}}</span> :
+                                    <span class="iB" id="food{{@index}}-count"></span>
                                     <span class="iB">({{cost}}원, {{stock}}남음)</span>
                                 </div>
                                 <div class="item-after">
@@ -32,7 +33,7 @@
                 <div class="card-footer snack-submit">
                     <div>
                         <span class="title">합계 : </span>
-                        <span class="total">0000</span>
+                        <span class="total">{{totalCost}}원</span>
                     </div>
                     <button type="button" class="button button-large button-fill block">
                         결제하기
@@ -54,14 +55,23 @@
                     "name": "망고 우유", //제품명
                     "cost": 1500, //단가
                     "stock": 5,//재고
+                    // "ea" : 0, //현재 구매갯수
                 }],
+                totalCost: 0,
             }
         },
         methods: {
             getSnackData() {
                 const _self = this;
                 app.request.get('../static/js/sample-snack.JSON', { barcode:'123456' }, function (res) {
-                    _self.$setState({ snackList : JSON.parse(res).data });
+                    let dataAry  = JSON.parse(res).data;
+                    // dataAry.map((item, index) => {
+                    //     item.ea = 1;
+                    // })
+
+                    console.log(dataAry)
+
+                    _self.$setState({ snackList : dataAry });
                 });
             },
             minus() {
