@@ -2,58 +2,43 @@
     <div class="page payment">
         <sub-header title="결제하기/무인매점"  nomenu="true"></sub-header>        
         <div class="page-content snack">
-            <div class="block-title">물건 선택</div>
-            <div class="list">
-                <ul>
-                    <li class="item-content stepper">
-                        <div class="item-inner">
-                            <div class="item-title">
-                                물건 : <span id="food1-count"></span> (가격 / 총갯수)
-                            </div>
-                            <div class="item-after">
-                                <div class="stepper stepper-init stepper-small stepper-raised" data-value-el="#food1-count">
-                                    <div class="stepper-button-minus"></div>
-                                    <div class="stepper-button-plus"></div>
+            <div class="card snack-list">
+                <div class="card-header">
+                    물건 선택
+                </div>
+                <div class="card-content list">
+                    <ul class="" style="height: 100vh">
+                        {{#each snackList }}
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    <span class="iB">{{name}}</span> : <span class="iB" id="food{{@index}}-count"></span>
+                                    <span class="iB">({{cost}}원, {{stock}}남음)</span>
                                 </div>
-                            </div>                            
-                        </div>                        
-                    </li>
-                    <li class="item-content stepper">
-                        <div class="item-inner">
-                            <div class="item-title">
-                                물건 : <span id="food2-count"></span> (가격 / 총갯수)
-                            </div>
-                            <div class="item-after">
-                                <div class="stepper stepper-init stepper-small stepper-raised" data-value-el="#food2-count">
-                                    <div class="stepper-button-minus"></div>
-                                    <div class="stepper-button-plus"></div>
+                                <div class="item-after">
+                                    <div class="stepper stepper-init stepper-small stepper-raised"
+                                         data-value-el="#food{{@index}}-count"
+                                         data-min="0"
+                                         data-max="{{stock}}">
+                                        <div class="stepper-button-minus stepper-fill"></div>
+                                        <div class="stepper-button-plus stepper-fill"></div>
+                                    </div>
                                 </div>
-                            </div>                            
-                        </div>                        
-                    </li>
-                    <li class="item-content stepper">
-                        <div class="item-inner">
-                            <div class="item-title">
-                                물건 : <span id="food3-count"></span> (가격 / 총갯수)
                             </div>
-                            <div class="item-after">
-                                <div class="stepper stepper-init stepper-small stepper-raised" data-value-el="#food3-count">
-                                    <div class="stepper-button-minus"></div>
-                                    <div class="stepper-button-plus"></div>
-                                </div>
-                            </div>                            
-                        </div>                        
-                    </li>
-                </ul>                
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="card-footer snack-submit">
+                    <div>
+                        <span class="title">합계 : </span>
+                        <span class="total">0000</span>
+                    </div>
+                    <button type="button" class="button button-large button-fill block">
+                        결제하기
+                    </button>
+                </div>
             </div>
-            <div class="snack-submit">
-                <span class="title">합계 : </span>
-                <span class="total">0000</span>                
-            </div>
-            <button type="button" class="button button-large button-fill block">
-                결제하기
-            </button>
-            
 
             <div class="card snack-barcoderead">
 
@@ -65,10 +50,20 @@
     return {
         data: function () {
             return {
-
+                snackList: [{
+                    "name": "망고 우유", //제품명
+                    "cost": 1500, //단가
+                    "stock": 5,//재고
+                }],
             }
         },
         methods: {
+            getSnackData() {
+                const _self = this;
+                app.request.get('../static/js/sample-snack.JSON', { barcode:'123456' }, function (res) {
+                    _self.$setState({ snackList : JSON.parse(res).data });
+                });
+            },
             minus() {
                 console.log('minus')
             },
@@ -78,7 +73,7 @@
         },
         on: {
             pageInit: function () {
-
+                this.getSnackData();
             }
         },
     }

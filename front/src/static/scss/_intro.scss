@@ -1,6 +1,8 @@
 .intro {
     background-color: #fff;
 
+    .page-content {padding-top: 0;}
+
     .swiper-container {height: calc(64vh + 20px);  background-color: #fff;}
     .swiper-wrapper {height:60vh; margin-bottom: 2vh;}
     .swiper-pagination-bullets {bottom: unset;}
@@ -13,12 +15,13 @@
     .js-start {width: 56vw; height: 7vh; margin: 0 auto; font-size: 3.4vh; background-color: #ffb100;}
 
     .button {font-weight: bold;}
-   
+
 }
 //
-.page-content {padding-top: 0;}
-.navbar-inner .left {color: #fff; padding: 10px 0 0 10px;}
-.intro2 {    
+.intro2 {
+
+    .page-content {padding-top: 0;}
+
     .swiper-container {height: 100%;
         *, ::after, ::before {box-sizing: border-box;}
         .swiper-wrapper {height: 100%;
