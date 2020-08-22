@@ -6,6 +6,7 @@
 :root {
   --f7-button-fill-bg-color: #397E43;
   --f7-button-fill-pressed-bg-color: #469852;
+  --f7-bars-bg-color: #0c624b;
 }
 
 /** icon */
@@ -65,7 +66,13 @@ label.item-checkbox>.icon-checkbox {
 }
 
 //navbar 
-.navbar-current {z-index: 10 !important;}
+.navbar {z-index: 10 !important; color: #fff;
+  .navbar-bg {background-color: #0c624b;}
+  .navbar-bg::after {display:none;}
+  .navbar-bg::before {display:none;}
+}
+
+
 
 //button
 .button-circle {
@@ -92,3 +99,4 @@ label.item-checkbox>.icon-checkbox {
 
 //picker
 .picker-center-highlight {border-top: 1px solid #a7a7a7; border-bottom: 1px solid #a7a7a7;}
+
