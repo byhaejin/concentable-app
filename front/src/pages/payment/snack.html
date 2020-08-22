@@ -13,7 +13,7 @@
                             <div class="item-inner">
                                 <div class="item-title">
                                     <span class="iB">{{name}}</span> :
-                                    <span class="iB" id="food{{@index}}-count">{{ea}}</span>
+                                    <span class="iB" id="food{{@index}}-count"></span>
                                     <span class="iB">({{cost}}원, {{stock}}남음)</span>
                                 </div>
                                 <div class="item-after">
@@ -55,7 +55,7 @@
                     "name": "망고 우유", //제품명
                     "cost": 1500, //단가
                     "stock": 5,//재고
-                    "ea" : 0, //현재 구매갯수
+                    // "ea" : 0, //현재 구매갯수
                 }],
                 totalCost: 0,
             }
@@ -66,8 +66,10 @@
                 app.request.get('../static/js/sample-snack.JSON', { barcode:'123456' }, function (res) {
                     let dataAry  = JSON.parse(res).data;
                     // dataAry.map((item, index) => {
-                    //     console.log(index, item)
+                    //     item.ea = 1;
                     // })
+
+                    console.log(dataAry)
 
                     _self.$setState({ snackList : dataAry });
                 });
