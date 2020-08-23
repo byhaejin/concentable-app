@@ -4,9 +4,10 @@
 //}
 /** root color **/
 :root {
-  --f7-button-fill-bg-color: #397E43;
-  --f7-button-fill-pressed-bg-color: #469852;
+  --f7-button-fill-bg-color: #0c624b;
+  --f7-button-fill-pressed-bg-color: #0c624b;
   --f7-bars-bg-color: #0c624b;
+  --f7-theme-color: #0c624b;
 }
 
 /** icon */
@@ -66,10 +67,11 @@ label.item-checkbox>.icon-checkbox {
 }
 
 //navbar 
-.navbar {z-index: 10 !important; color: #fff;
+.navbar {z-index: 10 !important; color: #fff; 
   .navbar-bg {background-color: #0c624b;}
   .navbar-bg::after {display:none;}
   .navbar-bg::before {display:none;}
+  a.link { color: #fff;}
 }
 
 

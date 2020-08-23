@@ -1,5 +1,5 @@
-template = `<div class="navbar">
-            <div class="navbar-bg no-hairlines"></div>
+template = `<div class="navbar no-hairlines no-hairlines">
+            <div class="navbar-bg"></div>
             <div class="navbar-inner">
                 <div class="row align-items-center width-100 color-theme-teal">
                     <div class="title">{{$props.title}}</div>

@@ -200,8 +200,7 @@ html.with-panel-right-cover .panel-backdrop-in {
   }
   
   .top-bar {
-    .item-inner a {font-size:28px; }
-    .item-inner .icon-bell_fill {}
+    .item-inner a {font-size:28px; }    
   } 
   
   .infor-box {
@@ -223,9 +222,10 @@ html.with-panel-right-cover .panel-backdrop-in {
 
   }
 
-  .color-green {--f7-theme-color: #397e43;}
+  .color-green {--f7-theme-color: #0c624b;}
 }
 
 .page{
-  .color-green {--f7-theme-color: #397e43;}
+  .color-green {--f7-theme-color: #0c624b; --f7-button-fill-bg-color: #0c624b;}
+  .color-white {border-color: #0c624b; color:#0c624b;}
 }

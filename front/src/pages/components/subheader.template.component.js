@@ -1,5 +1,5 @@
-template = `<div class="navbar">
-    <div class="navbar-bg no-hairlines"></div>
+template = `<div class="navbar no-shadow no-hairlines">
+    <div class="navbar-bg"></div>
     <div class="navbar-inner sliding">
         <div class="row align-items-center justify-content-space-between width-100 color-theme-teal">
             <div class="row align-items-center">
