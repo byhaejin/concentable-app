@@ -4,10 +4,10 @@
 //}
 /** root color **/
 :root {
-  --f7-button-fill-bg-color: #0c624b;
-  --f7-button-fill-pressed-bg-color: #0c624b;
-  --f7-bars-bg-color: #0c624b;
-  --f7-theme-color: #0c624b;
+  --f7-button-fill-bg-color: #059b5c;
+  --f7-button-fill-pressed-bg-color: #059b5c;
+  --f7-bars-bg-color: #059b5c;
+  --f7-theme-color: #059b5c;
 }
 
 /** icon */
@@ -34,7 +34,6 @@
 .f7-icons {
   vertical-align: middle;
 }
-
 
 label span {
   display: inline-block;
@@ -68,13 +67,11 @@ label.item-checkbox>.icon-checkbox {
 
 //navbar 
 .navbar {z-index: 10 !important; color: #fff; 
-  .navbar-bg {background-color: #0c624b;}
+  .navbar-bg {background-color: #059b5c;}
   .navbar-bg::after {display:none;}
   .navbar-bg::before {display:none;}
   a.link { color: #fff;}
 }
-
-
 
 //button
 .button-circle {
