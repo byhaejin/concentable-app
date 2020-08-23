@@ -1,7 +1,10 @@
 .member {
     //약관
     .page-content {background-color: #fff;}
-    .list {margin-top: 20px;          
+    .list {margin-top: 20px;
+        ul::before {height: 0px;}
+        ul::after {height: 0px;}
+        .item-inner::after {height: 0px;}
         .item-title {font-size:14px;}
         .item-content {min-height: 24px; padding-left: 0px;}
     }
