@@ -9,20 +9,21 @@
                 <div class="card-content list">
                     <ul>
                         {{#each snackList }}
-                        <li class="item-content">
+                        <li data-name="item" class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">
                                     <span class="iB">{{name}}</span> :
-                                    <span class="iB" id="food{{@index}}-count"></span>
+                                    <span data-id="ea"
+                                          class="iB food{{@index}}-count"></span>
                                     <span class="iB">({{cost}}원, {{stock}}남음)</span>
                                 </div>
                                 <div class="item-after">
-                                    <div class="stepper stepper-init stepper-small stepper-raised"
-                                         data-value-el="#food{{@index}}-count"
+                                    <div class="stepper cart_stepper{{@index}} stepper-init stepper-small stepper-raised"
+                                         data-value-el=".food{{@index}}-count"
                                          data-min="0"
                                          data-max="{{stock}}">
-                                        <div class="stepper-button-minus stepper-fill"></div>
-                                        <div class="stepper-button-plus stepper-fill"></div>
+                                        <div class="stepper-button stepper-button-minus stepper-fill"></div>
+                                        <div class="stepper-button stepper-button-plus stepper-fill"></div>
                                     </div>
                                 </div>
                             </div>
@@ -55,35 +56,48 @@
                     "name": "망고 우유", //제품명
                     "cost": 1500, //단가
                     "stock": 5,//재고
-                    // "ea" : 0, //현재 구매갯수
                 }],
                 totalCost: 0,
+                stepper: [],
             }
         },
         methods: {
             getSnackData() {
                 const _self = this;
+                _self.stepper = [];
+
                 app.request.get('../static/js/sample-snack.JSON', { barcode:'123456' }, function (res) {
                     let dataAry  = JSON.parse(res).data;
-                    // dataAry.map((item, index) => {
-                    //     item.ea = 1;
-                    // })
-
-                    console.log(dataAry)
-
                     _self.$setState({ snackList : dataAry });
+
                 });
             },
-            minus() {
-                console.log('minus')
-            },
-            plus() {
-                console.log('plus')
+            totalPrice() {
+                const _self = this;
+                let ea = 0;
+                let cost = 0;
+                let price = 0;
+                let total = 0;
+
+                $$('[data-name="item"]').each((index, item) => {
+                    ea = Number($$(item).find('[data-id="ea"]').text());
+                    cost = Number(_self.snackList[index].cost);
+                    price = ea * cost;
+
+                    total += price;
+                });
+
+                _self.$setState({ totalCost : total.toLocaleString() });
             },
         },
         on: {
             pageInit: function () {
+                const _self = this;
                 this.getSnackData();
+
+                $$('.snack-list').on('click', '.stepper-button', function (e) {
+                    _self.totalPrice();
+                });
             }
         },
     }
