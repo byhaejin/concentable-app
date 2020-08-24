@@ -1,17 +1,17 @@
 <!-- component template -->
 <template>
-    <div class="page member color-theme-green">
+    <div class="page member">
         <sub-header title="이메일 / 비밀번호 찾기" nomenu="true"></sub-header>
         <div class="page-content">
             <form id="finduser-form">
-                <div class="toolbar toolbar-bottom tabbar margin-top">
+                <div class="toolbar tabbar margin-top">
                     <div class="toolbar-inner">                        
                         <a href="#tab-1" class="tab-link tab-link-active">이메일 찾기</a>
                         <a href="#tab-2" class="tab-link">비밀번호 찾기</a>
                     </div>
                 </div>
                 <!--  -->
-                <div class="tabs-swipeable-wrap swiper-container-initialized swiper-container-horizontal">
+                <div class="tabs-swipeable-wrap">
                     <div class="tabs swiper-wrapper">
                         <div id="tab-1" class="tab tab-active swiper-slide swiper-slide-active">
                             <div class="list block">
@@ -53,7 +53,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="item-content item-input item-input-outline tel-box">                                
+                                    <li class="item-content item-input item-input-outline tel-box" style="padding-top: var(--f7-list-item-padding-vertical);">                                
                                         <div class="item-inner">                                    
                                             <div class="item-input-wrap">
                                                 <input type="tel" placeholder="전화번호 입력">
@@ -136,7 +136,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="item-content item-input item-input-outline tel-box">                                
+                                    <li class="item-content item-input item-input-outline tel-box" style="padding-top: var(--f7-list-item-padding-vertical);">                                
                                         <div class="item-inner">                                    
                                             <div class="item-input-wrap">
                                                 <input type="tel" placeholder="전화번호 입력">
@@ -159,7 +159,7 @@
                                         </div>
                                     </li>
                                     <li class="item-content item-input item-input-outline">                                
-                                        <div class="item-inner" style="margin-bottom: 15px;">
+                                        <div class="item-inner">
                                             <div class="item-title item-floating-label">학교</div>
                                             <div class="item-input-wrap">
                                                 <input type="text" placeholder="00고등학교">

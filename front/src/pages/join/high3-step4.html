@@ -1,120 +1,120 @@
 <!-- component template -->
 <template>
-    <div class="page member color-theme-green">
+    <div class="page member">
         <sub-header title="고3 회원가입/이용동의" nomenu="true"></sub-header>
-        <div class="page-content">
-            <div class="block-title block-title-medium">꼼꼼히 읽은 후 체크해주세요.</div>
-            <div class="block">
-                <p>
-                    다음 항목에 모두 동의해야 등록 허가 신청이 완료되며, 준수하지 않을 경우등록 허가가 무효된다는 점 유의해주세요.
-                </p>
-            </div>
-            <div class="list block no-margin-top">
-                <form id="high3-step4-form">
-                    <div class="card">
-                        <div class="card-header">무인으로 운영되기 때문에, 입실 시 고객센터에서 회원에게 직접 연락 가능한 본인 전화를 소지하고 있어야 합니다.</div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree1" />
-                                <i class="icon icon-checkbox"></i>
-                                네, 지점 이용 시 연락 가능한 전화를 소지하고 있지 않아서 연락이 불가한 경우 페널티를 받을 수 있다는 것을 확인했습니다.
-                            </label>
-                        </div>
+        <div class="page-content">            
+            <form id="high3-step4-form">
+                <div class="block-title block-title-medium padding-bottom">꼼꼼히 읽은 후 체크해주세요.</div>
+                <div class="block">
+                    <p>
+                        다음 항목에 모두 동의해야 등록 허가 신청이 완료되며, 준수하지 않을 경우등록 허가가 무효된다는 점 유의해주세요.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-header">무인으로 운영되기 때문에, 입실 시 고객센터에서 회원에게 직접 연락 가능한 본인 전화를 소지하고 있어야 합니다.</div>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree1" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
                     </div>
-                    <div class="card">
-                        <div class="card-header">가족이나 친구가 고객센터로 전화하여 '***학생이 어디에 있는지'를 묻거나 '연락을 전해달라'는 등의 요청을 하지 않습니다.</div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree2" />
-                                <i class="icon icon-checkbox"></i>
-                                네, 컨센터블은 무인으로 운영되기 때문에 연락 전달이 불가하다는 것에 동의합니다.
-                            </label>
-                        </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">가족이나 친구가 고객센터로 전화하여 '***학생이 어디에 있는지'를 묻거나 '연락을 전해달라'는 등의 요청을 하지 않습니다.</div>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree2" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            컨센터블 내에서는 친구들과 절대로 손 인사를 하거나, 몰려다니거나, 이야기를 나누지 않습니다. (아무리 반갑더라도 지점 내에서는 친구들과 아는 척하지 않습니다.)
-                        </div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree3" />
-                                <i class="icon icon-checkbox"></i>
-                                네, 혹시 필요하다면 현관 밖으로 완전히 나가서 이야기 하겠습니다.
-                            </label>
-                        </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        컨센터블 내에서는 친구들과 절대로 손 인사를 하거나, 몰려다니거나, 이야기를 나누지 않습니다. (아무리 반갑더라도 지점 내에서는 친구들과 아는 척하지 않습니다.)
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            이용규정을 어기거나 다른 회원의 집중을 방해하면 페널티가 부여되며, 누적된 페널티에 따라 환불 및 이용 제한이 될 수 있습니다. 페널티 3점 누적 시 이용 제한 되어도 불만을 
-                            제기하지 않으며, 컨센터블 환불 규정에 따라 환불되는 것에 동의합니다. (이용 제한 후 재등록 금지 기간: 1회=1개월, 2회=3개월, 3회=6개월, 4회 이상=1년)
-                        </div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree4" />
-                                <i class="icon icon-checkbox"></i>
-                                네, 동의합니다.
-                            </label>
-                        </div>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree3" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            컨센터블은 2015, 2016년에 "고3 학생들이 몰려다니며 시끄럽게 한다."는 신고를 너무 많이 받아서 2017년 한 해 동안 고3의 가입을 금지했었습니다. 
-                            그래서 본 신청서를 작성한 고3 학생 중 진심으로 컨센터블을 이용하고 싶은 것으로 보이는 학생 일부에게만 등록할 기회를 드리고 있습니다. 또한, 전체 회원 중 고3 학생의 수를 
-                            적정 수준으로 유지하기 때문에 허가를 받고도 즉시 이용이 불가하며 '대기'를 할 수 있다는 점 양해부탁드립니다.
-                        </div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree5" />
-                                <i class="icon icon-checkbox"></i>
-                                네, '등록 가능' 연락을 받을 때까지 다른 곳에서 공부하고 있겠습니다.
-                            </label>
-                        </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        이용규정을 어기거나 다른 회원의 집중을 방해하면 페널티가 부여되며, 누적된 페널티에 따라 환불 및 이용 제한이 될 수 있습니다. 페널티 3점 누적 시 이용 제한 되어도 불만을 
+                        제기하지 않으며, 컨센터블 환불 규정에 따라 환불되는 것에 동의합니다. (이용 제한 후 재등록 금지 기간: 1회=1개월, 2회=3개월, 3회=6개월, 4회 이상=1년)
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            미성년자인 고3 학생의 흡연 사실이 확인되면 즉시 이용제한됩니다.
-                        </div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree6" />
-                                <i class="icon icon-checkbox"></i>
-                                네, 동의합니다.
-                            </label>
-                        </div>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree4" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            작성해주신 글은 100% 익명 처리하여 신규 회원 및 기존 회원들이 볼 수 있도록 컨센터블 카페, 블로그, 사이트 등에 공개됩니다.
-                        </div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree7" />
-                                <i class="icon icon-checkbox"></i>
-                                네, 동의합니다.
-                            </label>
-                        </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        컨센터블은 2015, 2016년에 "고3 학생들이 몰려다니며 시끄럽게 한다."는 신고를 너무 많이 받아서 2017년 한 해 동안 고3의 가입을 금지했었습니다. 
+                        그래서 본 신청서를 작성한 고3 학생 중 진심으로 컨센터블을 이용하고 싶은 것으로 보이는 학생 일부에게만 등록할 기회를 드리고 있습니다. 또한, 전체 회원 중 고3 학생의 수를 
+                        적정 수준으로 유지하기 때문에 허가를 받고도 즉시 이용이 불가하며 '대기'를 할 수 있다는 점 양해부탁드립니다.
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            심사가 이루어지는 데에 평균 2~3일이 소요되며, 허가를 받고 선착순으로 등록을 도와드리거나 대기자명단에 올려드립니다.
-                        </div>
-                        <div class="card-content card-content-padding">
-                            <label class="item-checkbox item-content no-padding-left">
-                                <input type="checkbox" name="checkbox-agree" value="agree8" />
-                                <i class="icon icon-checkbox"></i>
-                                네, 동의합니다.
-                            </label>
-                        </div>
-                    </div>                   
-                </form>
-                <br>
-                <button type="button" class="col button button-fill button-round" @click="nextStep">확인</button></div>
-                <p class="msg">
-                    고3 이용신청이 완료되었습니다.
-                    1~2일 후 입력된 휴대폰 번호의 카카오톡(또는 MMS)로
-                    승인 안내메시지가 발송됩니다.
-                    승인후 즉시 결제 및 이용이 가능합니다.
-                </p>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree5" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        미성년자인 고3 학생의 흡연 사실이 확인되면 즉시 이용제한됩니다.
+                    </div>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree6" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        작성해주신 글은 100% 익명 처리하여 신규 회원 및 기존 회원들이 볼 수 있도록 컨센터블 카페, 블로그, 사이트 등에 공개됩니다.
+                    </div>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree7" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        심사가 이루어지는 데에 평균 2~3일이 소요되며, 허가를 받고 선착순으로 등록을 도와드리거나 대기자명단에 올려드립니다.
+                    </div>
+                    <div class="card-content card-content-padding">
+                        <label class="item-checkbox item-content no-padding-left">
+                            <input type="checkbox" name="checkbox-agree" value="agree8" />
+                            <i class="icon icon-checkbox"></i>
+                            네, 동의합니다.
+                        </label>
+                    </div>
+                </div>
+                <div class="block">
+                    <button type="button" class="col button button-fill button-round" @click="nextStep">확인</button></div>
+                </div>                  
+            </form>            
+            <!-- <p class="msg">
+                고3 이용신청이 완료되었습니다.
+                1~2일 후 입력된 휴대폰 번호의 카카오톡(또는 MMS)로
+                승인 안내메시지가 발송됩니다.
+                승인후 즉시 결제 및 이용이 가능합니다.
+            </p> -->
         </div>
     </div>
 </template>

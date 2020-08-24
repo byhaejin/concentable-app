@@ -2,66 +2,43 @@
 <template>
     <div class="page member color-theme-green">
         <sub-header title="고3 회원가입/이용지점 선택" nomenu="true"></sub-header>
-        <div class="page-content">           
-            <div class="block">
-                <form id="emailcertification-form">
-                    <div class="list">
-                        <ul>
-                            <li class="item-content item-input item-input-outline">                                
-                                <div class="item-inner" style="padding-top: var(--f7-list-item-padding-vertical);">
-                                    <div class="item-title item-floating-label">이용할 지점 선택</div>
-                                    <div class="item-input-wrap input-dropdown-wrap">
-                                        <select name="gender" placeholder="Please choose..." class="input-with-value">
-                                            <option>선택</option>
-                                            <option value="컨센터블24시독서실1호점()">컨센터블24시독서실1호점()</option>
-                                            <option value="컨센터블24시독서실2호점()">컨센터블24시독서실2호점()</option>
-                                            <option value="컨센터블24시독서실3호점()">컨센터블24시독서실3호점()</option>
-                                            <option value="컨센터블24시독서실4호점()">컨센터블24시독서실4호점()</option>
-                                            <option value="컨센터블24시독서실5호점()">컨센터블24시독서실5호점()</option>
-                                         </select>                                        
-                                    </div>
+        <div class="page-content">            
+            <form id="emailcertification-form">
+                <div class="list">
+                    <ul>
+                        <li class="item-content item-input item-input-outline">                                
+                            <div class="item-inner" style="padding-top: var(--f7-list-item-padding-vertical);">
+                                <div class="item-title item-floating-label">이용할 지점 선택</div>
+                                <div class="item-input-wrap input-dropdown-wrap">
+                                    <select name="gender" placeholder="Please choose..." class="input-with-value">
+                                        <option>선택</option>
+                                        <option value="컨센터블24시독서실1호점()">컨센터블24시독서실1호점()</option>
+                                        <option value="컨센터블24시독서실2호점()">컨센터블24시독서실2호점()</option>
+                                        <option value="컨센터블24시독서실3호점()">컨센터블24시독서실3호점()</option>
+                                        <option value="컨센터블24시독서실4호점()">컨센터블24시독서실4호점()</option>
+                                        <option value="컨센터블24시독서실5호점()">컨센터블24시독서실5호점()</option>
+                                        </select>                                        
                                 </div>
-                            </li>
-                            <li>
-                                <div class="map" style="height: 40vh;">
-                                    <img src="../static/images/map.jpg">
-                                </div>
-                            </li>
-                        </ul>
-                    </div>        
-                    <!-- <div class="zone">
-                        <div class="map" style="height: 40vh; background: darkolivegreen">
-                               지도
-                        </div>
-                        <select class="select-box">
-                            <option>지점 선택</option>
-                            <option value="ad1">컨센터블 24시 독서실 1호점(주엽역)</option>
-                            <option value="ad2">컨센터블 24시 독서실 1호점(주엽역)</option>
-                            <option value="ad3">컨센터블 24시 독서실 1호점(주엽역)</option>
-                            <option value="ad4">컨센터블 24시 독서실 1호점(주엽역)</option>
-                        </select>
-                        <div class="sub-zone">
-
-                        </div>
-                    </div> -->
-
-                    <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">다음</button>
-                </form>
-            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="map" style="height: 40vh;">
+                                <img src="../static/images/map.jpg">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block">
+                    <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">다음<i class="icon-arrow_right"></i></button>
+                </div>                
+            </form>            
         </div>        
     </div>
 </template>
 <!-- component styles -->
 <style scoped>
 
-    .select-box {
-        width: 100%;
-    }
-    .map {
-        margin-left: calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left));
-        margin-right: calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-right));
-        margin-bottom: 15px;
-    }
+   
 
 </style>
 <script>
