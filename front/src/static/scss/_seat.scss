@@ -1,0 +1,70 @@
+.seat {
+
+  $height-seat-zone: 42px;
+  .seat-zone {
+    height: $height-seat-zone;
+    padding: 0;
+    padding-left: 14px;
+    background: #102a20;
+    h3 {
+      margin: 0;
+      color: white;
+    }
+
+    .js-tosh {
+      display: inline-block;
+      width: auto;
+      font-size: 24px;
+    }
+  }
+  .plan-map {
+    height: calc(40vh - #{$height-seat-zone});
+    background-color: #102a20;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  $hight-seat-sort: 50px;
+  .seat-sort {
+    height: $hight-seat-sort;
+    padding: 0 24px;
+    color: #fff;
+    background-color: #30483f;
+
+    .item-checkbox {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .seat-select {
+    .block {
+      height: calc(60vh - #{$hight-seat-sort} - #{$sub-header-height} - 84px) ;
+    }
+
+    &-pos {
+      position: relative;
+      box-sizing: border-box;
+      height: 84px;
+      padding: 20px;
+      text-align: center;
+      z-index: 2;
+      background-color: var(--f7-page-bg-color);
+
+
+      .button {
+        display: inline-block;
+        width: 50vw;
+        font-weight: bold;
+        box-shadow: 0 0 3px 3px #fff;
+
+        &:active {
+          padding: 2px 0 0 2px;
+        }
+      }
+    }
+
+
+  }
+}

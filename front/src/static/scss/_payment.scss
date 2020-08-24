@@ -3,13 +3,11 @@
   .snack {
     &-list {
       //브라우저높이(100vh) - 바코드리더기 높이 - navbar 높이
-      height: calc(100vh - #{$height-snack-barcoderead} - #{$sub-header-height} - 20px);
+     // height: calc(100vh - #{$height-snack-barcoderead} - #{$sub-header-height} - 20px);
 
       .list {
         //카드블럭 전체높이(100%) - 카드해더높이 - 카드풋터높이
-        height: calc(100% - 44px - 74px);
-        overflow: hidden;
-        overflow-y: auto;
+
       }
     }
 

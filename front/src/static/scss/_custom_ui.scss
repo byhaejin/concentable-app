@@ -99,5 +99,9 @@ label.item-checkbox>.icon-checkbox {
 //picker
 .picker-center-highlight {border-top: 1px solid #a7a7a7; border-bottom: 1px solid #a7a7a7;}
 
+.picker-item span.nop {
+  color: red;
+  text-decoration: line-through;
+}
 
 

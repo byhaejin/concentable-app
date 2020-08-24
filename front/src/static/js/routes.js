@@ -146,6 +146,15 @@ var routes = [
             transition: 'f7-cover',
         },
     },
+    {// 자리선택하기
+        name: 'seat',
+        path: '/seat/',
+        componentUrl: '../sub/seat.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
     {
         name: 'expand',
         path: '/expand/',
