@@ -1,37 +1,44 @@
 .member {
     //약관
     .page-content {background-color: #fff;}
-    .list {margin-top: 20px;
-        ul::before {height: 0px;}
-        ul::after {height: 0px;}
-        .item-inner::after {height: 0px;}
-        .item-title {font-size:14px;}
-        .item-content {min-height: 24px; padding-left: 0px;}
+    .list ul::before {background-color: #fff;}  
+    #agree-form {
+        .list {margin-top: 20px;
+            ul::before {height: 0px;}
+            ul::after {height: 0px;}
+            .item-inner::after {height: 0px;}
+            .item-title {font-size:14px;}
+            .item-content {min-height: 24px; padding-left: 0px;}
+        }
+        .icon-checkbox {border-radius:60%;}
+        .icon-checkbox::after {font-size: 12px;}
+        label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {
+            border-color: #397e43; 
+            background-color: #397e43;
+         }
     }
-    .icon-checkbox {border-radius:60%;}
-    .icon-checkbox::after {font-size: 12px;}
-    label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {
-        border-color: #397e43; 
-        background-color: #397e43;
-     }
-    
 
-    //회원가입    
-    .item-inner {padding-top: 0px;}
-    //.item-floating-label {transform: scale(1) translateY(50%) !important;}
-    .item-input-invalid .item-inner {padding-bottom: 5px;}
-    .list .item-floating-label {color:#7a7a7a !important;}
-    .md .item-input-with-error-message {padding-bottom: 10px;}
-    
-    .smart-select-init {
-        .item-title {font-size: var(--f7-input-font-size);}
-        .item-inner {border-bottom: 1px solid #dadada; margin-bottom: var(--f7-list-item-padding-vertical);}
-    }  
-    
-    .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical);}
-    .tel-box .width-auto {height: var(--f7-input-height);}
-    .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
+    //회원가입
+    .list {          
+        .icon-checkbox {border-radius:60%;}
+        .icon-checkbox::after {font-size: 12px;}
+        label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {
+            border-color: #397e43; 
+            background-color: #397e43;
+        }
 
+        .item-media { min-width: auto; 
+            i {font-size: 3vh; color: #059b5c;}        
+        }
+        .item-inner { padding-top:0px; 
+            .item-label {width: 25%;}
+        }
+        .item-inner::after { background-color: ##e0e0e0;}
+        
+        .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical);}
+        .tel-box .width-auto {height: var(--f7-input-height);}
+        .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
+    }
     .map { overflow: hidden;
         img {max-width: 100%;}
     } 

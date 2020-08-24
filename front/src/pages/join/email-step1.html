@@ -2,164 +2,128 @@
 <template>
     <div class="page member">
         <sub-header title="회원가입/이메일 회원가입" nomenu="true"></sub-header>
-        <div class="page-content">            
-            <div class="block">
-                <form id="emailcertification-form">
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <div class="item-inner" style="border-bottom: 1px solid #dadada; padding-top: var(--f7-list-item-padding-vertical);">
-                                    <div class="item-title item-content-dropdown-expanded">
-                                        <label class="item-checkbox item-content">
-                                            <input type="checkbox" name="checkbox-agree" value="concentable"/>
-                                            <i class="icon icon-checkbox"></i>
-                                            [필수]개인정보 수집 및 이용동의
-                                        </label>
-                                    </div>
-                                    <div class="item-after">
-                                        <a href="#" data-popup=".concentable-popup" class="popup-open">[보기]</a>
+        <div class="page-content">
+            <form id="emailcertification-form">
+                <div class="list inline-labels no-hairlines-md">
+                    <ul>
+                        <li class="margin-left">
+                            <div class="item-inner">
+                                <div class="item-title item-content-dropdown-expanded">
+                                    <label class="item-checkbox item-content no-padding-left">
+                                        <input type="checkbox" name="checkbox-agree" value="concentable"/>
+                                        <i class="icon icon-checkbox"></i>
+                                        [필수]개인정보 수집 및 이용동의
+                                    </label>
+                                </div>
+                                <div class="item-after">
+                                    <a href="#" data-popup=".concentable-popup" class="popup-open">[보기]</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input" style="padding-top: var(--f7-list-item-padding-vertical);">
+                            <div class="item-media"><i class=" icon-person_fill"></i></i></div>
+                            <div class="item-inner">                                
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="성명" required="" validate="" data-error-message="이름을 입력하세요.">
+                                    <span class="input-clear-button"></span>                                        
+                                </div>
+                            </div>                                
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-media"><i class="icon-placemark"></i></i></div>                                
+                            <div class="item-inner">                                
+                                <div class="item-input-wrap input-dropdown-wrap">
+                                    <select name="gender" placeholder="Please choose..." class="input-with-value">                                            
+                                        <option value="남성">남성</option>
+                                        <option value="여성">여성</option>
+                                        </select>                                        
+                                </div>
+                            </div>
+                        </li>                      
+                        <li class="item-content item-input">
+                            <div class="item-media"><i class="icon-calendar"></i></i></div>
+                            <div class="item-inner">                                
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="생년월일" required="" validate="" pattern="[0-9]*" data-error-message="숫자 만 입력가능합니다.">
+                                    <span class="input-clear-button"></span>                                        
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-media"><i class="icon-envelope"></i></i></div>
+                            <div class="item-inner">                                
+                                <div class="item-input-wrap">
+                                    <input type="email" placeholder="E-mail" required="" validate="" data-error-message="사용할수없는이메일입니다.">
+                                    <span class="input-clear-button"></span>                                        
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-media"><i class="icon-lock_fill"></i></i></div>
+                            <div class="item-inner">                                
+                                <div class="item-input-wrap">
+                                    <input type="password" placeholder="8~15자리숫자, 영문자, 특수문자" required="" validate="" data-error-message="숫자, 영문, 기호를모두사용하여8자리이상입력해주세요">
+                                    <span class="input-clear-button"></span>                                        
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-media"><i class="icon-lock"></i></i></div>
+                            <div class="item-inner">
+                                
+                                <div class="item-input-wrap">
+                                    <input type="password" placeholder="비밀번호 재입력" required="" validate="" data-error-message="비밀번호가일치하지않습니다.">
+                                    <span class="input-clear-button"></span>                                        
+                                </div>
+                            </div>
+                        </li>                        
+                        <li>
+                            <a class="item-link smart-select smart-select-init">
+                                <select name="fruits" class="input-with-value">
+                                    <option>선택</option>
+                                    <option value="skt">SKT</option>
+                                    <option value="kt">KT</option>
+                                    <option value="lgu">LG U+</option>
+                                    <option value="SKT알뜰폰">SKT알뜰폰</option>
+                                    <option value="KT알뜰폰,">KT알뜰폰,</option>
+                                    <option value="LGU+알뜰폰">LGU+알뜰폰</option>
+                                </select>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">통신사</div>
+                                        <div class="item-after">선택</div>                                            
                                     </div>
                                 </div>
-                            </li>
-                            <li class="item-content item-input item-input-outline">
-                                <div class="item-inner" style="padding-top: var(--f7-list-item-padding-vertical);">
-                                    <div class="item-title item-floating-label">성명</div>
-                                    <div class="item-input-wrap">
-                                        <input type="text" placeholder="성명" required="" validate="" data-error-message="이름을 입력하세요.">
-                                        <span class="input-clear-button"></span>                                        
-                                    </div>
-                                </div>                                
-                            </li>
-                            <li class="item-content item-input item-input-outline">                                
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">성별 선택</div>
-                                    <div class="item-input-wrap input-dropdown-wrap">
-                                        <select name="gender" placeholder="Please choose..." class="input-with-value">                                            
-                                            <option value="남성">남성</option>
-                                            <option value="여성">여성</option>
-                                         </select>                                        
-                                    </div>
+                            </a>
+                        </li>
+                        <li class="item-content item-input tel-box">                            
+                            <div class="item-inner">                                    
+                                <div class="item-input-wrap">
+                                    <input type="tel" placeholder="전화번호 입력">
+                                    <span class="input-clear-button"></span>
                                 </div>
-                            </li>                            
-                            <!-- <li class="item-content item-input item-input-with-value">
-                                <div class="item-inner">
-                                    <div class="item-title item-label">Gender</div>
-                                    <div class="item-input-wrap input-dropdown-wrap">
-                                        <select name="gender" placeholder="Please choose..." class="input-with-value">
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="item-media">
+                                <button type="button" class="button button-fill width-auto">인증번호 발송</button>
+                            </div>
+                        </li>
+                        <li class="item-content item-input tel-box">                            
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="인증번호 입력">
+                                    <span class="input-clear-button"></span>
                                 </div>
-                             </li> -->                            
-                            <li class="item-content item-input item-input-outline">                                
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">생년월일</div>
-                                    <div class="item-input-wrap">
-                                        <input type="text" placeholder="생년월일" required="" validate="" pattern="[0-9]*" data-error-message="숫자 만 입력가능합니다.">
-                                        <span class="input-clear-button"></span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-content item-input item-input-outline">                                
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">E-mail</div>
-                                    <div class="item-input-wrap">
-                                        <input type="email" placeholder="E-mail" required="" validate="" data-error-message="사용할수없는이메일입니다.">
-                                        <span class="input-clear-button"></span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-content item-input item-input-outline">                                
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">비밀번호</div>
-                                    <div class="item-input-wrap">
-                                        <input type="password" placeholder="8~15자리숫자, 영문자, 특수문자" required="" validate="" data-error-message="숫자, 영문, 기호를모두사용하여8자리이상입력해주세요">
-                                        <span class="input-clear-button"></span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-content item-input item-input-outline">                                
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">비밀번호 재확인</div>
-                                    <div class="item-input-wrap">
-                                        <input type="password" placeholder="비밀번호 재입력" required="" validate="" data-error-message="비밀번호가일치하지않습니다.">
-                                        <span class="input-clear-button"></span>                                        
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- <li class="item-content item-input">
-                                <div class="item-media">주민등록번호</div>
-                                <div class="item-inner item-cell">
-                                    <div class="item-row">
-                                        <div class="item-cell">
-                                            <div class="item-input-wrap">
-                                                <input type="text" maxlength="6" name="name">
-                                            </div>
-                                        </div>
-                                        <div class="item-cell">
-                                            <div class="item-input-wrap iB" style="width: 18px">
-                                                <input type="password" maxlength="1" name="name">
-                                            </div>
-                                            <div class="iB">
-                                                <i class="f7-icons size-14">circle_fill</i>
-                                                <i class="f7-icons size-14">circle_fill</i>
-                                                <i class="f7-icons size-14">circle_fill</i>
-                                                <i class="f7-icons size-14">circle_fill</i>
-                                                <i class="f7-icons size-14">circle_fill</i>
-                                                <i class="f7-icons size-14">circle_fill</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> -->
-                            <li>
-                                <a class="item-link smart-select smart-select-init">
-                                    <select name="fruits" class="input-with-value">
-                                        <option>선택</option>
-                                        <option value="skt">SKT</option>
-                                        <option value="kt">KT</option>
-                                        <option value="lgu">LG U+</option>
-                                        <option value="SKT알뜰폰">SKT알뜰폰</option>
-                                        <option value="KT알뜰폰,">KT알뜰폰,</option>
-                                        <option value="LGU+알뜰폰">LGU+알뜰폰</option>
-                                    </select>
-                                    <div class="item-content">
-                                        <div class="item-inner">
-                                            <div class="item-title">통신사</div>
-                                            <div class="item-after">선택</div>                                            
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="item-content item-input item-input-outline tel-box">                                
-                                <div class="item-inner">                                    
-                                    <div class="item-input-wrap">
-                                        <input type="tel" placeholder="전화번호 입력">
-                                        <span class="input-clear-button"></span>
-                                    </div>
-                                </div>
-                                <div class="item-media">
-                                    <button type="button" class="button button-fill width-auto">인증번호 발송</button>
-                                </div>
-                            </li>
-                            <li class="item-content item-input item-input-outline tel-box">                                
-                                <div class="item-inner">
-                                    <div class="item-input-wrap">
-                                        <input type="text" placeholder="인증번호 입력">
-                                        <span class="input-clear-button"></span>
-                                    </div>
-                                </div>
-                                <div class="item-media">
-                                    <button type="button" class="button button-fill width-auto">인증</button>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>                   
+                            </div>
+                            <div class="item-media">
+                                <button type="button" class="button button-fill width-auto">인증</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="block ">
                     <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">회원가입</button>
-                </form>
-            </div>
-
+                </div>
+            </form>
         </div>
     </div>
 </template>
