@@ -139,6 +139,7 @@ html, body {
 
 
 /* HEADER CENTER */
+.navbar .button {color: #fff;}
 .navbar_center{
   float:left;
   width:46%;
@@ -227,7 +228,8 @@ html.with-panel-right-cover .panel-backdrop-in {
 
 .page{
   .color-green {--f7-theme-color: #059b5c; --f7-button-fill-bg-color: #059b5c;}
-  .color-white {border-color: #059b5c; color:#059b5c; background-color: #fff;}  
+  .color-white {border-color: #059b5c; color:#059b5c; background-color: #fff;}
+  .navbar .button {color: #fff;}
 }
 
 .page-content {
