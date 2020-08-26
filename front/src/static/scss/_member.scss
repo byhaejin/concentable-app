@@ -28,7 +28,7 @@
         }
 
         .item-media { min-width: auto; 
-            i {font-size: 3vh; color: #059b5c;}        
+            i {font-size: 3vh; color: #323232;}        
         }
         .item-inner { padding-top:0px; 
             .item-label {width: 25%;}
@@ -36,7 +36,7 @@
         .item-inner::after {transform-origin: 100%;}
         
         .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical);}
-        .tel-box .width-auto {height: var(--f7-input-height);}
+        .tel-box .width-auto {height:3.6vh}
         .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
     }
     .block {

@@ -1,45 +1,29 @@
 /** home */
 .home {
-  background: transparent linear-gradient(180deg, #059b5c 0%, #173228 100%) 0% 0% no-repeat padding-box;
-            background: transparent -moz-linear-gradient(-90deg, #059b5c 0%, #173228 100%) 0% 0% no-repeat padding-box;
-            background: transparent -webkit-linear-gradient(-90deg, #059b5c 0%, #173228 100%) 0% 0% no-repeat padding-box;
+  //background: transparent linear-gradient(180deg, #059b5c 0%, #173228 100%) 0% 0% no-repeat padding-box;
+  //background: transparent -moz-linear-gradient(-90deg, #059b5c 0%, #173228 100%) 0% 0% no-repeat padding-box;
+  //background: transparent -webkit-linear-gradient(-90deg, #059b5c 0%, #173228 100%) 0% 0% no-repeat padding-box;
+  background-color: #fff;
 
-  &-top {    
-
-    &-link {
-      padding-right: 11vw;
-      text-align: right;
-
-      .button {
-        padding: 0;
-        margin: 0;
-        color: #878787;
-      }
-    }
-
+  &-top { background-color: #fff;
     .logo {
-      padding: 3vh 0 6vh;
-      color: #fff;      
-      text-align: center;
-      font-size: 12vh;
+      padding: 5vh 0 3vh; margin-left: 3vh; color: #085837; font-size: 8vh; border-bottom: 2px solid #085837;
     }
   }
 
   &-user {
-    padding: 4vh 30px;
-    border-top: 3px solid #dcdedd;
-    background-color: #fff;
+    padding: 3vh 30px; background-color: #fff;
     
-    p {margin: 0; padding-bottom: 6px; font-size: 16px;}
-    .name-txt {font-size: 3vh; font-weight: bold;
+    p {margin: 0; padding-bottom: 12px; font-size: 16px;}
+    .name-txt {font-size: 3.3vh; font-weight: bold; border: none; padding-bottom: 6px;
       strong {color: #059b5c;}
     }
-    .list {font-size: 14px;
-      .item-content {min-height: 28px;}
-      .item-media {padding: 0;
-        i {margin-right: 5px;}
+    .list {font-size: 14px;      
+      .item-content {min-height: 30px; border-top: 1px solid #959595;}
+      .item-media {padding: 0; width: 58px;
+        i {margin-right: 5px; padding-top: 2px;}
       }
-      .item-inner {padding: 0; min-height: 28px; color: #959595;}
+      .item-inner {padding: 0; min-height: 30px; color: #959595;}
     }
 
     .row {
@@ -62,11 +46,17 @@
     }    
   }
 
+  .btn-box {
+    .actions-open {height: 8vh; padding: 1vh; font-size: 2.5vh;
+      i {margin-right: 6px; font-size: 3.3vh;}
+    }
+  }
+
   &-bottom {
     display: flex;
     justify-content: center;
 
-    padding-top: 4vh;
+    padding-top: 1vh;
     text-align: center;
 
     a {
@@ -74,12 +64,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 39vw;
-      height: 18.656vh;
+      width: 43vw;
+      height: 20vh;
       margin: 0 2.5vw;
       border-radius: 12px;
       font-size: 2.2134vh;
       font-weight: bold;
+      border: 5px solid #059b5c;
       color: #059b5c;
       background-color: #fff;
 

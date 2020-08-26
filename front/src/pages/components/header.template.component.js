@@ -1,4 +1,4 @@
-template = `<div class="navbar navbar-transparent">
+template = `<div class="navbar">
                 <div class="navbar-bg"></div>
                 <div class="navbar-inner">
                     <div class="row align-items-center width-100">
