@@ -74,7 +74,10 @@
     // 이메일 비번찾기
     #finduser-form {
         .swiper-container {background-color: #fff !important;}
-        .list {margin-top:15px; margin-bottom: 30px;}
+        .list {margin-top:15px; margin-bottom: 30px;
+            .tel-box .item-inner {padding-top: 0;}
+            .tel-box .width-auto {height: var(--f7-input-height);}
+        }
         .tabbar {
             margin-left: calc(var(--f7-block-padding-horizontal) + var(--f7-safe-area-left)); margin-right: calc(var(--f7-block-padding-horizontal) + var(--f7-safe-area-right));
             width: auto;
@@ -82,7 +85,7 @@
         .toolbar-inner {padding: 0px; border-bottom: 2px solid #059b5c;}
         .tabbar .tab-link {font-size:16px; font-weight: bold; border:none; color: #397e43; background-color: #fff;}
         .tabbar .tab-link-active { color: #fff; background-color: #059b5c;}
-        .color-green {font-size: 20px; font-weight: bold;}    
+        .color-green {font-size: 20px; font-weight: bold;}
     }
 }
 
