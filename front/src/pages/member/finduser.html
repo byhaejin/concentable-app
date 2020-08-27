@@ -6,14 +6,14 @@
             <form id="finduser-form">
                 <div class="toolbar tabbar margin-top">
                     <div class="toolbar-inner">                        
-                        <a href="#tab-1" class="tab-link tab-link-active">이메일 찾기</a>
-                        <a href="#tab-2" class="tab-link">비밀번호 찾기</a>
+                        <a href="#tab-1" class="tab-link{{#if isEmail}} tab-link-active{{/if}}">이메일 찾기</a>
+                        <a href="#tab-2" class="tab-link{{#unless isEmail}} tab-link-active{{/unless}}">비밀번호 찾기</a>
                     </div>
                 </div>
                 <!--  -->
                 <div class="tabs-swipeable-wrap">
                     <div class="tabs swiper-wrapper">
-                        <div id="tab-1" class="tab tab-active swiper-slide swiper-slide-active">
+                        <div id="tab-1" class="tab{{#if isEmail}} tab-active{{/if}} swiper-slide{{#if isEmail}}  swiper-slide-active{{/if}}">
                             <div class="list">
                                 <ul>                                   
                                     <li class="item-content item-input item-input-outline">
@@ -89,7 +89,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div id="tab-2" class="tab swiper-slide swiper-slide-next">
+                        <div id="tab-2" class="tab{{#unless isEmail}} tab-active{{/unless}} swiper-slide swiper-slide-next{{#unless isEmail}}  swiper-slide-active{{/unless}}">
                             <div class="list">
                                 <ul>
                                     <li class="item-content item-input item-input-outline">                                
@@ -199,17 +199,13 @@
     return {
         data: function () {
             return {
-                isEmail : false,
+                isEmail : (this.$route.params.tab === 'email'),
             }
         },
         methods: {
             //'인증번호 확인'
             certificationCheck: function() {
               console.log('인증번호 확인')
-            },
-            // 검색대상 확인 : isEmail = true 이메일 확인, isEmail = false 비밀번호 확인
-            changeIsEmail: function (Is) {
-                this.$setState({ isEmail: Is });
             },
             // 검색 하기
             findInfo: function () {
@@ -218,8 +214,7 @@
         },
         on: {
             pageInit: function () {
-                // 파라메타가 email 일경우 이메일 확인
-                this.changeIsEmail((this.$route.params.tab === 'email'));
+
             },
         }
     }
