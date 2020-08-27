@@ -1,5 +1,5 @@
 .payment {
-  $height-snack-barcoderead: 150px;
+  $height-snack-barcoderead: 150px; background-color: #fff;
   .snack {
     &-list {
       //브라우저높이(100vh) - 바코드리더기 높이 - navbar 높이
@@ -7,10 +7,8 @@
 
       .list {
         //카드블럭 전체높이(100%) - 카드해더높이 - 카드풋터높이
-
       }
     }
-
 
     &-submit {
 
@@ -43,12 +41,41 @@
 
   // payment
   #payment-form {
-    .block-title {margin-top: 0; margin-left: 0; margin-right: 0;}
+    .block-title {margin: 0; color: #000; font-weight: bold;
+      i {margin-right: 6px; color: #059b5c;}
+    }
+    .list { margin-bottom: 1.5vh;
+      p {font-size: 1.7vh; font-weight: normal;}
+      .item-content {padding-left: 0;
+        .item-inner {padding-right: 0;
+          .item-input-wrap::after { border-color: #059b5c;}
+        }
+      }
+    }
+    .pay-txt {padding-bottom: 0.6vh; margin-bottom: 1.5vh;  border-bottom: 1px solid #b1b1b1;
+      p {font-size: 1.7vh; font-weight: normal;
+        strong {display: block; padding-bottom: 5px; margin-bottom: 5px; border-bottom: 1px solid #b1b1b1;}
+      }
+
+    }
     .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical);
       .width-auto {height: var(--f7-input-height);}
-      .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
+      .item-inner {padding-top: var(--f7-list-item-padding-vertical); margin-right: 10px;}
     }
-     
+    .media-list {
+      li {margin-bottom: 1vh;}
+      .radio {
+        border: 1px solid #b1b1b1; padding-left: var(--f7-input-outline-padding-horizontal); padding-right: var(--f7-input-outline-padding-horizontal);
+        border-radius: var(--f7-input-outline-border-radius);
+        .item-title {font-size:1.6vh; font-weight: normal; color: #a3a3a3;
+          strong {display: block; font-size: var(--f7-block-title-font-size, inherit); color: #000;}
+        }
+        .item-after {font-size:1.6vh; font-weight: normal; text-align: right; color: #059b5c;
+          strong {font-size: var(--f7-block-title-font-size, inherit); display:contents;}
+        }
+      }
+    }
   }
-
 }
+.toolbar-inner a {color: #fff;}
+.picker.sheet-modal {background-color: #fff;}
