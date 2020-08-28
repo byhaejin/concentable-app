@@ -5,10 +5,10 @@
     #agree-form {
         .list {margin-top: 20px;
             ul::before {height: 0px;}
-            ul::after {height: 0px;}
+            ul::after {height: 0px;}            
             .item-inner::after {height: 0px;}
             .item-title {font-size:14px;}
-            .item-content {min-height: 24px; padding-left: 0px;}
+            .item-content {min-height: 24px; padding-left: 0px;}            
         }
         .icon-checkbox {border-radius:60%;}
         .icon-checkbox::after {font-size: 12px;}
@@ -19,7 +19,8 @@
     }
 
     //회원가입
-    .list {          
+    .list {
+        .margin-left {font-size: 15px;}
         .icon-checkbox {border-radius:60%;}
         .icon-checkbox::after {font-size: 12px;}
         label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {

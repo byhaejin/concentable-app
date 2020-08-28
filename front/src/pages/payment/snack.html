@@ -2,13 +2,34 @@
     <div class="page payment">
         <sub-header title="결제하기/무인매점"  nomenu="true"></sub-header>        
         <div class="page-content snack">
-            <div class="card snack-list">
-                <div class="card-header">
-                    물건 선택
-                </div>
-                <div class="card-content list">
+            <div class="block snack-list">
+                <div class="block-title"><i class="icon-cart_fill"></i>물건 선택</div>                
+                <div class="list">
                     <ul>
                         {{#each snackList }}
+                        <li data-name="item">
+                            <div class="item-row">
+                                <div class="item-cell">
+                                    <div class="item-row snack-title">
+                                        <span class="iB">{{name}}</span> 
+                                    </div>
+                                    <div class="item-row snack-number">
+                                        <span class="iB">({{cost}}원, {{stock}}남음)</span>
+                                    </div>
+                                </div>
+                                <div class="item-cell snack-btn">
+                                    <div class="stepper cart_stepper{{@index}} stepper-init stepper-small stepper-raised"
+                                         data-value-el=".food{{@index}}-count" data-min="0" data-max="{{stock}}">
+                                        <div class="stepper-button stepper-button-minus stepper-fill"></div>
+                                        <div class="stepper-input-wrap">
+                                            <span data-id="ea" class="iB food{{@index}}-count"></span>
+                                          </div>
+                                        <div class="stepper-button stepper-button-plus stepper-fill"></div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </li>
+                        
                         <li data-name="item" class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">
@@ -40,10 +61,6 @@
                         결제하기
                     </button>
                 </div>
-            </div>
-
-            <div class="card snack-barcoderead">
-
             </div>
         </div>
     </div>

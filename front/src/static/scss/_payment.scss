@@ -1,6 +1,22 @@
 .payment {
   $height-snack-barcoderead: 150px; background-color: #fff;
   .snack {
+    .block-title {
+      font-size: var(--f7-block-title-font-size); font-weight: bold; padding-bottom: 1vh; border-bottom: 1px solid #059b5c; 
+      i {color: #059b5c; margin-right: 6px;}
+    }
+
+    .list {
+      li { border-bottom: 1px solid #b1b1b1;}
+      .item-row { padding-bottom: 1vh;}
+      
+      .snack-number {color: #a4a4a4; font-size: 1.8vh;}
+      .snack-btn {width: 55%;
+        .stepper-input-wrap {flex-shrink: 1; text-align: center; padding: 0 10px; border-top: 2px solid #059b5c; border-bottom: 2px solid #059b5c;
+          span {padding-bottom: 6px;}
+      }
+    } 
+
     &-list {
       //브라우저높이(100vh) - 바코드리더기 높이 - navbar 높이
      // height: calc(100vh - #{$height-snack-barcoderead} - #{$sub-header-height} - 20px);
@@ -67,14 +83,20 @@
       .radio {
         border: 1px solid #b1b1b1; padding-left: var(--f7-input-outline-padding-horizontal); padding-right: var(--f7-input-outline-padding-horizontal);
         border-radius: var(--f7-input-outline-border-radius);
-        .item-title {font-size:1.6vh; font-weight: normal; color: #a3a3a3;
+        .item-title {font-size:1.6vh; font-weight: normal; color: #777777;
           strong {display: block; font-size: var(--f7-block-title-font-size, inherit); color: #000;}
         }
+        .item-inner {padding-left: var(--f7-list-item-padding-vertical);}
         .item-after {font-size:1.6vh; font-weight: normal; text-align: right; color: #059b5c;
           strong {font-size: var(--f7-block-title-font-size, inherit); display:contents;}
         }
+        .icon-radio::after {background-color: var(--f7-radio-active-color, var(--f7-theme-color)); color: #fff; border-radius: 100%;}
       }
     }
+  }
+  .pay-total { margin-top: 1vh;
+    .item-title {font-size: 2vh; color: #777777; width: 30%;}
+    .item-input-wrap {font-size: 2.6vh; font-weight: bold;}
   }
 }
 .toolbar-inner a {color: #fff;}
