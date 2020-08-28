@@ -1,21 +1,13 @@
-.seat {
+.seat {background-color: #fff;
 
   $height-seat-zone: 42px;
-  .seat-zone {
-    height: $height-seat-zone;
-    padding: 0;
-    padding-left: 14px;
-    background: #102a20;
+  .seat-zone {height: $height-seat-zone; padding: 0; padding-left: 14px; background: #017444;
     h3 {
       margin: 0;
       color: white;
     }
 
-    .js-tosh {
-      display: inline-block;
-      width: auto;
-      font-size: 24px;
-    }
+    .js-tosh {display: inline-block; width: auto; font-size: 24px; color: #61e9ad;}
   }
   .plan-map {
     height: calc(40vh - #{$height-seat-zone});
@@ -35,36 +27,24 @@
     .item-checkbox {
       display: flex;
       align-items: center;
+      
     }
+    .icon-checkbox {border-radius: 100%; border-color: #059b5c; background-color: #fff;}
+    .icon-checkbox::after {background-color: var(--f7-radio-active-color, var(--f7-theme-color)); color: #fff; border-radius: 100%;}
   }
 
   .seat-select {
-    .block {
-      height: calc(60vh - #{$hight-seat-sort} - #{$sub-header-height} - 84px) ;
+    .block { padding: 3vh 1vh;  margin: 0;
+      .picker-columns {font-size: 2.3vh;}
     }
 
     &-pos {
-      position: relative;
-      box-sizing: border-box;
-      height: 84px;
-      padding: 20px;
-      text-align: center;
-      z-index: 2;
-      background-color: var(--f7-page-bg-color);
-
-
-      .button {
-        display: inline-block;
-        width: 50vw;
-        font-weight: bold;
-        box-shadow: 0 0 3px 3px #fff;
-
+      position: relative; box-sizing: border-box; height: 84px; padding: 20px; text-align: center; z-index: 2; border-top: 6px solid #d9d9d9;
+      .button {display: inline-block; font-weight: bold; box-shadow: 0 0 3px 3px #fff;
         &:active {
           padding: 2px 0 0 2px;
         }
       }
     }
-
-
   }
 }

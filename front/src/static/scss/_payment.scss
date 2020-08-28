@@ -7,7 +7,9 @@
     }
 
     .list { margin: 0;
-      li { border-bottom: 1px solid #b1b1b1; padding-bottom: 1vh; margin-bottom: 1vh;}     
+      ul {border-bottom: 4px solid #b1b1b1;}
+      li { border-bottom: 1px solid #b1b1b1; padding-bottom: 1vh; margin-bottom: 1vh;}
+      li:last-child {margin-bottom: 0; padding-bottom: 2vh;}  
       .snack-title { font-weight: 400;}
       .snack-number { color: #5e5e5e; font-size: 1.8vh;}      
       .snack-btn { width: 80%;
