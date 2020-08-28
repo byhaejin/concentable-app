@@ -16,21 +16,21 @@
                                     <div class="item-row snack-number">
                                         <span class="iB">({{cost}}원, {{stock}}남음)</span>
                                     </div>
-                                </div>
+                                </div>                                
                                 <div class="item-cell snack-btn">
+                                    <div class="snack-pay">
+                                        <span data-id="ea" class="iB food{{@index}}-count"></span>
+                                    </div>                                    
                                     <div class="stepper cart_stepper{{@index}} stepper-init stepper-small stepper-raised"
                                          data-value-el=".food{{@index}}-count" data-min="0" data-max="{{stock}}">
-                                        <div class="stepper-button stepper-button-minus stepper-fill"></div>
-                                        <div class="stepper-input-wrap">
-                                            <span data-id="ea" class="iB food{{@index}}-count"></span>
-                                          </div>
+                                        <div class="stepper-button stepper-button-minus stepper-fill"></div>                                        
                                         <div class="stepper-button stepper-button-plus stepper-fill"></div>
                                     </div>
                                 </div>                                
                             </div>
                         </li>
                         
-                        <li data-name="item" class="item-content">
+                        <!-- <li data-name="item" class="item-content">
                             <div class="item-inner">
                                 <div class="item-title">
                                     <span class="iB">{{name}}</span> :
@@ -48,19 +48,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         {{/each}}
                     </ul>
-                </div>
-                <div class="card-footer snack-submit">
-                    <div>
-                        <span class="title">합계 : </span>
-                        <span class="total">{{totalCost}}원</span>
+                </div>                
+                <div class="list no-margin-top">                    
+                    <div class="item-content inline-label no-padding-left margin-bottom">
+                        <div class="item-inner pay-total">
+                            <div class="item-title item-label">합계 :</div>
+                            <div class="item-input-wrap">
+                                {{totalCost}}원
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" class="button button-large button-fill block">
-                        결제하기
-                    </button>
                 </div>
+                <button type="button" class="col button button-fill button-large button-outline color-green" >결제하기</button>
             </div>
         </div>
     </div>

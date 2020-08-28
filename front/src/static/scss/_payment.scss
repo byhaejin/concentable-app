@@ -6,16 +6,15 @@
       i {color: #059b5c; margin-right: 6px;}
     }
 
-    .list {
-      li { border-bottom: 1px solid #b1b1b1;}
-      .item-row { padding-bottom: 1vh;}
-      
-      .snack-number {color: #a4a4a4; font-size: 1.8vh;}
-      .snack-btn {width: 55%;
-        .stepper-input-wrap {flex-shrink: 1; text-align: center; padding: 0 10px; border-top: 2px solid #059b5c; border-bottom: 2px solid #059b5c;
-          span {padding-bottom: 6px;}
+    .list { margin: 0;
+      li { border-bottom: 1px solid #b1b1b1; padding-bottom: 1vh; margin-bottom: 1vh;}     
+      .snack-title { font-weight: 400;}
+      .snack-number { color: #5e5e5e; font-size: 1.8vh;}      
+      .snack-btn { width: 80%;
+        .snack-pay { display: inline-block; margin-right: 30px; font-size: 3.5vh; font-weight: bold;}
+        .stepper-button {top: 6px;}
       }
-    } 
+    }
 
     &-submit {
 
@@ -87,8 +86,9 @@
   }
   .pay-total { margin-top: 1vh;
     .item-title {font-size: 2vh; color: #777777; width: 30%;}
-    .item-input-wrap {font-size: 2.6vh; font-weight: bold;}
+    .item-input-wrap {font-size: 3vh; font-weight: bold;}
   }
 }
-.toolbar-inner a {color: #fff;}
-.picker.sheet-modal {background-color: #fff;}
+
+.toolbar-inner a { color: #fff;}
+.picker.sheet-modal { background-color: #fff;}
