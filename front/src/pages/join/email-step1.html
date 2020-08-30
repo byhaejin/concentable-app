@@ -104,7 +104,9 @@
                                     <span class="input-clear-button"></span>
                                 </div>
                                 <div class="item-after">
-                                    <button type="button" class="button button-fill width-auto">인증번호 발송</button>
+                                    <button type="button" class="button button-fill width-auto"
+                                            @click="confirmNumberSend"
+                                    >인증번호 발송</button>
                                 </div>   
                             </div>                            
                         </li>
@@ -116,7 +118,8 @@
                                     <span class="input-clear-button"></span>
                                 </div>
                                 <div class="item-after">
-                                    <button type="button" class="button button-fill width-auto">인증</button>
+                                    <button type="button" class="button button-fill width-auto"
+                                            @click="confirmNumber">인증</button>
                                 </div>
                             </div>                            
                         </li>
@@ -127,6 +130,26 @@
                 </div>
             </form>
         </div>
+
+        <div class="popup concentable-popup">
+            <div class="view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-bg"></div>
+                        <div class="navbar-inner">
+                            <div class="title">개인정보 수집 및 이용동의</div>
+                            <div class="right">
+                                <!-- Link to close popup -->
+                                <a class="link popup-close">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        개인정보 수집 및 ㄴ아ㅣㅓ리마너라ㅣㅁ너ㅏ리
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <!-- component styles -->
@@ -136,7 +159,15 @@
 <script>
     return {
         methods: {
-            //'인증번호 확인'
+            //인증번호 발송
+            confirmNumberSend: function() {
+                this.$app.dialog.alert('인증번호가 발송되었습니다.','');
+            },
+            //인증번호 인증
+            confirmNumber: function() {
+                this.$app.dialog.alert('인증되었습니다.','');
+            },
+            //회원가입
             nextStep: function() {
                 mainView.router.navigate('/auth/join/email-step2/');
             },
