@@ -69,7 +69,8 @@
                                 </div>
                             </div>
                             <div class="item-media">
-                                <button type="button" class="button button-fill width-auto">인증</button>
+                                <button type="button" class="button button-fill width-auto"
+                                        @click="copunAcess">인증</button>
                             </div>                            
                         </li>
                         <li class="item-content item-input item-input-outline">                                
@@ -166,11 +167,11 @@
             }
         },
         methods: {
-            minus() {
-                console.log('minus')
-            },
-            plus() {
-                console.log('plus')
+            //쿠폰 인증
+            copunAcess() {
+
+                //쿠폰 인증 처리후 메시지
+                this.$app.dialog.alert('쿠폰번호가 인증되었습니다.','');
             },
         },
         on: {
