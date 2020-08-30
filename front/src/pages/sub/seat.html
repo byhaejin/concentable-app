@@ -10,7 +10,8 @@
             </div>
 
             <div class="plan-map"
-                 style="background-image:url(../../static/images/seat/plan-map.gif)">
+                 style="background-image:url(../../static/images/seat/plan-map.gif)"
+                 @click="openStandaloneDark">
             </div>
 
             <div class="seat-sort row align-items-center">
@@ -74,10 +75,14 @@
                 },
                 pickerAry: [],
                 picker: null,
+                myPhotoBrowserPopupDark: null,
             }
 
         },
         methods: {
+            openStandaloneDark: function () {
+                this.myPhotoBrowserPopupDark.open();
+            },
             getFachSeatInfo: function () {
                 const _self = this;
                 app.request.get('../static/js/sample-seat.JSON', { barcode:'123456' }, function (res) {
@@ -132,6 +137,15 @@
         on: {
             pageInit: function () {
                 const _self = this;
+
+                _self.myPhotoBrowserPopupDark = app.photoBrowser.create({
+                    photos : [
+                        '../../static/images/seat/plan-map.gif',
+                    ],
+                    caption: 'Amazing beach in Goa, India',
+                    theme: 'dark',
+                    type: 'popup'
+                });
 
                 this.picker = app.picker.create({
                     containerEl: '#picker-seat-container',
