@@ -104,4 +104,28 @@ label.item-checkbox>.icon-checkbox {
   text-decoration: line-through;
 }
 
+//약관 박스
+.terms_box{
+  position: relative;
+  overflow: auto;
+  width: 90%;
+  margin: 0px auto;
+  padding:6px 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #dadada;
+  box-sizing: border-box;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #8f8f8f;
+  white-space: pre-line;
+  scrollbar-base-color: #d9d9d9;
+  scrollbar-arrow-color: #8e8e8e;
+  scrollbar-3dlight-color: #d9d9d9;
+  scrollbar-darkshadow-color: #d9d9d9;
+  scrollbar-face-color: #d9d9d9;
+  scrollbar-highlight-color: #d9d9d9;
+  scrollbar-shadow-color: #d9d9d9;
+  scrollbar-track-color: #f2f2f2;
+  -webkit-overflow-scrolling: touch;
+}
 

@@ -10,7 +10,7 @@
     .js-tosh {display: inline-block; width: auto; font-size: 24px; color: #61e9ad;}
   }
   .plan-map {
-    height: calc(40vh - #{$height-seat-zone});
+    height: calc(35vh - #{$height-seat-zone});
     background-color: #102a20;
     background-repeat: no-repeat;
     background-position: center;
@@ -34,7 +34,9 @@
   }
 
   .seat-select {
-    .block { padding: 2vh 1vh;  margin: 0;
+    .block {
+      padding: 1vh 0;
+      margin: 0;
       .picker-columns {font-size: 2.3vh;}
     }
 
