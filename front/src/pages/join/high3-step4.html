@@ -132,7 +132,9 @@
                 if(formData['checkbox-agree'].length < $$('[name="checkbox-agree"]').length) {
                     this.$app.dialog.alert('약관모두 동의해 주세요!','');
                 } else {
-                    mainView.router.navigate('/');
+                    this.$app.dialog.alert('회원가입 되었습니다.','', function(){
+                        mainView.router.navigate('/');
+                    });
                 }
             },
         },
