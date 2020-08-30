@@ -29,7 +29,7 @@
             </div>
             <div class="block">
                 <button type="button" class="col button button-fill button-large button-outline margin-bottom" @click="nextStep">자리 선택</button>
-                <button type="button" class="col button button-fill button-large button-outline" @click="nextStep">자리 문의</button>
+                <button type="button" class="col button button-fill button-large button-outline" @click="nextStep2">자리 문의</button>
             </div>
         </div>
     </div>
@@ -44,6 +44,9 @@
         methods: {
             //'인증번호 확인'
             nextStep: function() {
+                mainView.router.navigate('/seat/');
+            },
+            nextStep2: function() {
                 mainView.router.navigate('/');
             },
         }
