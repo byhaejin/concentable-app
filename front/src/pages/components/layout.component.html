@@ -27,7 +27,7 @@
         </div>
 
         <!-- user info -->
-        <div class="panel panel-right panel-right-1 panel-cover panel-resizable panel-init no-padding">
+        <div class="panel panel-right panel-right-1 panel-cover panel-init no-padding">
             <div class="block top-infor">
                 <div class="list padding top-bar">
                     <div class="item-inner">
@@ -85,7 +85,13 @@
                         <div class="item-content infor-btn">
                             <div class="item-inner">
                                 <div class="item-title"><i class="icon-square_list"></i>사물함</div>
-                                <div class="item-after">1263, 1264, 11, 112 <a href="" class="button button-fill float-right display-inline-block">수정</a></div>
+                                <div class="item-after">
+                                    1263, 1264, 11, 112
+                                    <button type="button"
+                                            class="button button-fill float-right display-inline-block"
+                                            @click="lockerEdit">
+                                        <span>수정</span></button>
+                                </div>
                             </div>                            
                         </div>
                       </li>
@@ -136,6 +142,20 @@
             }
         },
         methods: {
+            //라이트메뉴/사물함/수정
+            lockerEdit() {
+                const _self = this;
+
+                app.dialog.prompt('사물함 번호를 변경하시겟습니까?','사물함 번호 변경', function (name) {
+
+                    //중간에 사욜할수 있는 번호인지 체크하는 함수를 넣는다.
+
+                    //사용할수 있는 번호일경우
+                    app.dialog.confirm('정말 다음번호로 변경하시겠습니까?<br> ' + name,'', function () {
+                        app.dialog.alert('다음 사물함 번호로 바뀌었습니다.', name);
+                    });
+                });
+            },
             login() {
                 this.$setState({ isLogin: true });
             },
