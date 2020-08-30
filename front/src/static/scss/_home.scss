@@ -7,12 +7,12 @@
 
   &-top { background-color: #fff;
     .logo {
-      padding: 5vh 0 3vh; margin-left: 3vh; color: #085837; font-size: 8vh; border-bottom: 2px solid #085837;
+      padding: 4.5vh 0 3vh; margin-left: 3vh; color: #085837; font-size: 8vh; border-bottom: 2px solid #085837;
     }
   }
 
   &-user {
-    padding: 3vh 30px; background-color: #fff;
+    padding: 3vh 30px 2vh; background-color: #fff;
     
     p {margin: 0; padding-bottom: 12px; font-size: 16px;}
     .name-txt {font-size: 3.3vh; font-weight: bold; border: none; padding-bottom: 6px;
@@ -56,7 +56,7 @@
     display: flex;
     justify-content: center;
 
-    padding-top: 1vh;
+    padding: .5vh 0;
     text-align: center;
 
     a {

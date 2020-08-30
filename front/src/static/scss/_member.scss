@@ -1,19 +1,19 @@
 .member {
     //약관
     .page-content {background-color: #fff;}
-    .list ul::before {background-color: #fff;}  
+    .list ul::before {background-color: #fff;}
     #agree-form {
         .list {margin-top: 20px;
             ul::before {height: 0px;}
-            ul::after {height: 0px;}            
+            ul::after {height: 0px;}
             .item-inner::after {height: 0px;}
             .item-title {font-size:14px;}
-            .item-content {min-height: 24px; padding-left: 0px;}            
+            .item-content {min-height: 24px; padding-left: 0px;}
         }
         .icon-checkbox {border-radius:60%;}
         .icon-checkbox::after {font-size: 12px;}
         label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {
-            border-color: #397e43; 
+            border-color: #397e43;
             background-color: #397e43;
          }
     }
@@ -24,20 +24,20 @@
         .icon-checkbox {border-radius:60%;}
         .icon-checkbox::after {font-size: 12px;}
         label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox, label.item-checkbox input[type="checkbox"]:indeterminate ~ .icon-checkbox {
-            border-color: #397e43; 
+            border-color: #397e43;
             background-color: #397e43;
         }
 
-        .item-media { min-width: auto; 
-            i {font-size: 3vh; color: #323232;}        
+        .item-media { min-width: auto;
+            i {font-size: 3vh; color: #323232;}
         }
-        .item-inner { padding-top:0px; 
+        .item-inner { padding-top:0px;
             .item-label {width: 25%;}
         }
         .item-inner::after {transform-origin: 100%;}
-        
+
         .tel-box {padding-right:calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); padding-bottom: var(--f7-list-item-padding-vertical);}
-        .tel-box .width-auto {height:3.6vh}
+        .tel-box .width-auto {height:3.6vh; line-height: 3.6vh}
         .tel-box .item-inner {padding-top: var(--f7-list-item-padding-vertical);}
     }
     .block {
@@ -47,26 +47,26 @@
         margin-left: calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left)); margin-right: calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-right));
         img {max-width: 100%;}
     }
-    
+
     //고3 회원가입
     #high3-step3-form {
         .block-title { border-bottom: 1px solid #000;}
         .block p {color: #7c7c7c;}
         .card {margin: var(--f7-typography-margin) !important;}
         .card-header {
-            font-size: var(--f7-card-font-size); border-bottom: 1px solid #d6d7d8; 
+            font-size: var(--f7-card-font-size); border-bottom: 1px solid #d6d7d8;
             padding: var(--f7-card-content-padding-vertical) var(--f7-card-content-padding-horizontal);
         }
-        textarea {width: 100%; min-height: 60px;}    
+        textarea {width: 100%; min-height: 60px;}
         .long { height: 120px;}
     }
-    
+
     #high3-step4-form {
         .block-title { border-bottom: 1px solid #000;}
         .block p {color: #7c7c7c;}
         .card {margin: var(--f7-typography-margin) !important;}
         .card-header {
-            font-size: var(--f7-card-font-size); border-bottom: 1px solid #d6d7d8; 
+            font-size: var(--f7-card-font-size); border-bottom: 1px solid #d6d7d8;
             padding: var(--f7-card-content-padding-vertical) var(--f7-card-content-padding-horizontal);
         }
         label.item-checkbox > .icon-checkbox {margin-right: 10px;}
