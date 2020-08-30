@@ -207,6 +207,7 @@ html.with-panel-right-cover .panel-backdrop-in {
       .item-title {font-size: 24px; font-weight: bold;}
     }
     .list {margin: 0;}
+    .list ul::before {height: 0px !important;}
     .list .item-inner {padding: 0;}
     .infor-list { color: #fff; margin-bottom:0; background-color: #017444;
       ul {margin: 0;}
