@@ -173,7 +173,8 @@ html, body {
   }
   a {color: #a2fb9c;}
   .links-list { margin-top: 1.5vh;
-    ul {background-color: #059b5c;}
+    ul {background-color: #059b5c;}    
+    li {border-bottom: 1px solid #017444;}
     a::before {color: #4cd964;}
   }
 }
@@ -199,14 +200,13 @@ html.with-panel-right-cover .panel-backdrop-in {
     .item-inner a {font-size:28px; color: #fff;}    
   }
   .block {
-    margin-top: 0; padding: 0;
+    margin-top: 0; padding: 0; padding-top: 1 !important;
     .infor-box { color: #fff;
       .item-media { padding: 0;}
       .item-media i {font-size: 70px;}
       .item-title {font-size: 24px; font-weight: bold;}
     }
     .list {margin: 0;}
-    .list ul::before {height: 0px !important;}
     .list .item-inner {padding: 0;}
     .infor-list { color: #fff; margin-bottom:0; background-color: #017444;
       ul {margin: 0;}
@@ -215,6 +215,7 @@ html.with-panel-right-cover .panel-backdrop-in {
       .item-title { color: #61e9ad; font-weight: bold; padding-bottom: 3px;}
       .item-title i {padding-right:6px;}
       .infor-btn a { font-weight: normal; font-size: 11px; height: 2.6vh; line-height: 2.6vh;}
+      .infor-btn button { padding:2px;}
     }
     .links-list {
       a {padding: 0;}
