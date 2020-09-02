@@ -63,7 +63,9 @@
                                     <span class="input-clear-button"></span>
                                 </div>
                                 <div class="item-after">
-                                    <button type="button" class="button button-fill width-auto">인증번호 발송</button>
+                                    <button type="button"
+                                            class="button button-fill width-auto"
+                                            @click="confirmNumberSend">인증번호 발송</button>
                                 </div>   
                             </div>                            
                         </li>
@@ -75,7 +77,9 @@
                                     <span class="input-clear-button"></span>
                                 </div>
                                 <div class="item-after">
-                                    <button type="button" class="button button-fill width-auto">인증</button>
+                                    <button type="button"
+                                            class="button button-fill width-auto"
+                                            @click="confirmNumber">인증</button>
                                 </div>
                             </div>                            
                         </li>
@@ -104,7 +108,15 @@
 <script>
     return {
         methods: {
-            //'인증번호 확인'
+            //인증번호 발송
+            confirmNumberSend: function() {
+                this.$app.dialog.alert('인증번호가 발송되었습니다.','');
+            },
+            //인증번호 인증
+            confirmNumber: function() {
+                this.$app.dialog.alert('인증되었습니다.','');
+            },
+            //다음
             nextStep: function() {
                 mainView.router.navigate('/auth/join/high3-step2/');
             },

@@ -10,7 +10,7 @@
                             <div class="item-inner">
                                 <div class="item-title item-content-dropdown-expanded">
                                     <label class="item-checkbox item-content no-padding-left">
-                                        <input type="checkbox" name="checkbox-agree" value="concentable"/>
+                                        <input type="checkbox" name="checkbox-agree" />
                                         <i class="icon icon-checkbox"></i>
                                         [필수]개인정보 수집 및 이용동의
                                     </label>
@@ -24,7 +24,7 @@
                             <div class="item-media"><i class="icon-pencil_ellipsis_rectangle"></i></i></div>
                             <div class="item-inner">                                
                                 <div class="item-input-wrap">
-                                    <input type="text" placeholder="성명" required="" validate="" data-error-message="이름을 입력하세요.">
+                                    <input type="text" name="username" placeholder="성명" required="" validate="" data-error-message="이름을 입력하세요.">
                                     <span class="input-clear-button"></span>                                        
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                             <div class="item-media"><i class="icon-calendar"></i></i></div>
                             <div class="item-inner">                                
                                 <div class="item-input-wrap">
-                                    <input type="text" placeholder="생년월일" required="" validate="" pattern="[0-9]*" data-error-message="숫자 만 입력가능합니다.">
+                                    <input type="text" name="birth" placeholder="생년월일" required="" validate="" pattern="[0-9]*" data-error-message="숫자 만 입력가능합니다.">
                                     <span class="input-clear-button"></span>                                        
                                 </div>
                             </div>
@@ -145,8 +145,8 @@
                         </div>
                     </div>
                     <div class="page-content">
-                        <br>
-                        <div class="terms_box">
+                        <br />
+                        <div class="terms_box" style="margin-bottom: 15px;">
                             이 약관은 (주)공독 및 (주)동독 신하의 컨센터블, 컨센터블24시독서실,컨센티블스페이스(이하 ‘회사’라 합니다.)와
                             회사가 직/간접으로 제공하는 모든 온/오프라인 서비스를 이용하는 자(이하 ‘이용자’ 또는 ‘회원’이라 힙니다.) 사이에
                             이 약관은 (주)공독 및 (주)동독 신하의 컨센터블, 컨센터블24시독서실,컨센티블스페이스(이하 ‘회사’라 합니다.)와
@@ -158,7 +158,6 @@
                             이 약관은 (주)공독 및 (주)동독 신하의 컨센터블, 컨센터블24시독서실,컨센티블스페이스(이하 ‘회사’라 합니다.)와
                             회사가 직/간접으로 제공하는 모든 온/오프라인 서비스를 이용하는 자(이하 ‘이용자’ 또는 ‘회원’이라 힙니다.) 사이에
                         </div>
-                        <br>
                     </div>
                 </div>
             </div>
@@ -167,7 +166,6 @@
 </template>
 <!-- component styles -->
 <style scoped>
-   
 </style>
 <script>
     return {
@@ -182,7 +180,10 @@
             },
             //회원가입
             nextStep: function() {
-                this.$app.dialog.alert('회원가입 되었습니다.','', function(){
+                const formData = app.form.convertToData('#emailcertification-form');
+                console.log(formData)
+
+                this.$app.dialog.alert('가입되었습니다 !','',function(){
                     mainView.router.navigate('/');
                 });
             },
