@@ -155,10 +155,46 @@ var routes = [
             transition: 'f7-cover',
         },
     },
-    {
-        name: 'expand',
-        path: '/expand/',
-        componentUrl: '../expand/expand.html',
+    {// 전지점 실시간이용현황
+        name: 'zonepresent',
+        path: '/zonepresent/',
+        componentUrl: '../sub/zonepresent.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 전지점 실시간이용현황
+        name: 'zonepresent',
+        path: '/zonepresent/',
+        componentUrl: '../sub/zonepresent.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 공지사항
+        name: 'notify',
+        path: '/notify/',
+        componentUrl: '../sub/notify.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 마이페이지 / 마이페이지
+        name: 'mypage',
+        path: '/mypage/mypage/',
+        componentUrl: '../mypage/mypage.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 마이페이지 / 1:1문의
+        name: 'enquiry',
+        path: '/mypage/enquiry/',
+        componentUrl: '../mypage/enquiry.html',
         //beforeEnter: checkAuth,//로그인 이후 가능
         options: {
             transition: 'f7-cover',

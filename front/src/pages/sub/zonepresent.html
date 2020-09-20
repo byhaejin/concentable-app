@@ -1,0 +1,183 @@
+<template>
+    <div class="page zonepresent">
+        <sub-header title="자리선택"  nomenu="true"></sub-header>
+        <div class="page-content">
+            <div class="seat-zone row align-items-center">
+                <h3> 컨센터블 24시 독서실 1호점(주엽역) </h3>
+                <button type="button" class="button js-tosh">
+                    <span><i class="icon icon-exclamationmark_circle_fill"></i></span>
+                </button>
+            </div>
+
+            <div class="plan-map"
+                 style="background-image:url(../static/images/seat/plan-map.gif)"
+                 @click="openStandaloneDark">
+            </div>
+
+            <div class="seat-sort row align-items-center">
+                <label class="item-checkbox">
+                    <input type="checkbox" id="sort1" name="sort" value="concent" checked="checked"/>
+                    <i class="icon icon-checkbox"></i>
+                    <div class="item-inner">
+                        <div class="item-title">컨센트</div>
+                    </div>
+                </label>
+
+                <label class="item-checkbox">
+                    <input type="checkbox" id="sort2" name="sort" value="bitwin" checked="checked"/>
+                    <i class="icon icon-checkbox"></i>
+                    <div class="item-inner">
+                        <div class="item-title">비트원</div>
+                    </div>
+                </label>
+
+                <label class="item-checkbox">
+                    <input type="checkbox" id="sort3" name="sort" value="able" checked="checked"/>
+                    <i class="icon icon-checkbox"></i>
+                    <div class="item-inner">
+                        <div class="item-title">에이블</div>
+                    </div>
+                </label>
+
+                <label class="item-checkbox">
+                    <input type="checkbox" id="sort4" name="sort" value="cafe" checked="checked"/>
+                    <i class="icon icon-checkbox"></i>
+                    <div class="item-inner">
+                        <div class="item-title">카페</div>
+                    </div>
+                </label>
+            </div>
+
+            <div class="seat-select">
+                <div class="block block-strong">
+                    <div id="picker-seat-container"></div>
+                </div>
+
+                <div class="seat-select-pos">
+                    <button type="button" class="col button button-fill button-large button-outline" @click="sendData">
+                        <span>선택완료</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+                pickerSouce: {
+                    concent: [],
+                    bitwin: [],
+                    able: [],
+                    cafe: [],
+                },
+                pickerAry: [],
+                picker: null,
+                myPhotoBrowserPopupDark: null,
+            }
+
+        },
+        methods: {
+            openStandaloneDark: function () {
+                this.myPhotoBrowserPopupDark.open();
+            },
+            getFachSeatInfo: function () {
+                const _self = this;
+                app.request.get('../static/js/sample-seat.JSON', { barcode:'123456' }, function (res) {
+                    let dataAry  = JSON.parse(res).data;
+                    _self.$setState({ pickerSouce : dataAry });
+
+                    _self.getSeatInfo();
+                });
+            },
+            getSeatInfo: function () {
+                const _self = this;
+                let dataAry =[];
+                let dataAry1 = [];
+                let dataAry2 = [];
+                let dataAry3 = [];
+                let values = [];
+                let displayValues = [];
+
+                dataAry = ($$('#sort1').prop('checked')) ? _self.pickerSouce.concent : [];
+                dataAry1 = ($$('#sort2').prop('checked')) ? dataAry.concat(_self.pickerSouce.bitwin) : dataAry;
+                dataAry2 = ($$('#sort3').prop('checked')) ? dataAry1.concat(_self.pickerSouce.able) : dataAry1;
+                dataAry3 = ($$('#sort4').prop('checked')) ? dataAry2.concat(_self.pickerSouce.cafe) : dataAry2;
+
+                _self.$setState({ pickerAry : dataAry3 });
+
+                dataAry3.map((item, index) => {
+                    // 자리가 사용중이면 1, 아니면 0
+                    const seatname = (Number(item.use) === 0) ? item.name + '(사용가능)' :  "<span class='nop'>" + item.name + '(사용중)</span>';
+                    const seatvalue = (Number(item.use) === 0) ? item.id : 'none';
+
+                    values.push(seatvalue);
+                    displayValues.push(seatname);
+                });
+
+                _self.picker.cols[0].setValue(values[0]);
+                _self.picker.cols[0].replaceValues(values, displayValues);
+                console.log(_self.picker.cols[0].value)
+            },
+            sendData: function () {
+
+                if (this.picker.cols[0].value === 'none') {
+                    //사용중인 자리일경우
+                    this.$app.dialog.alert('선택할수 없는 자리입니다.', '');
+
+                } else {
+                    //사용가능한 자리선택시
+                    this.$app.dialog.alert('선택자리 ID : ' + this.picker.cols[0].value, '');
+                }
+
+            }
+        },
+        on: {
+            pageInit: function () {
+                const _self = this;
+
+                _self.myPhotoBrowserPopupDark = app.photoBrowser.create({
+                    photos : [
+                        '../static/images/seat/img1.png',
+                    ],
+                    theme: 'dark',
+                    toolbar: false,
+                    type: 'popup'
+                });
+
+                this.picker = app.picker.create({
+                    containerEl: '#picker-seat-container',
+                    backdrop: false,
+                    toolbar: false,
+                    cols: [
+                        {
+                            textAlign: 'center',
+                            values: ['자리선택']
+                        }
+                    ],
+                    on: {
+                        open: function () {
+                            _self.getFachSeatInfo();
+                        }
+                    }
+                });
+
+                // 자리선택을 재정리 한다.
+                $$('[name="sort"]').on('change', function (e) {
+
+                    if ($$('[name="sort"]:checked').length === 1) {
+                        //자리종류가 1개시 변경되지 않는다.
+                        $$('[name="sort"]:checked').prop('disabled', true);
+                    } else {
+                        // 종류별 자리선택을 재정리 한다.
+                        $$('[name="sort"]:checked').prop('disabled', false);
+                    }
+                    _self.getSeatInfo();
+
+                });
+            }
+        },
+    }
+</script>
