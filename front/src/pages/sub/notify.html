@@ -1,0 +1,120 @@
+<template>
+    <div class="page notify">
+        <sub-header title="공지사항"  nomenu="true"></sub-header>
+        <div class="page-content">
+            <!-- sort list -->
+            <div class="sort-box row">
+                <div class="col">
+                    <a  class="item-link smart-select smart-select-init" data-open-in="sheet">
+                        <select id="selectzone" name="selectzone">
+                            <option value="all" selected>전체</option>
+                            <option value="zone1">1호점</option>
+                            <option value="zone2">2호점</option>
+                            <option value="zone3">3호점</option>
+                        </select>
+                        <div class="sort-box-content item-content">
+                            <div class="item-inner">
+                                <div class="item-title"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <label class="item-checkbox row justify-content-flex-start item-content">
+                        <input type="checkbox" name="myzone" value="zone1" />
+                        <i class="icon icon-checkbox"></i>
+                        <div class="item-inner">
+                            <div class="item-title">내 이용지점만 보기</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <!-- e: sort list -->
+
+            <!-- list -->
+            <div class="list accordion-list">
+                <ul>
+                    {{#each viewAry}}
+                    <li class="accordion-item"><a href="#" class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <span class="zone">[{{zonename}}]</span>
+                                <span class="title">{{title}}</span>
+                                <span class="update">{{update}}</span>
+                            </div>
+                        </div></a>
+                        <div class="accordion-item-content">
+                            <div class="block">
+                                {{desc}}
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <!-- e: list -->
+
+            <!-- pagination -->
+            <div class="pagination">
+                <button class="btn btn-page js-prev">
+                    <i class="f7-icons">chevron_left_2</i>
+                </button>
+                <button class="btn btn-circle on">1</button>
+                <button class="btn btn-circle">2</button>
+                <button class="btn btn-circle">3</button>
+                <button class="btn btn-page btn-circle js-next">
+                    <i class="f7-icons">chevron_right_2</i>
+                </button>
+            </div>
+            <!-- e: pagination -->
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+                originAry: [],
+                viewAry : []
+            }
+        },
+        methods: {
+            getFachSeatInfo: function () {
+                const _self = this;
+                app.request.get('../static/js/sample-notify.JSON?rel=1234', { barcode:'123456' }, function (res) {
+                    let dataAry  = JSON.parse(res).data;
+                    _self.$setState({ originAry : dataAry });
+                    _self.$setState({ viewAry : dataAry });
+                });
+            },
+            sortData: function(id) {
+                let sortAry = [];
+                for(let i = 0; i < this.originAry.length; i++) {
+                    if (id === 'all' || id === this.originAry[i].zoneid) {
+                        sortAry.push(this.originAry[i]);
+                    }
+                }
+                this.$setState({ viewAry : sortAry });
+            }
+        },
+        on: {
+            pageInit: function () {
+                const _self = this;
+                this.getFachSeatInfo();
+
+                $$("select[name='selectzone']").on('change', function(e){
+                    const val = $$(this).val();
+                    console.log("Selected city : " + val);
+                    _self.sortData(val);
+                });
+
+                $$("input[name='myzone']").on('change', function(e){
+                    const val = $$(this).val();
+                    const zoneid = ($$(this).prop('checked')) ? val : 'all';
+
+                    $$("select[name='selectzone']").val(zoneid).trigger('change');
+                });
+            }
+        },
+    }
+</script>
