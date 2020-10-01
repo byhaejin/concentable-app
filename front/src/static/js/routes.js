@@ -146,6 +146,14 @@ var routes = [
             transition: 'f7-cover',
         },
     },
+    {// 결제 선택
+        name: 'approval',
+        path: '/payment/approval/',
+        componentUrl: '../payment/approval.html',        
+        options: {
+            transition: 'f7-cover',
+        },
+    },
     {// 자리선택하기
         name: 'seat',
         path: '/seat/',

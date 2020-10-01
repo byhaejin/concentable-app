@@ -1,0 +1,25 @@
+<template>
+<div class="page payment">
+    <sub-header title="결제선택"  nomenu="true"></sub-header>
+    <div class="page-content">        
+        <div class="block">
+            <p class="row">
+                <button class="col button button-large button-fill">Button</button>
+                <button class="col button button-large button-fill">Fill</button>
+            </p>
+            <p class="row">
+                <button class="col button button-large button-fill">Button</button>                
+            </p>
+        </div>
+    </div>
+</div>
+</template>
+<script>
+    return {        
+        methods: {            
+            goStart: function () {                
+                mainView.router.navigate('');
+            }
+        },        
+    }
+</script>

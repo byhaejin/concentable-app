@@ -153,7 +153,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="col button button-fill button-large button-outline color-green" >결제하기</button>
+                <button type="button" @click="goStart" class="col button button-fill button-large button-outline color-green" >결제하기</button>
             </form>
         </div>
     </div>
@@ -173,6 +173,9 @@
                 //쿠폰 인증 처리후 메시지
                 this.$app.dialog.alert('쿠폰번호가 인증되었습니다.','');
             },
+            goStart: function () {                
+                mainView.router.navigate('/payment/approval/');
+            }
         },
         on: {
             pageInit: function () {
