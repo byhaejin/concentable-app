@@ -1,0 +1,39 @@
+.mypage {
+  &-user {
+    padding: 3vh 30px 2vh; background-color: #fff;
+
+    p {margin: 0; padding-bottom: 12px; font-size: 16px;}
+    .name-txt {
+      font-size: 3.3vh;
+      font-weight: bold; border: none; padding-bottom: 6px;
+      color: #000;
+      strong {color: #059b5c;}
+    }
+    .list {font-size: 14px;
+      .item-content {min-height: 30px; border-top: 1px solid #959595;}
+      .item-media {padding: 0; width: 58px;
+        i {margin-right: 5px; padding-top: 2px;}
+      }
+      .item-inner {padding: 0; min-height: 30px; color: #959595;}
+    }
+
+    .row {
+      padding-bottom: 3vh;
+    }
+    .photo {
+      width: 11vh;
+      height: 11vh;
+      background: url(../images/home/photo-no-user.png) no-repeat center center;
+      background-size: 100%;
+    }
+
+    .infor-icon {font-size: 110px; line-height: 0; color: #d6d6d6;}
+    .infor-txt { font-weight: bold;
+      .title { color: #000; margin: 0; padding-bottom: 0.2em;}
+      P {color: #085837; margin: 0 0 0.9em; font-size: 13px;}
+    }
+    .button {font-size: 2.608vh; font-weight: bolder; background: #059b5c; height: 60px; padding: 8px 0;
+      i {font-size: 3.6vh; margin-right: 8px;}
+    }
+  }
+}

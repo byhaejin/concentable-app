@@ -208,10 +208,55 @@ var routes = [
             transition: 'f7-cover',
         },
     },
+    {// 마이페이지 / 개인정보 수정
+        name: 'usermodi',
+        path: '/mypage/usermodi/',
+        componentUrl: '../mypage/user-modi.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 마이페이지 / 결제하기
+        name: 'mypayment',
+        path: '/payment/mypayment/',
+        componentUrl: '../payment/mypayment.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 마이페이지 / 결제내역
+        name: 'mypayment-history',
+        path: '/payment/mypayment/history/',
+        componentUrl: '../payment/mypayment-history.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 마이페이지 / 쿠폰
+        name: 'coupon',
+        path: '/payment/coupon/',
+        componentUrl: '../payment/coupon.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
     {// 마이페이지 / 1:1문의
         name: 'enquiry',
         path: '/mypage/enquiry/',
         componentUrl: '../mypage/enquiry.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
+    {// 마이페이지 / 1:1문의 / 지난 문의 내역
+        name: 'enquiry-history',
+        path: '/mypage/enquiry/history/',
+        componentUrl: '../mypage/enquiry-history.html',
         //beforeEnter: checkAuth,//로그인 이후 가능
         options: {
             transition: 'f7-cover',
