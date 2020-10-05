@@ -5,12 +5,14 @@
             <!-- sort list -->
             <div class="sort-box row">
                 <div class="col">
-                    <a  class="item-link smart-select smart-select-init" data-open-in="sheet">
+                    <a class="item-link smart-select smart-select-init"
+                       data-open-in="sheet"
+                       data-sheet-close-link-text="닫기">
                         <select id="selectzone" name="selectzone">
                             <option value="all" selected>전체</option>
-                            <option value="zone1">1호점</option>
-                            <option value="zone2">2호점</option>
-                            <option value="zone3">3호점</option>
+                            {{#each zoneList}}
+                            <option value="{{id}}">{{name}}</option>
+                            {{/each}}
                         </select>
                         <div class="sort-box-content item-content">
                             <div class="item-inner">
@@ -74,19 +76,31 @@
     return {
         data: function () {
             return {
+                zoneList: [],
                 originAry: [],
                 viewAry : []
             }
         },
         methods: {
+            //지점 목록 불러오기
+            getFachZoneList: function () {
+                const _self = this;
+                app.request.get('../static/js/sample-notify-zone.JSON?rel=123',  function (res) {
+                    let dataAry  = JSON.parse(res).data;
+                    _self.$setState({ zoneList : dataAry });
+                    console.log(dataAry)
+                });
+            },
+            //공지사항 불러오기
             getFachSeatInfo: function () {
                 const _self = this;
-                app.request.get('../static/js/sample-notify.JSON?rel=1234', { barcode:'123456' }, function (res) {
+                app.request.get('../static/js/sample-notify.JSON?rel=1234', function (res) {
                     let dataAry  = JSON.parse(res).data;
                     _self.$setState({ originAry : dataAry });
                     _self.$setState({ viewAry : dataAry });
                 });
             },
+            //공지사항 분류하기
             sortData: function(id) {
                 let sortAry = [];
                 for(let i = 0; i < this.originAry.length; i++) {
@@ -100,11 +114,15 @@
         on: {
             pageInit: function () {
                 const _self = this;
+                this.getFachZoneList();
                 this.getFachSeatInfo();
 
                 $$("select[name='selectzone']").on('change', function(e){
                     const val = $$(this).val();
-                    console.log("Selected city : " + val);
+
+                    if ($$("input[name='myzone']").val() !== val) {
+                        $$("input[name='myzone']").prop('checked', false);
+                    }
                     _self.sortData(val);
                 });
 
