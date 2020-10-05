@@ -181,6 +181,15 @@ var routes = [
             transition: 'f7-cover',
         },
     },
+    {// 알림
+        name: 'alert',
+        path: '/alert/',
+        componentUrl: '../sub/alert.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
     {// 공지사항
         name: 'notify',
         path: '/notify/',

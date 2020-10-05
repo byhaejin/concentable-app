@@ -1,0 +1,86 @@
+<template>
+    <div class="page notify">
+        <sub-header title="알림"  nomenu="true"></sub-header>
+        <div class="page-content">
+
+            <!-- list -->
+            <div class="list accordion-list">
+                <ul>
+                    {{#each viewAry}}
+                    <li class="accordion-item"><a href="#" class="item-content item-link">
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <div><span class="dot"></span></div>
+                                <span class="title">{{title}}</span>
+                                <span class="update">{{update}}</span>
+                            </div>
+                        </div></a>
+                        <div class="accordion-item-content">
+                            <div class="block">
+                                {{desc}}
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <!-- e: list -->
+
+            <!-- pagination -->
+            <sub-pagination pages="{{pagesAry.join('')}}"
+                            now="{{nowPage}}" />
+            <!-- e: pagination -->
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+                nowPage: 1,
+                pagesAry: [],
+                viewAry : []
+            }
+        },
+        methods: {
+            /** 알림 불러오기
+             * idx: 호출할 페이지번호
+             * */
+            getFachSeatList: function (idx) {
+                const _self = this;
+                app.request.get('../static/js/sample-notify.JSON?rel=123', {
+                    pageindex: idx
+                },function (res) {
+                    let dataAry  = JSON.parse(res).data;
+                    _self.$setState({ viewAry : dataAry.list });
+                    _self.$setState({ pagesAry : dataAry.pages });
+                    _self.$setState({ nowPage : dataAry.pageindex });
+                });
+            },
+            // click pagination
+            setPagination(idx) {
+                if (idx === 'next') {
+                    idx = Number(_self.nowPage) + 1
+                }
+
+                if (idx === 'prev') {
+                    idx = Number(_self.nowPage) - 1
+                    idx = (idx <= 0) ? 1 : idx;
+                }
+
+                this.getFachSeatList(idx, this.sortid);
+            }
+        },
+        on: {
+            pageInit: function () {
+                const _self = this;
+                this.getFachSeatList(_self.nowPage);
+
+                //pagination click
+                $$(".pagination").on('click','[data-pagination-id]', function (e){
+                    _self.setPagination(Number($$(this).data('pagination-id')));
+                })
+            }
+        },
+    }
+</script>

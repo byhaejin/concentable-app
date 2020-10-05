@@ -57,17 +57,9 @@
             <!-- e: list -->
 
             <!-- pagination -->
-            <div class="pagination">
-                <button class="btn btn-page js-prev">
-                    <i class="f7-icons">chevron_left_2</i>
-                </button>
-                <button class="btn btn-circle on">1</button>
-                <button class="btn btn-circle">2</button>
-                <button class="btn btn-circle">3</button>
-                <button class="btn btn-page btn-circle js-next">
-                    <i class="f7-icons">chevron_right_2</i>
-                </button>
-            </div>
+            <sub-pagination pages="{{pagesAry.join('')}}"
+                            now="{{nowPage}}" />
+
             <!-- e: pagination -->
         </div>
     </div>
@@ -76,6 +68,9 @@
     return {
         data: function () {
             return {
+                nowPage: 1,
+                pagesAry: [],
+                sortid: 'all',
                 zoneList: [],
                 originAry: [],
                 viewAry : []
@@ -88,20 +83,35 @@
                 app.request.get('../static/js/sample-notify-zone.JSON?rel=123',  function (res) {
                     let dataAry  = JSON.parse(res).data;
                     _self.$setState({ zoneList : dataAry });
-                    console.log(dataAry)
                 });
             },
-            //공지사항 불러오기
-            getFachSeatInfo: function () {
+            /** 공지사항 불러오기
+             * idx: 호출할 페이지번호
+             * sortid: 분류할 zone의 idx
+             * */
+            getFachSeatList: function (idx, sortid) {
                 const _self = this;
-                app.request.get('../static/js/sample-notify.JSON?rel=1234', function (res) {
+                app.request.get('../static/js/sample-notify.JSON?rel=123', {
+                    pageindex: idx,
+                    sort: sortid,
+                },function (res) {
                     let dataAry  = JSON.parse(res).data;
-                    _self.$setState({ originAry : dataAry });
-                    _self.$setState({ viewAry : dataAry });
+                    _self.$setState({ originAry : dataAry.list });
+                    _self.$setState({ viewAry : dataAry.list });
+                    _self.$setState({ pagesAry : dataAry.pages });
+                    _self.$setState({ nowPage : dataAry.pageindex });
                 });
             },
             //공지사항 분류하기
             sortData: function(id) {
+                const _self = this;
+                _self.$setState({ sortid : id});
+                //this.getFachSeatList(_self.nowPage, _self.sortid);
+                /**
+                 * todo 원래는 getFachSeatList(페이지번호, 분류id)를 다시 호출해서 패이지를 꾸며야 하나
+                 * 현재는 보기용으로 불러온 데이타에서 분류 한다.
+                 */
+
                 let sortAry = [];
                 for(let i = 0; i < this.originAry.length; i++) {
                     if (id === 'all' || id === this.originAry[i].zoneid) {
@@ -109,13 +119,26 @@
                     }
                 }
                 this.$setState({ viewAry : sortAry });
+            },
+            // click pagination
+            setPagination(idx) {
+                if (idx === 'next') {
+                    idx = Number(_self.nowPage) + 1
+                }
+
+                if (idx === 'prev') {
+                    idx = Number(_self.nowPage) - 1
+                    idx = (idx <= 0) ? 1 : idx;
+                }
+
+                this.getFachSeatList(idx, this.sortid);
             }
         },
         on: {
             pageInit: function () {
                 const _self = this;
                 this.getFachZoneList();
-                this.getFachSeatInfo();
+                this.getFachSeatList(_self.nowPage, _self.sortid);
 
                 $$("select[name='selectzone']").on('change', function(e){
                     const val = $$(this).val();
@@ -132,6 +155,12 @@
 
                     $$("select[name='selectzone']").val(zoneid).trigger('change');
                 });
+
+                //pagination click
+                $$(".pagination").on('click','[data-pagination-id]', function (e){
+                    console.log('val', $$(this).data('pagination-id'))
+                    _self.setPagination(Number($$(this).data('pagination-id')));
+                })
             }
         },
     }
