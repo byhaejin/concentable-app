@@ -2,8 +2,89 @@
     <div class="page payment">
         <sub-header title="결제내역"  nomenu="true"></sub-header>
         <div class="page-content">
-            <h3> 결제내역 </h3>
+            {{#each historyAry}}
+            <div class="mypayment-history">
+                <div class="card">
+                    <div class="payment-card-content">
+                        <div class="padding-bottom-half text-align-right">
+                            {{#if isPaytype}}
+                            <button type="button"
+                                    @click="orderSubscription('{{@index}}')"
+                                    class="button inline-block button-small width-auto button-fill">
+                                <span>구독해지</span>
+                            </button>
+                            <button type="button"
+                                    @click="orderPayBack('{{@index}}')"
+                                    class="button inline-block button-small width-auto button-fill">
+                                <span>환불신청</span>
+                            </button>
+                            {{/if}}
+                            <button type="button"
+                                    @click="getReceipt('{{@index}}')"
+                                    class="button inline-block button-small width-auto button-fill">
+                                <span>영수증</span>
+                            </button>
+                        </div>
 
+                        <table class="payment-tbl">
+                            <colgroup>
+                                <col style="width:120px" />
+                                <col />
+                            </colgroup>
+                            <tr>
+                                <th>결제일시</th>
+                                <td>{{update}}</td>
+                            </tr>
+                            <tr>
+                                <th>상품내용</th>
+                                <td>{{title}}</td>
+                            </tr>
+                            <tr>
+                                <th>금액</th>
+                                <td>{{cost}}원</td>
+                            </tr>
+                            <tr>
+                                <th>이용기간</th>
+                                <td>
+                                    <span class="inline-block">{{startday}}</span> ~
+                                    <span class="inline-block">{{endday}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>쿠폰적용</th>
+                                <td>{{couponname}}</td>
+                            </tr>
+                            <tr>
+                                <th>결제수단</th>
+                                <td>{{paytypename}}</td>
+                            </tr>
+                            <tr>
+                                <th>결제수단 정보</th>
+                                <td>{{paytypeinfo}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+            {{/each}}
+        </div>
+
+        <div id="myReceipt" class="sheet-modal sheet-modal-push my-receipt" style="height: 100%">
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <div class="left text-color-white">영수증</div>
+                    <div class="right">
+                        <a class="link sheet-close">닫기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-modal-inner">
+                <div class="page-content">
+                    <div class="photo"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -11,17 +92,88 @@
     return {
         data: function () {
             return {
-
+                historyAry: [],
             }
         },
         methods: {
+            //목록 불러오기
+            getFachZoneList: function () {
+                const _self = this;
+                app.request.get('../static/js/sample-mypament-history.JSON?rel=1234',  function (res) {
+                    let dataAry  = JSON.parse(res).data;
 
+                    for (let i = 0; i < dataAry.list.length; i++) {
+                        dataAry.list[i].cost = Number(dataAry.list[i].cost).toLocaleString();
+
+                        //정기구독자 여부 판별
+                        dataAry.list[i].isPaytype = (dataAry.list[i].paytypeclass === "subscription") ? true : false;
+                    }
+
+                    _self.$setState({ historyAry : dataAry.list });
+                });
+            },
+            //구독해지
+            orderSubscription: function (idx) {
+                const msg = `결제된 기간까지만 이용후<br>
+                해지하시겠습니까?<br>
+                해지시 이용 가능한 기간은<br>
+                <span class="text-color-red">~ ${this.historyAry[idx].endday}</span> 입니다.`;
+
+                const msg2 = `정기구독 해지가 완료되었습니다.<br>
+                <span class="text-color-red">${this.historyAry[idx].endday}</span>까지<br>
+                 이용 가능합니다.`
+
+                app.dialog.confirm( msg, '구독해지', function () {
+                    app.dialog.alert(msg2, '');
+                });
+
+            },
+            //환불신청
+            orderPayBack: function (idx) {
+                const msg1 = `환불 가능한 금액은 ${this.historyAry[idx].cost}원 입니다.<br>
+                환불 신청시 <b class="text-color-red">즉시 이용이 종료</b>됩니다.<br>
+                환불처리 내역은 1~2일 이내에<br>
+                카카오톡(또는 MMS)로 안내됩니다.`;
+
+                const msg2 = `환불받으실 계좌정보를 입력해주세요.<br>
+                <div class="text-align-left">
+                    <span class="confirm-th">은행 :</span>
+                    <select>
+                        <option>선택</option>
+                        <option value="0">국민은행</option>
+                        <option value="1">우리은행</option>
+                        <option value="2">산업은행</option>
+                    </select><br>
+                    <span class="confirm-th">예금주 :</span>
+                    <input type="text" name="user" /><br>
+                    <span class="confirm-th">계좌번호 :</span>
+                    <input type="text" name="account" />
+                </div><br>
+                <div class="text-align-center text-color-red">모두 정확히 입력해주세요.</div><br>
+               `
+
+                const msg3 = ` 환불 신청이 완료되었습니다.<br>
+                            환불처리 내역은 1~2일 이내에<br>
+                            카카오톡(또는 MMS)로 안내됩니다.`
+
+                app.dialog.confirm( msg1, '환불신청', function () {
+                    app.dialog.confirm( msg2, '환불신청', function () {
+                        app.dialog.alert(msg3, '');
+                    });
+                });
+            },
+            //영수증
+            getReceipt: function (idx) {
+                //todo 영수증 이미지를 불러온뒤 투영한다.
+                const html = '<img alt="" src="../static/images/sample-receipt.png" />'
+                $$('#myReceipt .photo').html(html);
+                console.log('영수증', idx)
+                app.sheet.open($$('#myReceipt'));
+            },
         },
         on: {
             pageInit: function () {
-                const _self = this;
-
-
+                this.getFachZoneList();
             }
         },
     }

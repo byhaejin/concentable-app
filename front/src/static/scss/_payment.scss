@@ -113,7 +113,7 @@
   .payment-card-content {
     padding: 4px;
   }
-  .payment-locker-tbl {
+  .payment-tbl {
     border-collapse: collapse;
     width: 100%;
 
@@ -123,11 +123,7 @@
     }
 
     th {
-      width: 100px;
       background-color: #f8f8f8;
-    }
-    td {
-      text-align: right;
     }
   }
 
@@ -137,6 +133,14 @@
     }
     p {
       margin-top: .1rem
+    }
+  }
+
+  .mypayment-history {
+    border-top: 1px solid #eee;
+
+    &:first-child {
+      border-top-width: 0;
     }
   }
 }

@@ -1,0 +1,30 @@
+{
+  "data": {
+    "list": [
+      {
+        "id": "1234",
+        "update": "2020-04-19 10:10:00",
+        "title": "컨센터블 24시 독서실 1호점(주엽역) (구독) 라이트 + 사물함1칸",
+        "cost": "59000",
+        "startday": "2020-04-21 00:00:00",
+        "endday": "2020-05-20 23:59:59",
+        "couponname": "-",
+        "paytypeclass": "subscription",
+        "paytypename": "하나(외환)",
+        "paytypeinfo": "1234-1234-****-1234"
+      },
+      {
+        "id": "12345",
+        "update": "2020-04-18 10:25:36",
+        "title": "컨센터블 24시 독서실 1호점(주엽역) 컨스낵_무인매점",
+        "cost": "3600",
+        "startday": "",
+        "endday": "",
+        "couponname": "-",
+        "paytypeclass": "normal",
+        "paytypename": "카카오페이",
+        "paytypeinfo": "-"
+      }
+    ]
+  }
+}
