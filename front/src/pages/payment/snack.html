@@ -7,17 +7,17 @@
                 <div class="list">
                     <ul>
                         {{#each snackList }}
-                        <li data-name="item">
+                        <li data-name="item" data-id="{{id}}">
                             <div class="item-row">
-                                <div class="item-cell">
+                                <div class="item-cell no-margin">
                                     <div class="item-row snack-title">
                                         <span class="iB">{{name}}</span> 
                                     </div>
                                     <div class="item-row snack-number">
                                         <span class="iB">({{cost}}원, {{stock}}남음)</span>
                                     </div>
-                                </div>                                
-                                <div class="item-cell snack-btn">
+                                </div>
+                                <div class="item-cell no-margin text-align-right snack-btn">
                                     <div class="snack-pay">
                                         <span data-id="ea" class="iB food{{@index}}-count"></span>
                                     </div>                                    
@@ -29,40 +29,21 @@
                                 </div>                                
                             </div>
                         </li>
-                        
-                        <!-- <li data-name="item" class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">
-                                    <span class="iB">{{name}}</span> :
-                                    <span data-id="ea"
-                                          class="iB food{{@index}}-count"></span>
-                                    <span class="iB">({{cost}}원, {{stock}}남음)</span>
-                                </div>
-                                <div class="item-after">
-                                    <div class="stepper cart_stepper{{@index}} stepper-init stepper-small stepper-raised"
-                                         data-value-el=".food{{@index}}-count"
-                                         data-min="0"
-                                         data-max="{{stock}}">
-                                        <div class="stepper-button stepper-button-minus stepper-fill"></div>
-                                        <div class="stepper-button stepper-button-plus stepper-fill"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li> -->
                         {{/each}}
                     </ul>
                 </div>                
-                <div class="list no-margin-top">                    
-                    <div class="item-content inline-label no-padding-left margin-bottom">
-                        <div class="item-inner pay-total">
-                            <div class="item-title item-label">합계 :</div>
-                            <div class="item-input-wrap">
-                                {{totalCost}}원
-                            </div>
-                        </div>
+                <h2 class="row">
+                    <div class="item-title item-label">합계 :</div>
+                    <div class="item-input-wrap">
+                        <b class="text-color-red">{{totalCost}}</b> 원
                     </div>
-                </div>
-                <button type="button" class="col button button-fill button-large button-outline color-green" >결제하기</button>
+                </h2>
+
+                <button type="button"
+                        @click="goSubmit"
+                        class="col button button-fill button-large">
+                    <b>결제하기</b>
+                </button>
             </div>
         </div>
     </div>
@@ -81,7 +62,8 @@
             }
         },
         methods: {
-            getSnackData() {
+            // 물품목록 불러오기
+            getSnackData: function() {
                 const _self = this;
                 _self.stepper = [];
 
@@ -91,7 +73,8 @@
 
                 });
             },
-            totalPrice() {
+            // 개수 추가/ 감소시 총합 계산
+            totalPrice: function() {
                 const _self = this;
                 let ea = 0;
                 let cost = 0;
@@ -108,12 +91,35 @@
 
                 _self.$setState({ totalCost : total.toLocaleString() });
             },
+            goSubmit: function() {
+                const _self = this;
+                let snakAry = [];
+                $$('[data-name="item"]').each((index, item) => {
+                    ea = Number($$(item).find('[data-id="ea"]').text());
+
+                    if(ea > 0 ) {
+                        const snaks = {
+                            id: $$(item).data('id'),
+                            ea: Number($$(item).find('[data-id="ea"]').text())
+                        }
+                        snakAry.push(snaks);
+                    }
+                });
+
+                app.data.dataForm = {
+                    snaks: snakAry,
+                    totalcost: Number(_self.totalCost.replace(/,/g,""))
+                }
+
+                mainView.router.navigate('/payment/approval/');
+            },
         },
         on: {
             pageInit: function () {
                 const _self = this;
                 this.getSnackData();
 
+                //trigger 갯수 선택
                 $$('.snack-list').on('click', '.stepper-button', function (e) {
                     _self.totalPrice();
                 });

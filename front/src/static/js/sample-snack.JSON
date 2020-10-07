@@ -1,46 +1,55 @@
 {
   "data": [
     {
+      "id": "dr234",
       "name": "바나나 우유",
       "cost": 1000,
       "stock": 5
     },
     {
+      "id": "dr233",
       "name": "커피 우유",
       "cost": 1000,
       "stock": 6
     },
     {
+      "id": "dr232",
       "name": "우유",
       "cost": 1000,
       "stock": 22
     },
     {
+      "id": "sn333",
       "name": "감자칩",
       "cost": 2000,
       "stock": 15
     },    
     {
+      "id": "sn332",
       "name": "새우깡",
       "cost": 2000,
       "stock": 400
     },
     {
+      "id": "br222",
       "name": "햄버거",
       "cost": 3000,
       "stock": 5
     },
     {
+      "id": "br221",
       "name": "핫도그",
       "cost": 3000,
       "stock": 6
     },
     {
+      "id": "dr231",
       "name": "콜라",
       "cost": 1500,
       "stock": 22
     },    
     {
+      "id": "dr230",
       "name": "사이다",
       "cost": 1500,
       "stock": 400
