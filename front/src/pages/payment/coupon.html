@@ -2,8 +2,41 @@
     <div class="page payment">
         <sub-header title="쿠폰"  nomenu="true"></sub-header>
         <div class="page-content">
-            <h3> 쿠폰 </h3>
+            <div class="block">
+                <div class="block-title">
+                    <i class="f7-icons">plus_rectangle_fill_on_rectangle_fill</i> 쿠폰등록
+                </div>
+                <div class="input-box">
+                    <small class="text-color-red">보유하신 쿠폰 번호를 ‘-’ 없이 입력하세요.</small>
+                    <div class="row">
+                        <div class="col-70">
+                            <input type="text"
+                                   name="couponnumber"
+                                   class="width-100 input-outline" />
+                        </div>
+                        <button type="button"
+                            class="col-30 button button-fill">
+                            등록
+                        </button>
+                    </div>
+                    <p>*쿠폰의 유효기간을 꼭 확인해주세요.</p>
+                </div>
 
+                <div class="coupon-list">
+                    <h3 class="no-margin-bottom">
+                        <i class="f7-icons">plus_rectangle_fill_on_rectangle_fill</i>
+                        쿠폰 보유 내역
+                    </h3>
+                    <ul>
+                        {{#each listAry}}
+                        <li class="row">
+                            <div class="tit">{{title}}</div>
+                            <div class="date">{{update}}</div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -11,17 +44,23 @@
     return {
         data: function () {
             return {
-
+                listAry: [],
             }
         },
         methods: {
-
+            //쿠폰 보유 내역 불러오기
+            getFachList: function (idx, sortid) {
+                const _self = this;
+                app.request.get('../static/js/sample-coupon.JSON?rel=123',function (res) {
+                    let dataAry  = JSON.parse(res).data;
+                    _self.$setState({ listAry : dataAry.list });
+                });
+            },
         },
         on: {
             pageInit: function () {
                 const _self = this;
-
-
+                this.getFachList();
             }
         },
     }

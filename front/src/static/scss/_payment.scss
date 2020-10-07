@@ -143,6 +143,36 @@
       border-top-width: 0;
     }
   }
+
+  .input-box {
+    border: 1px solid  #059b5c;
+    border-radius: 4px;
+    padding:10px;
+    background: #eee;
+    font-size: 12px;
+
+    input[type="text"] {
+      width: 100%;
+      height: 28px;
+      border: 1px solid #999;
+      background: #fff;
+    }
+    p {
+      margin: 0;
+    }
+  }
+
+  .coupon-list {
+    border-bottom: 1px solid #f2f2f2;
+    padding-top: 24px;
+
+    li {
+      border-top: 1px solid #f2f2f2;
+      padding: 10px 0;
+
+      .date {color: #666}
+    }
+  }
 }
 
 .toolbar-inner a { color: #fff;}
