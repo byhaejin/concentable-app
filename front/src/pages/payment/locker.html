@@ -1,0 +1,105 @@
+<template>
+    <div class="page payment">
+        <sub-header title="사물함 추가"  nomenu="true"></sub-header>
+        <div class="page-content">
+            <div class="block">
+                <div class="block-title padding-bottom">
+                    <i class="icon-lock_circle"></i> 사물함 종류를 선택하신후 결제하세요.
+                </div>
+                <div class="card">
+                    <div class="payment-card-content">
+                        <table class="payment-locker-tbl">
+                            <tr>
+                                <th>일일 요금</th>
+                                <td>400원</td>
+                            </tr>
+                            <tr>
+                                <th>칸</th>
+                                <td>
+                                    <div class="stepper stepper-fill stepper-init">
+                                        <div class="stepper-button-minus"></div>
+                                        <div class="stepper-input-wrap">
+                                            <input type="text" name="size" value="1" min="1" max="2" step="1" readonly>
+                                        </div>
+                                        <div class="stepper-button-plus"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>사용일</th>
+                                <td>
+                                    <div class="stepper stepper-fill stepper-init">
+                                        <div class="stepper-button-minus"></div>
+                                        <div class="stepper-input-wrap">
+                                            <input type="text" name="day" value="1" min="1" max="31" step="1" readonly>
+                                        </div>
+                                        <div class="stepper-button-plus"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row width-100">
+                            <div class="col text-color-black">총 결제 :</div>
+                            <div class="col text-align-right"><b class="text-color-red">{{totalCost}}</b> 원</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-desc">
+                    <h3>큰 사물함은 2칸으로 적용됩니다!</h3>
+                    <p>※ 지점 별로 유무 및 수량이 상이하니 지점을 이용하시다가 추가 결제하시는 걸 추천드려요!</p>
+                    <h4>· 일반 사물함</h4>
+                    <p>일반적으로 사용되는 사물함 크기입니다. 너비 30*높이 30*깊이 32(츠)</p>
+                    <h4>· 큰 사물함</h4>
+                    <p>일반 사물함의 2배 크기이며, 내부에 구분칸이 있습니다. 너비 30*높이 60*깊이 32(cm)</p>
+                </div>
+
+                <button type="button"
+                        @click="goSubmit"
+                        class="col button button-fill button-large button-outline color-green" >
+                    결제하기
+                </button>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+return {
+    data: function () {
+        return {
+            price: 400,//기본요금
+            formData : {
+                paytype: 'locker',
+                size: 1, //일반, 큰 사물함 분류 / 칸수
+                day: 1, //사용일
+                cost: 400, //총결제금액
+            },
+            totalCost: '400', //총결제금액 화면뷰
+        }
+    },
+    methods: {
+        goSubmit: function () {
+            this.formData.size = Number($$('[name=size]').val());
+            this.formData.day = Number($$('[name=day]').val());
+            app.data.dataForm = this.formData;
+            mainView.router.navigate('/payment/approval/');
+        },
+        totalPrice: function () {
+            const total = this.price * Number($$('[name=size]').val()) * Number($$('[name=day]').val());
+            this.formData.cost = total;
+            this.$setState({ totalCost : total.toLocaleString() });
+        },
+    },
+    on: {
+        pageInit: function () {
+            const _self = this;
+
+            $$('.stepper input').on('change', function (e) {
+                _self.totalPrice();
+            });
+        }
+    },
+}
+</script>

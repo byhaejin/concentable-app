@@ -2,8 +2,66 @@
     <div class="page payment">
         <sub-header title="결제하기"  nomenu="true"></sub-header>
         <div class="page-content">
-            <h3> 결제하기 </h3>
+            <div class="block">
+                <form id="payment-form">
+                    <div class="block-title padding-bottom"><i class="icon-creditcard"></i>결제방식</div>
+                    <div class="list media-list">
+                        <ul>
+                            <li>
+                                <label class="radio item-radio-icon-start item-content">
+                                    <input type="radio" name="paytype" value="subscription"/>
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title"><strong>그대로 정기구독</strong>매월자동결제</div>
+                                            <div class="item-after"><strong>1개월(최대31일)</strong><br>언제든해지가능</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio item-radio-icon-start item-content">
+                                    <input type="radio" name="paytype" value="month"/>
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title"><strong>그대로 연장</strong></div>
+                                            <div class="item-after"><strong>(4주)</strong></div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio item-radio-icon-start item-content">
+                                    <input type="radio" name="paytype" value="change" />
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title"><strong>이용 변경</strong>오늘부터 새로 시작, 남은 기간또는 시간은 부분취소</div>
+                                            <div class="item-after"></div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
 
+                            <li>
+                                <label class="radio item-radio-icon-start item-content">
+                                    <input type="radio" name="paytype" value="locker"/>
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title"><strong>사물함 추가</strong></div>
+                                            <div class="item-after"><strong>최대 4칸 사용 가능</strong></div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" @click="goSubmit" class="col button button-fill button-large button-outline color-green" >결제하기</button>
+                </form>
+            </div>
         </div>
     </div>
 </template>
@@ -15,7 +73,17 @@
             }
         },
         methods: {
+            goSubmit: function () {
+                const formData = app.form.convertToData('#payment-form');
 
+                if (formData.paytype === 'locker') {//사물함을 선택했을경우
+                    mainView.router.navigate('/payment/approval/locker/');
+                } else {//그외 선택시
+                    app.data.dataForm = formData;
+                    mainView.router.navigate('/payment/approval/');
+                }
+
+            }
         },
         on: {
             pageInit: function () {

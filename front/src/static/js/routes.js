@@ -154,6 +154,14 @@ var routes = [
             transition: 'f7-cover',
         },
     },
+    {// 결제 선택 / 사물함선택
+        name: 'locker',
+        path: '/payment/approval/locker/',
+        componentUrl: '../payment/locker.html',
+        options: {
+            transition: 'f7-cover',
+        },
+    },
     {// 자리선택하기
         name: 'seat',
         path: '/seat/',

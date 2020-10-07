@@ -65,8 +65,15 @@ label.item-checkbox>.icon-checkbox {
   background: transparent;
 }
 
-.toolbar .link.sheet-close {
-  color:#059b5c;
+.sheet-modal {
+  .toolbar {
+    background-color: #059b5c;
+  }
+
+  &-inner .toolbar {
+    font-size: 12px;
+    background-color: #333;
+  }
 }
 
 //navbar 

@@ -1,25 +1,90 @@
 <template>
 <div class="page payment">
-    <sub-header title="결제선택"  nomenu="true"></sub-header>
+    <sub-header title="결제방식 선택"  nomenu="true"></sub-header>
     <div class="page-content">        
         <div class="block">
-            <p class="row">
-                <button class="col button button-large button-fill">Button</button>
-                <button class="col button button-large button-fill">Fill</button>
-            </p>
-            <p class="row">
-                <button class="col button button-large button-fill">Button</button>                
-            </p>
+            <div class="block-title padding-bottom"><i class="icon-creditcard"></i> 결제방식을 선택 하세요.</div>
+            <div class="payment-approval-list">
+                <ul>
+                    {{#each paytypeAry}}
+                    <li>
+                        <button type="button"
+                                id="{{id}}"
+                                @click="activePay('{{id}}')"
+                                class="col button button-outline button-large">
+                            {{#if icon}}<i class="icon-{{icon}}"></i>{{/if}}
+                            {{name}}
+                        </button>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 </template>
 <script>
-    return {        
-        methods: {            
-            goStart: function () {                
-                mainView.router.navigate('');
+    return {
+        data: function () {
+            return {
+                paytypeAry: [],
+                subscriptionPay: [
+                    {
+                        id: 'card',
+                        icon: 'creditcard_fill',
+                        name: '카드 결제',
+                    },
+                    {
+                        id: 'payco',
+                        name: '페이코',
+                    }
+                ],
+                normalUserPay: [
+                    {
+                        id: 'card',
+                        icon: 'creditcard_fill',
+                        name: '카드 결제',
+                    },
+                    {
+                        id: 'realtime',
+                        name: '실시간 계좌이체',
+                    },
+                    {
+                        id: 'cms',
+                        name: '무통장 입금',
+                    },
+                    {
+                        id: 'tos',
+                        name: '토스',
+                    },
+                    {
+                        id: 'kakao',
+                        name: '카카오페이',
+                    },
+                    {
+                        id: 'payco',
+                        name: '페이코',
+                    },
+                    {
+                        id: 'naverpay',
+                        name: '네이버페이',
+                    },
+                ]
             }
-        },        
+        },
+        methods: {
+            activePay: function (id) {
+                console.log('pay !!', id, app.data.dataForm);
+            }
+        },
+        on: {
+            pageInit: function () {
+                const _self = this;
+                /**
+                 * todo 정기구독자 여부를 판별해서 구매방식을 변경할것
+                 */
+                _self.$setState({ paytypeAry : _self.normalUserPay });
+            }
+        },
     }
 </script>

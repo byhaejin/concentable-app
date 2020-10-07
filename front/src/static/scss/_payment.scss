@@ -90,6 +90,55 @@
     .item-title {font-size: 2vh; color: #777777; width: 30%;}
     .item-input-wrap {font-size: 3vh; font-weight: bold;}
   }
+
+
+  //겔제선택
+  &-approval-list {
+    li {
+      padding-bottom: 4px;
+    }
+
+    button {
+      position: relative;
+    }
+
+    i, img {
+      position: absolute;
+      left: 10px; top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  //사물함 선택
+  .payment-card-content {
+    padding: 4px;
+  }
+  .payment-locker-tbl {
+    border-collapse: collapse;
+    width: 100%;
+
+    th, td {
+      border: 1px solid #eee;
+      padding: 8px 14px;
+    }
+
+    th {
+      width: 100px;
+      background-color: #f8f8f8;
+    }
+    td {
+      text-align: right;
+    }
+  }
+
+  .payment-desc {
+    h3, h4 {
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: .1rem
+    }
+  }
 }
 
 .toolbar-inner a { color: #fff;}
