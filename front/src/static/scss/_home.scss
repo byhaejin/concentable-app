@@ -86,6 +86,11 @@
     }
   }
 
+  &-msg {
+    font-size: 16px;
+    color: red;
+  }
+
   .btn-box {
     .actions-open {height: 8vh; padding: 1vh; font-size: 2.5vh;
       i {margin-right: 6px; font-size: 3.3vh;}
@@ -99,6 +104,7 @@
     padding: .5vh 0;
     text-align: center;
 
+    .home-btn,
     a {
       box-sizing: border-box;
       display: flex;
@@ -124,6 +130,14 @@
       &:active {
         padding: 4px 0 0 4px;
         background-color: #eee;
+      }
+    }
+
+    .home-btn {
+      border-color: #0c7ddf;
+      color: #0c7ddf;
+      i {
+        color: #0c7ddf;
       }
     }
   }

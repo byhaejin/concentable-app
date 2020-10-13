@@ -47,31 +47,35 @@
                     </ul>
                 </div>
                 <!--  자리선택 후 정보창 -->
-                {{#if isUseSeat}}
+                <div class="home-msg">
+                    {{seatMsg}}
+                </div>
+            {{#if isUseSeat}}
                 <div class="row no-padding align-items-center">
-                    <div class="seatinfo row no-padding align-items-center">
+                    <div class="seatinfo no-padding">
                         <span class="seatinfo-name"><b>{{$app.data.seatState.name}}</b> 번</span>
-                        <div class="seat-rule">
-                            <img alt="" src="/static/images/seat/ico-sett-{{seatData.zoneType}}.png" />
-                        </div>
-                        <button @click="setGoOut"
-                                class="button inline-block width-auto button-fill button-small">
-                        {{#if isSeatActive}}
-                            사용중
-                        {{else}}
-                            외출중
-                        {{/if}}
-                        </button>
                     </div>
                     <button class="button width-auto button-fill color-blue button-small">자리정보</button>
                 </div>
+                {{#if $app.data.seatState.zoneType}}
+                <div class="seat-rule">
+                    <img alt="" src="/static/images/seat/ico-sett-{{$app.data.seatState.zoneType}}.png" />
+                </div>
+                {{/if}}
                 {{#unless isSeatActive}}
-                <div class="countdown">-
-                    <h2><small>외출중 :</small> {{gooutCount}}</h2>
-                    <div class="msg text-color-red">* 90분 내에 복귀처리를 하지 않는 경우 자동퇴실됩니다.</div>
+                <div class="countdown">
+                    <div class="row align-items-center">
+                        <h2><small>외출중 :</small> {{gooutCount}}</h2>
+                        <button type="button"
+                                @click="returnSeat"
+                                class="button width-auto button-fill color-blue button-small">
+                            복귀하기
+                        </button>
+                    </div>
+                    <div class="msg text-color-red">* 90분 내에 복귀처리를 하지 않는 경우<br>자동퇴실됩니다.</div>
                 </div>
                 {{/unless}}
-                {{/if}}
+            {{/if}}
                 <!-- div class="row">
                     <div class="col-40 infor-icon">                        
                         <i class="icon icon-person_crop_circle"></i>
@@ -104,12 +108,23 @@
                         <span>출입하기</span>
                     </div>
                 </a>
+                {{#if isUseSeat}}
+                <button type="button"
+                        @click="changeSeatState"
+                        class="home-btn">
+                    <div>
+                        <i class="icon icon-icon-desk"></i>
+                        <span>자리 상태 변경</span>
+                    </div>
+                </button>
+                {{else}}
                 <a href="/seat/">
                     <div>
                         <i class="icon icon-icon-desk"></i>
                         <span>자리선택하기</span>
                     </div>
                 </a>
+                {{/if}}
             </div>
         </div>
     </div>
@@ -124,62 +139,146 @@
                 isSeatActive: true,
                 intervalCountdown: null,
                 gooutCount: '00:00:00',
+                seatMsg: '',
             }
         },
         methods: {
             goPay: function () {
+                //결제하러 가기
                 mainView.router.navigate({name: 'payment'});
             },
+            /** @@@@@@@ 좌석관련 @@@@@@@ **/
+            /** 좌석 이용여부 확인
+             * 좌석이 선택되어있는지 확인하고 선택된 좌석이 존재할경우 해당 UI를 호출한다.
+             */
             getSeatInfo: function () {
+                //선택된 좌석이 있다면
                 if (app.data.seatState.id !== '') {
+                    //좌석 UI 호출
                     this.$setState({ isUseSeat : true });
 
-                    console.log('app.data.seatState.state', app.data.seatState.state)
-
+                    //현재 외출중일경우
                     if(!app.data.seatState.state) {
-                        this.$setState({ isSeatActive : false });
-                        this.setCountDown();
+                        this.$setState({ isSeatActive : false });//외출여부 확인
+                        this.setCountDown();// 카운트다운 시작
                     }
                 }
             },
+            /** 외출후 복귀한다. */
+            returnSeat: function () {
+                const _self = this;
+                _self.$app.dialog.confirm('', '복귀하시겠습니까?', function (){
+                    // todo 외출중으로 처리, 후에 상태를 서버로 저장할것
+                    app.data.seatState.state = true;
+                    _self.setGoOut();
+                    _self.$app.dialog.alert('복귀 하였습니다.','');
+                });
+            },
+            /** 자리 이용 상태를 변경한다 */
+            changeSeatState: function () {
+                const _self = this;
+                const msgGoOut = [
+                    `<div class="alert-msg"><h3><b>90분</b>간 자리 정리 없이 외출이 가능합니다.<br>
+                    복귀시에는 꼭 <b>복귀버튼</b/>을 눌러주셔야 합니다.</h3>
+                    <h3>외출을 적용하시겠습니까?</h3></div>`,
+                    `<div class="alert-msg"><small>*외출 적용하지 않고 30분 이상 자리를 비우면 사석화!<br>
+                    (패널티가 부여될 수 있고, 패널티 누적 시 이용제한 됩니다.)</small></div>`
+                ];
+
+
+                let btns = [
+                    {
+                        text: '외출',
+                        onClick:function () {
+                            _self.$app.dialog.confirm(msgGoOut[1], msgGoOut[0], function (){
+                                // todo 외출중으로 처리, 후에 상태를 서버로 저장할것
+                                app.data.seatState.state = false;
+                                _self.setGoOut();
+                                _self.$app.dialog.alert('외출이 적용되었습니다.','');
+                            });
+                        }
+                    },
+                    {
+                        text: '자리 이동',
+                        onClick:function () {
+                            //외출중인지 확인한다.
+                            if (app.data.seatState.state) {
+                                mainView.router.navigate('/seat/');
+                            } else {
+                                _self.$app.dialog.alert('외출시에는 자리를 변경할수 없습니다.','');
+                            }
+                        }
+                    },
+                    {
+                        text: '퇴실',
+                    },
+                ]
+
+                //외출중일 경우
+                if (!app.data.seatState.state) {
+                    btns[0] = {
+                        text: '복귀',
+                        onClick:function () {
+                            _self.returnSeat();
+                        }
+                    }
+                }
+
+                app.dialog.create({
+                    title: '자리상태 변경',
+                    text: '',
+                    buttons: btns,
+                    verticalButtons: true,
+                }).open();
+            },
             setGoOut: function () {
                 //외출 여부 확인
-                // todo 입출입시 상황에 맞춰 처리할것
-                app.data.seatState.state = !this.isSeatActive;
-                this.$setState({ isSeatActive : !this.isSeatActive });
+                // todo 서버에서 외출 유무를 불러와서 반영할것 // app.data.seatState.state 값 변경 (true: 사용중, false: 외출중)
+                this.$setState({ isSeatActive : app.data.seatState.state });
 
                 app.data.seatState.staytime = (this.isSeatActive) ? '' : moment();
                 if(this.isSeatActive) {
+                    //좌석을 이용할 경우
                     clearInterval(this.intervalCountdown)
                 } else {
+                    //외출시 카운트 다운시작
                     this.setCountDown();
                 }
 
             },
+            // 카운트다운 삭제
             endCountdown: function () {
                 clearInterval(_self.intervalCountdown);
             },
+            //외출시 카운트 다운
             setCountDown: function () {
                 const _self = this;
-                var eventTime, currentTime, duration, interval, timeout;
+                let eventTime, currentTime, duration, interval, timeout;
                 interval = 1000; // 1 second
-                eventTime = moment(app.data.seatState.staytime).add(90, 'minutes');
+                eventTime = moment(app.data.seatState.staytime).add(1, 'minutes');
                 currentTime = moment.tz();
 
                 duration = moment.duration(eventTime.diff(currentTime));
 
                 function setTimeout() {
-                    console.log('interval ??')
                     if (!duration)  clearInterval(_self.intervalCountdown);
                     duration = moment.duration(duration - interval, 'milliseconds');
 
                     if (duration.asSeconds() <= 0) {
+                        //카운트가 0이 되어 자동탈퇴 된다.
                         clearInterval(_self.intervalCountdown);
-                        // hide the countdown element
-                        _self.$setState({ gooutCount : '자동탈퇴' });
+                        _self.$setState({ gooutCount : ''});
+                        _self.$setState({ seatMsg : `${app.data.seatState.name}번이 자동퇴실 되었습니다.`});
+                        _self.$setState({ isSeatActive: true});//카운트다운 초기화
+                        _self.$setState({ isUseSeat: false}); //자리소개 감춤
+                        app.methods.clearSeatState();
                     } else {
-                        // otherwise, show the updated countdown
-                        timeout = duration.hours() + ":" + duration.minutes()  + ":" + duration.seconds();
+                        //카운트 다운표시
+                        const hh = (Number(duration.hours()) < 10) ? '0' + duration.hours() : duration.hours();
+                        const mm = (Number(duration.minutes()) < 10) ? '0' + duration.minutes() : duration.minutes();
+                        const ss = (Number(duration.seconds()) < 10) ? '0' + duration.seconds() : duration.seconds();
+                        timeout = hh + ":" + mm  + ":" + ss;
+
                         _self.$setState({ gooutCount : timeout });
                     }
                 }
@@ -189,7 +288,7 @@
         },
         on: {
             pageInit: function () {
-                //페이지 들어옴
+                //페이지 시작
 
                 //좌석이용정보 로드
                 this.getSeatInfo();
@@ -205,6 +304,7 @@
 
                 //카운트다운 인터벌 클리어
                 clearInterval(this.intervalCountdown);
+                this.$setState({ seatMsg : '' }) //메세지 초기화
             }
         },                  
     }

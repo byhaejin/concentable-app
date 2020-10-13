@@ -11,3 +11,15 @@
         p { font-size: 14px; margin: 0; color: #059b5c; padding-top: 0px !important;}
     }
 }
+
+.alert-msg {
+    text-align: left;
+
+    h3 {
+        font-size: 16px;
+
+        b {
+            color: red
+        }
+    }
+}
