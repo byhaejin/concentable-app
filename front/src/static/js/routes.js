@@ -171,6 +171,15 @@ var routes = [
             transition: 'f7-cover',
         },
     },
+    {// 자리선택하기 / 문의하기
+        name: 'seat-help',
+        path: '/seat/help/',
+        componentUrl: '../sub/seat-help.html',
+        //beforeEnter: checkAuth,//로그인 이후 가능
+        options: {
+            transition: 'f7-cover',
+        },
+    },
     {// 전지점 실시간이용현황
         name: 'zonepresent',
         path: '/zonepresent/',

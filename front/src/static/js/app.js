@@ -12,7 +12,17 @@ let mainView;
 const app = new Framework7({
     data: function () {
         return {
-            dataForm: [],
+            dataForm: [], //각종 form문의 parameter를 임시 저장
+            user: {
+              zoneid: '',// 현재 이용중인 지점
+              zoneName: ''//현재 이용중인 지점 이름
+            },
+            seatState: {         //현재 자리이용상태 저장
+                id: '',     //현재 이용중인 자리의 id
+                name: '',   //현재 이용중인 자리의 이름
+                state: null,   //현재 이용중인 자리의 상태/ null(없음), true(사용중), false(외출중)
+                staytime: '' //자리비움시 비운 시간
+            }
         };
     },
     id: 'com.v', // App id
@@ -20,6 +30,15 @@ const app = new Framework7({
     name: 'concentable App',
     theme: 'auto',
     componentUrl: componentsPath + 'layout.component.html',
+    methods: {
+        //현재 자리이용상태 초기화
+        clearSeatState: function () {
+            this.data.seatState.id = '';
+            this.data.seatState.name = '';
+            this.data.seatState.state = null;
+            this.data.seatState.staytime = '';
+        },
+    },
     on: {
         init: function () {
             //앱 시작
@@ -28,7 +47,7 @@ const app = new Framework7({
                 on: {
                     init: function () {
 
-                        // this.router.navigate({ name: 'coupon', animate: false });
+                        // this.router.navigate({ name: 'seat', animate: false });
                         // intro 화면을 확인했을 경우
                         if (localStorage.getItem('isIntro') === 'true') {
                             this.router.navigate('/auth/login/',{ animate: false });
@@ -60,6 +79,6 @@ function componentLoadScript(url) {
 }
 
 let template = '';
-componentLoadScript(componentsPath + 'header.template.component.js');
-componentLoadScript(componentsPath + 'subheader.template.component.js');
-componentLoadScript(componentsPath + 'pagination.template.component.js');
+componentLoadScript(componentsPath + 'header.template.component.js');//layout 홈의 header
+componentLoadScript(componentsPath + 'subheader.template.component.js'); //layout back이 적용된 sub header
+componentLoadScript(componentsPath + 'pagination.template.component.js'); //게시판 하단의 pagination

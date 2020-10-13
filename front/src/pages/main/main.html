@@ -29,7 +29,10 @@
                             <div class="item-content no-padding-left">
                                 <div class="item-media"><i class="icon-map_fill"></i>지점</div>
                                 <div class="item-inner">
-                                    <div class="item-title">컨센터블24시독서실1호점(주엽역)</div>                                        
+                                    <div class="item-title">컨센터블24시독서실1호점(주엽역)</div>
+                                    <a href="/notify/?zone=zone1" class="button width-auto button-fill button-small">
+                                        지점공지
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -43,7 +46,33 @@
                         </li>
                     </ul>
                 </div>
-                <!-- <div class="row">
+                <!--  자리선택 후 정보창 -->
+                {{#if isUseSeat}}
+                <div class="row no-padding align-items-center">
+                    <div class="seatinfo row no-padding align-items-center">
+                        <span class="seatinfo-name"><b>{{$app.data.seatState.name}}</b> 번</span>
+                        <div class="seat-rule">
+                            <img alt="" src="/static/images/seat/ico-sett-{{seatData.zoneType}}.png" />
+                        </div>
+                        <button @click="setGoOut"
+                                class="button inline-block width-auto button-fill button-small">
+                        {{#if isSeatActive}}
+                            사용중
+                        {{else}}
+                            외출중
+                        {{/if}}
+                        </button>
+                    </div>
+                    <button class="button width-auto button-fill color-blue button-small">자리정보</button>
+                </div>
+                {{#unless isSeatActive}}
+                <div class="countdown">-
+                    <h2><small>외출중 :</small> {{gooutCount}}</h2>
+                    <div class="msg text-color-red">* 90분 내에 복귀처리를 하지 않는 경우 자동퇴실됩니다.</div>
+                </div>
+                {{/unless}}
+                {{/if}}
+                <!-- div class="row">
                     <div class="col-40 infor-icon">                        
                         <i class="icon icon-person_crop_circle"></i>
                     </div>
@@ -53,10 +82,10 @@
                         <p class="title">이용권 :</p>
                         <p>무료 체험 (24시간)</p>
                     </div>
-                </div>                 -->                               
+                </div -->
             </div>
             <p class="padding no-margin btn-box">
-                <a href="#" data-actions=".pay" class="actions-open button button-large button-raised button-fill">
+                <a href="#" data-actions=".pay" class="actions-open button button-large button-raised button-fill js-pay">
                     <i class="icon icon-icon-card"></i>결제하기
                 </a>
             </p>                
@@ -91,16 +120,91 @@
         data: function () {
             return {
                 isLogin: false,
+                isUseSeat: false,
+                isSeatActive: true,
+                intervalCountdown: null,
+                gooutCount: '00:00:00',
             }
         },
         methods: {
-            goPay() {
+            goPay: function () {
                 mainView.router.navigate({name: 'payment'});
             },
+            getSeatInfo: function () {
+                if (app.data.seatState.id !== '') {
+                    this.$setState({ isUseSeat : true });
+
+                    console.log('app.data.seatState.state', app.data.seatState.state)
+
+                    if(!app.data.seatState.state) {
+                        this.$setState({ isSeatActive : false });
+                        this.setCountDown();
+                    }
+                }
+            },
+            setGoOut: function () {
+                //외출 여부 확인
+                // todo 입출입시 상황에 맞춰 처리할것
+                app.data.seatState.state = !this.isSeatActive;
+                this.$setState({ isSeatActive : !this.isSeatActive });
+
+                app.data.seatState.staytime = (this.isSeatActive) ? '' : moment();
+                if(this.isSeatActive) {
+                    clearInterval(this.intervalCountdown)
+                } else {
+                    this.setCountDown();
+                }
+
+            },
+            endCountdown: function () {
+                clearInterval(_self.intervalCountdown);
+            },
+            setCountDown: function () {
+                const _self = this;
+                var eventTime, currentTime, duration, interval, timeout;
+                interval = 1000; // 1 second
+                eventTime = moment(app.data.seatState.staytime).add(90, 'minutes');
+                currentTime = moment.tz();
+
+                duration = moment.duration(eventTime.diff(currentTime));
+
+                function setTimeout() {
+                    console.log('interval ??')
+                    if (!duration)  clearInterval(_self.intervalCountdown);
+                    duration = moment.duration(duration - interval, 'milliseconds');
+
+                    if (duration.asSeconds() <= 0) {
+                        clearInterval(_self.intervalCountdown);
+                        // hide the countdown element
+                        _self.$setState({ gooutCount : '자동탈퇴' });
+                    } else {
+                        // otherwise, show the updated countdown
+                        timeout = duration.hours() + ":" + duration.minutes()  + ":" + duration.seconds();
+                        _self.$setState({ gooutCount : timeout });
+                    }
+                }
+                setTimeout();
+                this.intervalCountdown = setInterval(setTimeout, interval);
+            }
         },
         on: {
             pageInit: function () {
-                
+                //페이지 들어옴
+
+                //좌석이용정보 로드
+                this.getSeatInfo();
+            },
+            pageReinit: function () {
+                //back으로 들어옴
+
+                //좌석이용정보 로드
+                this.getSeatInfo();
+            },
+            pageAfterOut: function () {
+                //페이지에서 빠짐
+
+                //카운트다운 인터벌 클리어
+                clearInterval(this.intervalCountdown);
             }
         },                  
     }

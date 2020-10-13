@@ -1,0 +1,92 @@
+<template>
+    <div class="page payment">
+        <sub-header title="자리선택 문의하기"  nomenu="true"></sub-header>
+        <div class="page-content">
+            <div class="block">
+                <form id="help-form">
+                    <div class="block-title padding-bottom"><i class="icon-creditcard"></i>자리문의</div>
+                    <div class="list media-list">
+                        <ul>
+                            <li>
+                                <label class="radio item-radio-icon-start item-content">
+                                    <input type="radio" name="helpmsg" value="0"/>
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title"><strong>빈좌석인데 <span class="text-color-red">[사용중]</span>으로 떠요.</strong>외출중은 아니에요!</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio item-radio-icon-start item-content">
+                                    <input type="radio" name="helpmsg" value="1"/>
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title"><strong><span class="vertical-align-middle text-color-red">[사용가능]</span>인데 짐이 있어요.</strong></div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio item-radio-icon-start item-content">
+                                    <input type="radio" name="helpmsg" value="2" />
+                                    <i class="icon icon-radio"></i>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title"><strong>너무 오래 자리가 비워져있어요.</strong></div>
+                                            <div class="item-after"></div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button"
+                            @click="goSubmit"
+                            class="col button button-fill button-large button-outline color-green" >
+                        전송하기
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+return {
+    data: function () {
+        return {
+            msg: [
+                `퇴실처리 되지않은 좌석인 것 같아요.<br>우선, 앉아서 사용하고 계시면<br> 확인된 사항을 카카오톡(또는 MMS)로<br> 안내 드리겠습니다.`,
+                `외출(자리비움)후 복귀처리가 되지 <br>않았거나, 퇴실시 짐정리가 되지 않은<br> 좌석인 것 같아요<br>사석화바구니에 짐을 옮긴후<br>사용하시면 됩니다.<br><br>
+                  <span class="color-red">*지점내 빨간 바구니를 찾아주세요!</span>`,
+                `혹시 사석화가 아닌지 확인해보고,<br> 확인된 사항을 안내드리겠습니다.<br><br>
+                  <span class="color-red">*지점내 빨간 바구니를 찾아주세요!</span>`
+            ]
+        }
+
+    },
+    methods: {
+        goSubmit: function () {
+            const formData = app.form.convertToData('#help-form');
+
+            if (formData.helpmsg) {
+                this.$app.dialog.alert(this.msg[Number(formData.helpmsg)], '', function (){
+                    mainView.router.back();
+                });
+            } else {
+                this.$app.dialog.alert('문의 내용을 선택해 주세요!', '');
+            }
+        },
+    },
+    on: {
+        pageInit: function () {
+            const _self = this;
+
+
+        }
+    },
+}
+</script>

@@ -1,7 +1,8 @@
-.seat {background-color: #fff;
+.seat {
+  background-color: #fff;
 
   $height-seat-zone: 42px;
-  .seat-zone {height: $height-seat-zone; padding: 0; padding-left: 14px; background: #017444;
+  &-zone {height: $height-seat-zone; padding: 0; padding-left: 14px; background: #017444;
     h3 {
       margin: 0;
       color: white;
@@ -18,7 +19,7 @@
   }
 
   $hight-seat-sort: 50px;
-  .seat-sort {
+  &-sort {
     height: $hight-seat-sort;
     padding: 0 24px;
     color: #fff;
@@ -33,7 +34,7 @@
     .icon-checkbox::after {background-color: var(--f7-radio-active-color, var(--f7-theme-color)); color: #fff; border-radius: 100%;}
   }
 
-  .seat-select {
+  &-select {
     .block {
       padding: 1vh 0;
       margin: 0;
@@ -49,4 +50,33 @@
       }
     }
   }
+
+  &-name {
+    text-align: center;
+    font-size:18px;
+
+    b {
+      font-size: 28px;
+    }
+  }
+
+  &-noise-level {
+    text-align: center;
+    h3 { text-align: left}
+    img { width:90% }
+  }
+
+  &-rule {
+    text-align: center;
+    h3 { text-align: left}
+    img { width: 100% }
+  }
+
+  &-point {
+    ul {
+      padding-left: 24px;
+      list-style-type: decimal;
+    }
+  }
+
 }

@@ -5,6 +5,10 @@
   //background: transparent -webkit-linear-gradient(-90deg, #059b5c 0%, #173228 100%) 0% 0% no-repeat padding-box;
   background-color: #fff;
 
+  .page-content {
+    padding-bottom: 48px;
+  }
+
   &-top { background-color: #fff;
     .logo {
       padding: 4.5vh 0 3vh; margin-left: 3vh; color: #085837; font-size: 8vh; border-bottom: 2px solid #085837;
@@ -41,9 +45,45 @@
       .title { color: #000; margin: 0; padding-bottom: 0.2em;}
       P {color: #085837; margin: 0 0 0.9em; font-size: 13px;}
     }
-    .button {font-size: 2.608vh; font-weight: bolder; background: #059b5c; height: 60px; padding: 8px 0; 
+
+    .js-pay {
+      height: 60px;
+      padding: 8px 0;
+      font-size: 2.608vh;
+      font-weight: bolder;
+      background: #059b5c;
+
       i {font-size: 3.6vh; margin-right: 8px;}
     }    
+  }
+
+  .seatinfo {
+    &-name {
+      padding-right: 10px;
+      font-size: 14px;
+
+      b {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .countdown {
+    border-radius: 15px;
+    border: 1px dashed #ddd;
+    padding:14px;
+    text-align: center;
+    background-color: #f2f2f2;
+
+    h2 {
+      margin:0;
+      font-size:32px;
+
+      small {
+        font-size: 18px;
+        color: #777
+      }
+    }
   }
 
   .btn-box {

@@ -72,7 +72,16 @@ label.item-checkbox>.icon-checkbox {
 
   &-inner .toolbar {
     font-size: 12px;
-    background-color: #333;
+    background-color: #30483f;
+  }
+
+  .tabbar .tab-link-active,
+  .tabbar-labels .tab-link-active {
+    color: yellow;
+  }
+  .tabbar .tab-link-highlight,
+  .tabbar-labels .tab-link-highlight {
+    background-color: limegreen;
   }
 }
 

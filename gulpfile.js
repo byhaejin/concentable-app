@@ -47,6 +47,7 @@ gulp.task('NODE-PLUGINS:combine',() => {
              // 'node_modules/lodash/lodash.min.js',
              'node_modules/moment/min/moment.min.js',
              'node_modules/moment/locale/ko.js',
+             'node_modules/moment-timezone/builds/moment-timezone.min.js',
              // 'node_modules/jquery/dist/jquery.min.js',
              // 'node_modules/jquery-validation/dist/jquery.validate.js',
              // 'node_modules/jquery-validation/dist/localization/messages_ko.js',

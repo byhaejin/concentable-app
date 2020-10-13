@@ -54,12 +54,59 @@
                 </div>
 
                 <div class="seat-select-pos">
-                    <button type="button" class="col button button-fill button-large button-outline" @click="sendData">
+                    <button type="button" class="col button button-fill button-large button-outline"
+                            @click="seatCondition">
                         <span>선택완료</span>
                     </button>
                 </div>
             </div>
 
+        </div>
+
+        <div id="mySeat" class="sheet-modal sheet-modal-push my-seat" style="height: 100%">
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <div class="left text-color-white">선택하신 자리는</div>
+                    <div class="right">
+                        <a class="link sheet-close">닫기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-modal-inner">
+                <div class="page-content">
+                    <div class="block">
+                        <h4>컨센터블 24시  독서실 1호점(주엽역)</h4>
+                        <div class="seat-name">
+                            {{seatData.seatName}}
+                        </div>
+                        <div class="seat-noise-level">
+                            <img alt="" src="/static/images/seat/db-level{{seatData.noise}}.png" />
+                        </div>
+                        <div class="seat-rule">
+                            <h3>이용 규칙은</h3>
+                            <img alt="" src="/static/images/seat/ico-sett-{{seatData.zoneType}}.png" />
+                        </div>
+                        <div class="seat-point">
+                            <h3>자리 특징은</h3>
+                            <ul>
+                                {{#each seatData.feature}}
+                                <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="row">
+                            <a class="col-50 button button-outline button-raised button-large sheet-close">취소하기</a>
+                            <button type="button"
+                                    @click="selectSeat"
+                                    class="col-50 button button-raised button-large button-fill">
+                                <span>이용하기</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -76,6 +123,7 @@
                 pickerAry: [],
                 picker: null,
                 myPhotoBrowserPopupDark: null,
+                seatData: {},
             }
 
         },
@@ -85,9 +133,26 @@
             },
             getFachSeatInfo: function () {
                 const _self = this;
-                app.request.get('../static/js/sample-seat.JSON', { barcode:'123456' }, function (res) {
+                app.request.get('../static/js/sample-seat.JSON?rel=1124', { barcode:'123456' }, function (res) {
                     let dataAry  = JSON.parse(res).data;
-                    _self.$setState({ pickerSouce : dataAry });
+                    let listAry = {
+                        concent: [],
+                        bitwin: [],
+                        able: [],
+                        cafe: []
+                    };
+                    for(let i = 0; i < dataAry.length; i++) {
+                        if (dataAry[i].zoneType === 'concent') {
+                            listAry.concent.push(dataAry[i])
+                        } else if (dataAry[i].zoneType === 'bitwin') {
+                            listAry.bitwin.push(dataAry[i])
+                        } else if (dataAry[i].zoneType === 'able') {
+                            listAry.able.push(dataAry[i])
+                        } else {
+                            listAry.cafe.push(dataAry[i])
+                        }
+                    }
+                    _self.$setState({ pickerSouce : listAry });
 
                     _self.getSeatInfo();
                 });
@@ -119,19 +184,68 @@
 
                 _self.picker.cols[0].setValue(values[0]);
                 _self.picker.cols[0].replaceValues(values, displayValues);
-                console.log(_self.picker.cols[0].value)
             },
-            sendData: function () {
-
+            seatCondition: function () {
+                const _self = this;
                 if (this.picker.cols[0].value === 'none') {
                     //사용중인 자리일경우
-                    this.$app.dialog.alert('선택할수 없는 자리입니다.', '');
+                    app.dialog.create({
+                        title: '사용 불가능한 자리입니다.',
+                        text: '',
+                        buttons: [
+                            {
+                                text: '자리재선택',
+                            },
+                            {
+                                text: '<i class="icon icon-ellipses_bubble"></i> 문의하기',
+                                onClick:function () {
+                                    mainView.router.navigate('/seat/help/');
+                                }
+                            }
+                        ],
+                    }).open();
 
+                } else if (app.data.seatState.id !== '') {
+                    this.$app.dialog.confirm('재선택 하시겠습니까?<br>재선택하시면 기존의 사용하던 자리는 취소됩니다.', '이미 선택하신 자리가 있습니다.', function (){
+                        app.methods.clearSeatState();
+
+                        _self.reloadPage();
+                    });
                 } else {
-                    //사용가능한 자리선택시
-                    this.$app.dialog.alert('선택자리 ID : ' + this.picker.cols[0].value, '');
+                    this.setSeat();
                 }
+            },
+            setSeat: function () {
+                const _self = this;
+                /**
+                 * todo 선택한 자리를 서버에 저장할것.
+                 */
+                    //사용가능한 자리선택시
+                const idx = this.picker.cols[0].activeIndex;
+                let seatDataAry = this.pickerAry[idx]
 
+                //todo 현재사용여부 / 외부에서 자리선택시 false, 내부에선 true를 반영한다.
+                seatDataAry.state = true
+
+                //todo 메세지후 메인페이지로 이동 // 서버에 내용 저장후 작동하도록 변경할것
+                const msg = `<b>'${seatDataAry.name}'</b>좌석을 이용합니다.`;
+                seatDataAry.seatName = msg;
+                _self.$setState({ seatData : seatDataAry });
+
+                app.sheet.open($$('#mySeat'));
+            },
+            selectSeat: function () {
+                app.data.seatState = this.seatData;
+                app.sheet.close($$('#mySeat'));
+                mainView.router.navigate('/');
+            },
+            reloadPage: function () {
+                setTimeout(() => {
+                    mainView.router.navigate(mainView.router.currentRoute.url, {
+                        reloadCurrent: true,
+                        ignoreCache: true,
+                    });
+                },500)
             }
         },
         on: {
