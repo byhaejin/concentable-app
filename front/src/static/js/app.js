@@ -66,9 +66,9 @@ const app = new Framework7({
 });
 
 
-$$(document).on('page:init', function (e, page) {
-    // console.log(page.route.name);
-});
+// $$(document).on('page:init', function (e, page) {
+//     console.log(page.route.name);
+// });
 /**
  * include component
  */

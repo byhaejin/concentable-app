@@ -9,6 +9,7 @@
   --f7-bars-bg-color: #059b5c;
   --f7-theme-color: #059b5c;
   --f7-dialog-width: 310px;
+  --f7-dialog-button-height: 48px;
 }
 
 /** icon */
@@ -192,5 +193,32 @@ label.item-checkbox>.icon-checkbox {
   &-button:last-child {
     color: #fff;
     background-color: var(--f7-dialog-button-text-color);
+  }
+}
+
+.md {
+  .dialog-inner {
+    padding: 14px;
+  }
+  .dialog-buttons {
+    height: auto;
+  }
+
+  .dialog-button {
+    border: 1px solid #059b5c;
+  }
+
+  .dialog-buttons-vertical {
+    .dialog-buttons {
+      border-top: 0;
+      padding: 0;
+    }
+
+    .dialog-button {
+      width: 100%;
+      border: 0;
+      border-top: 1px solid #bae2d1;
+      text-align: center;
+    }
   }
 }
