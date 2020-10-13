@@ -55,7 +55,9 @@
                     <div class="seatinfo no-padding">
                         <span class="seatinfo-name"><b>{{$app.data.seatState.name}}</b> 번</span>
                     </div>
-                    <button class="button width-auto button-fill color-blue button-small">자리정보</button>
+                    <button type="button"
+                            @click="getSeatHelpInfo"
+                            class="button width-auto button-fill color-blue button-small">자리정보</button>
                 </div>
                 {{#if $app.data.seatState.zoneType}}
                 <div class="seat-rule">
@@ -148,6 +150,18 @@
                 mainView.router.navigate({name: 'payment'});
             },
             /** @@@@@@@ 좌석관련 @@@@@@@ **/
+            /** 좌석 이용여부 확인 */
+            getSeatHelpInfo: function () {
+                let html = '<div class="alert-msg"><ul class="list-style-decimal">';
+                let i = 0;
+                const leng = app.data.seatState.feature.length;
+
+                for (i = 0; i < leng; i++) {
+                    html += '<li>' + app.data.seatState.feature[i] + '</li>'
+                }
+                html += '</ul></div>';
+                this.$app.dialog.alert(html,'');
+            },
             /** 좌석 이용여부 확인
              * 좌석이 선택되어있는지 확인하고 선택된 좌석이 존재할경우 해당 UI를 호출한다.
              */
@@ -239,6 +253,9 @@
                             });
                         }
                     },
+                    {
+                        text: '자리상태 변경 취소',
+                    }
                 ]
 
                 //외출중일 경우
