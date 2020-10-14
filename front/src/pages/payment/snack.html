@@ -118,8 +118,10 @@
                         totalcost: howPay
                     }
 
+                    //해당결과를 root(app)에 임시 저장한다. 나중에 결제페이지에서 이용
                     app.methods.addDataFrom(dataForm);
 
+                    //결제페이지로 이동
                     mainView.router.navigate('/payment/approval/');
                 } else {
                     // 선택한 상품이 없음.

@@ -1,17 +1,18 @@
 <template>
     <div class="page zonepresent">
-        <sub-header title="자리선택"  nomenu="true"></sub-header>
+        <sub-header title="전 지점 실시간이용현황"  nomenu="true"></sub-header>
         <div class="page-content">
+            <div class="web-map">
+                <iframe src="{{selectMapAdress}}"
+                        width="100%" height="360"
+                        frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+
             <div class="seat-zone row align-items-center">
-                <h3> 컨센터블 24시 독서실 1호점(주엽역) </h3>
+                <h3>{{selectZoneName}}</h3>
                 <button type="button" class="button js-tosh">
                     <span><i class="icon icon-exclamationmark_circle_fill"></i></span>
                 </button>
-            </div>
-
-            <div class="plan-map"
-                 style="background-image:url(../static/images/seat/plan-map.gif)"
-                 @click="openStandaloneDark">
             </div>
 
             <div class="seat-sort row align-items-center">
@@ -48,15 +49,36 @@
                 </label>
             </div>
 
-            <div class="seat-select">
-                <div class="block block-strong">
-                    <div id="picker-seat-container"></div>
-                </div>
-
-                <div class="seat-select-pos">
-                    <button type="button" class="col button button-fill button-large button-outline" @click="sendData">
-                        <span>선택완료</span>
-                    </button>
+            <div class="card">
+                <div class="card-content">
+                    <div class="block row">
+                        <div class="col-70">지점</div>
+                        <div class="col-15 text-align-right">잔여</div>
+                        <div class="col-15 text-align-right">전체</div>
+                    </div>
+                    <ul class="zonepresent-list">
+                        {{#each sortZoneAry}}
+                        <li>
+                            <button type="button"
+                                    @click="selectZoneInfo('{{zoneId}}')"
+                                    data-id="{{zoneId}}"
+                                    class="button {{#if select}}button-fill{{else}}button-outline{{/if}}">
+                                <div class="row">
+                                    {{#if select}}
+                                    <div class="col-5"><i class="icon icon-checkmark"></i></div>
+                                    <div class="col-65 text-align-left">
+                                    {{else}}
+                                    <div class="col-70 text-align-left">
+                                    {{/if}}
+                                        {{zoneName}}
+                                    </div>
+                                    <div class="col-15 text-align-right"><span class="text-color-red">{{remainder}}</span></div>
+                                    <div class="col-15 text-align-right"><b>{{seat}}</b></div>
+                                </div>
+                            </button>
+                        </li>
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
 
@@ -67,102 +89,93 @@
     return {
         data: function () {
             return {
-                pickerSouce: {
+                selectMapAdress: '',
+                selectZoneName: '',
+                zoneSouce: {
                     concent: [],
                     bitwin: [],
                     able: [],
                     cafe: [],
                 },
-                pickerAry: [],
-                picker: null,
-                myPhotoBrowserPopupDark: null,
+                sortZoneAry: [],
             }
 
         },
         methods: {
-            openStandaloneDark: function () {
-                this.myPhotoBrowserPopupDark.open();
-            },
+            /** 지점 목록 불러오기 */
             getFachSeatInfo: function () {
                 const _self = this;
-                app.request.get('../static/js/sample-seat.JSON', { barcode:'123456' }, function (res) {
+                app.request.get('../static/js/sample-place.JSON?rel=1234', { barcode:'123456' }, function (res) {
                     let dataAry  = JSON.parse(res).data;
-                    _self.$setState({ pickerSouce : dataAry });
+                    let listAry = {
+                        concent: [],
+                        bitwin: [],
+                        able: [],
+                        cafe: []
+                    };
+                    for(let i = 0; i < dataAry.length; i++) {
+                        dataAry[i].select = false;
+                        dataAry[i].remainder = Number(dataAry[i].seat) - Number(dataAry[i].use);
 
+                        if (dataAry[i].zoneType === 'concent') {
+                            listAry.concent.push(dataAry[i])
+                        } else if (dataAry[i].zoneType === 'bitwin') {
+                            listAry.bitwin.push(dataAry[i])
+                        } else if (dataAry[i].zoneType === 'able') {
+                            listAry.able.push(dataAry[i])
+                        } else {
+                            listAry.cafe.push(dataAry[i])
+                        }
+                    }
+
+                    //소스 데이터 저장
+                    _self.$setState({ zoneSouce : listAry });
+
+                    //리스트 생성
                     _self.getSeatInfo();
                 });
             },
+            /** 선택한 지도, 지점 정보 */
+            selectZoneInfo: function (id) {
+                const _self = this;
+                let idx = '';
+
+                this.sortZoneAry.map((item, index) => {
+                    item.select = false;
+                    if (item.zoneId === id) {
+                        idx = index;
+                    }
+                });
+
+                this.sortZoneAry[idx].select = true;
+                this.$setState({ selectMapAdress: _self.sortZoneAry[idx].zoneMap });
+                this.$setState({ selectZoneName: _self.sortZoneAry[idx].zoneName });
+            },
+            /** 지점 목록 생성 */
             getSeatInfo: function () {
                 const _self = this;
                 let dataAry =[];
                 let dataAry1 = [];
                 let dataAry2 = [];
                 let dataAry3 = [];
-                let values = [];
-                let displayValues = [];
 
-                dataAry = ($$('#sort1').prop('checked')) ? _self.pickerSouce.concent : [];
-                dataAry1 = ($$('#sort2').prop('checked')) ? dataAry.concat(_self.pickerSouce.bitwin) : dataAry;
-                dataAry2 = ($$('#sort3').prop('checked')) ? dataAry1.concat(_self.pickerSouce.able) : dataAry1;
-                dataAry3 = ($$('#sort4').prop('checked')) ? dataAry2.concat(_self.pickerSouce.cafe) : dataAry2;
+                dataAry = ($$('#sort1').prop('checked')) ? _self.zoneSouce.concent : [];
+                dataAry1 = ($$('#sort2').prop('checked')) ? dataAry.concat(_self.zoneSouce.bitwin) : dataAry;
+                dataAry2 = ($$('#sort3').prop('checked')) ? dataAry1.concat(_self.zoneSouce.able) : dataAry1;
+                dataAry3 = ($$('#sort4').prop('checked')) ? dataAry2.concat(_self.zoneSouce.cafe) : dataAry2;
 
-                _self.$setState({ pickerAry : dataAry3 });
+                _self.$setState({ sortZoneAry : dataAry3 });
 
-                dataAry3.map((item, index) => {
-                    // 자리가 사용중이면 1, 아니면 0
-                    const seatname = (Number(item.use) === 0) ? item.name + '(사용가능)' :  "<span class='nop'>" + item.name + '(사용중)</span>';
-                    const seatvalue = (Number(item.use) === 0) ? item.id : 'none';
-
-                    values.push(seatvalue);
-                    displayValues.push(seatname);
-                });
-
-                _self.picker.cols[0].setValue(values[0]);
-                _self.picker.cols[0].replaceValues(values, displayValues);
-                console.log(_self.picker.cols[0].value)
+                //첫 선택된 화면 지도 로드
+                _self.selectZoneInfo(_self.sortZoneAry[0].zoneId);
             },
-            sendData: function () {
-
-                if (this.picker.cols[0].value === 'none') {
-                    //사용중인 자리일경우
-                    this.$app.dialog.alert('선택할수 없는 자리입니다.', '');
-
-                } else {
-                    //사용가능한 자리선택시
-                    this.$app.dialog.alert('선택자리 ID : ' + this.picker.cols[0].value, '');
-                }
-
-            }
         },
         on: {
             pageInit: function () {
                 const _self = this;
 
-                _self.myPhotoBrowserPopupDark = app.photoBrowser.create({
-                    photos : [
-                        '../static/images/seat/img1.png',
-                    ],
-                    theme: 'dark',
-                    toolbar: false,
-                    type: 'popup'
-                });
-
-                this.picker = app.picker.create({
-                    containerEl: '#picker-seat-container',
-                    backdrop: false,
-                    toolbar: false,
-                    cols: [
-                        {
-                            textAlign: 'center',
-                            values: ['자리선택']
-                        }
-                    ],
-                    on: {
-                        open: function () {
-                            _self.getFachSeatInfo();
-                        }
-                    }
-                });
+                //지점 정보 불러오기
+                this.getFachSeatInfo();
 
                 // 자리선택을 재정리 한다.
                 $$('[name="sort"]').on('change', function (e) {
