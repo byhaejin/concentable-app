@@ -38,6 +38,11 @@ const app = new Framework7({
             this.data.seatState.state = null;
             this.data.seatState.staytime = '';
         },
+        //add data form
+        addDataFrom: function (data) {
+            this.data.dataForm = data;
+            console.log("dataForm", this.data.dataForm);
+        }
     },
     on: {
         init: function () {

@@ -27,6 +27,11 @@
     return {
         data: function () {
             return {
+                msgAry: [
+                    "결제가 완료 되었습니다.",
+                    "결제가 취소 되었습니다.",
+                    "결제에 실패 하었습니다.<br>다시 시도해주세요.",
+                ],
                 paytypeAry: [],
                 subscriptionPay: [
                     {
@@ -73,8 +78,20 @@
             }
         },
         methods: {
+            /** 결제하기
+             * todo 결제하기관련 창을 실행후 결제가 끝나면 결과에 맞는 메세지창을 띄운다.
+             * */
             activePay: function (id) {
-                console.log('pay !!', id, app.data.dataForm);
+                const _self = this;
+                let alertMsg = '';
+
+                // todo 해당 과정에 맞는 메세지를 호출한다.
+                alertMsg = _self.msgAry[0];
+                this.$app.dialog.alert('', alertMsg, function (){
+
+                    // todo 결제 성공시에만 사용
+                    mainView.router.navigate('/');
+                });
             }
         },
         on: {

@@ -76,7 +76,7 @@
         methods: {
             signIn: function () {
                 var formData = app.form.convertToData('#login-form');
-                console.log('formData', formData)
+                console.log('login info', formData)
                 setLogin(formData.username);
                 mainView.router.navigate('/');
                 // app.dialog.alert(`Username: ${username}<br>Password: ${password}`, () => {

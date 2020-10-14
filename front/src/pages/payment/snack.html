@@ -93,25 +93,38 @@
             },
             goSubmit: function() {
                 const _self = this;
+                let dataForm = {};
                 let snakAry = [];
-                $$('[data-name="item"]').each((index, item) => {
-                    ea = Number($$(item).find('[data-id="ea"]').text());
+                let howPay = 0;
 
-                    if(ea > 0 ) {
-                        const snaks = {
-                            id: $$(item).data('id'),
-                            ea: Number($$(item).find('[data-id="ea"]').text())
+                if (_self.totalCost !== 0) {
+                    $$('[data-name="item"]').each((index, item) => {
+                        ea = Number($$(item).find('[data-id="ea"]').text());
+
+                        if(ea > 0 ) {
+                            const snaks = {
+                                id: $$(item).data('id'),
+                                ea: Number($$(item).find('[data-id="ea"]').text())
+                            }
+                            snakAry.push(snaks);
                         }
-                        snakAry.push(snaks);
+                    });
+
+                    // 선택한 가격이 1000원 보다 큰경우 확인
+                    howPay = (_self.totalCost.indexOf(',') > 0) ? Number(_self.totalCost.replace(/,/g,"")) : Number(_self.totalCost);
+
+                    dataForm = {
+                        snaks: snakAry,
+                        totalcost: howPay
                     }
-                });
 
-                app.data.dataForm = {
-                    snaks: snakAry,
-                    totalcost: Number(_self.totalCost.replace(/,/g,""))
+                    app.methods.addDataFrom(dataForm);
+
+                    mainView.router.navigate('/payment/approval/');
+                } else {
+                    // 선택한 상품이 없음.
+                    this.$app.dialog.alert('선택된 상품이 없습니다.','');
                 }
-
-                mainView.router.navigate('/payment/approval/');
             },
         },
         on: {
