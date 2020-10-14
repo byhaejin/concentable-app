@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "zoneId": "concent1",
+      "zoneType": "concent",
+      "zoneName": "컨센터블 24시 독서실 1호점(주엽역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1946.723320682965!2d126.75987150164018!3d37.67021465689775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c855e31f8bb1f%3A0x248b92da9a7fdd53!2z7KO87Je97Jet!5e0!3m2!1sko!2skr!4v1602650230779!5m2!1sko!2skr",
+      "seat": "110",
+      "use": "45"
+    },
+    {
+      "zoneId": "concent2",
+      "zoneType": "concent",
+      "zoneName": "컨센터블 24시 독서실 2호점(강남역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.5887907237645!2d127.02614766769533!3d37.49774184026454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15a2cc3f2a7%3A0xd2e44a2795272fca!2z6rCV64Ko7Jet!5e0!3m2!1sko!2skr!4v1602654539461!5m2!1sko!2skr",
+      "seat": "66",
+      "use": "12"
+    },
+    {
+      "zoneId": "concent3",
+      "zoneType": "concent",
+      "zoneName": "컨센터블 24시 독서실 3호점(홍대입구역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1748.8076666708027!2d126.92333714944697!3d37.557138212342615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98e9d953dfe1%3A0x4a37de44aed1af18!2z7ZmN64yA7J6F6rWs7Jet!5e0!3m2!1sko!2skr!4v1602654885791!5m2!1sko!2skr",
+      "seat": "140",
+      "use": "112"
+    },
+    {
+      "zoneId": "bitwin1",
+      "zoneType": "bitwin",
+      "zoneName": "비트윈 독서실 1호점(강남역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.5887907237645!2d127.02614766769533!3d37.49774184026454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15a2cc3f2a7%3A0xd2e44a2795272fca!2z6rCV64Ko7Jet!5e0!3m2!1sko!2skr!4v1602654539461!5m2!1sko!2skr",
+      "seat": "66",
+      "use": "12"
+    },
+    {
+      "zoneId": "bitwin2",
+      "zoneType": "bitwin",
+      "zoneName": "비트윈 독서실 2호점(주엽역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1946.723320682965!2d126.75987150164018!3d37.67021465689775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c855e31f8bb1f%3A0x248b92da9a7fdd53!2z7KO87Je97Jet!5e0!3m2!1sko!2skr!4v1602650230779!5m2!1sko!2skr",
+      "seat": "110",
+      "use": "45"
+    },
+    {
+      "zoneId": "able1",
+      "zoneType": "able",
+      "zoneName": "에이블 24시 독서실 1호점(홍대입구역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1748.8076666708027!2d126.92333714944697!3d37.557138212342615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98e9d953dfe1%3A0x4a37de44aed1af18!2z7ZmN64yA7J6F6rWs7Jet!5e0!3m2!1sko!2skr!4v1602654885791!5m2!1sko!2skr",
+      "seat": "110",
+      "use": "45"
+    },
+    {
+      "zoneId": "able2",
+      "zoneType": "able",
+      "zoneName": "에이블 24시 독서실 2호점(강남역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.5887907237645!2d127.02614766769533!3d37.49774184026454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15a2cc3f2a7%3A0xd2e44a2795272fca!2z6rCV64Ko7Jet!5e0!3m2!1sko!2skr!4v1602654539461!5m2!1sko!2skr",
+      "seat": "66",
+      "use": "12"
+    },
+    {
+      "zoneId": "able3",
+      "zoneType": "able",
+      "zoneName": "에이블 24시 독서실 3호점(주엽역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1946.723320682965!2d126.75987150164018!3d37.67021465689775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c855e31f8bb1f%3A0x248b92da9a7fdd53!2z7KO87Je97Jet!5e0!3m2!1sko!2skr!4v1602650230779!5m2!1sko!2skr",
+      "seat": "140",
+      "use": "112"
+    },
+    {
+      "zoneId": "cafe1",
+      "zoneType": "cafe",
+      "zoneName": "카페 독서실 1호점(주엽역)",
+      "zoneMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1946.723320682965!2d126.75987150164018!3d37.67021465689775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c855e31f8bb1f%3A0x248b92da9a7fdd53!2z7KO87Je97Jet!5e0!3m2!1sko!2skr!4v1602650230779!5m2!1sko!2skr",
+      "seat": "44",
+      "use": "12"
+    }
+  ]
+}

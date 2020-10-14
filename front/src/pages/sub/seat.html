@@ -252,6 +252,7 @@
             pageInit: function () {
                 const _self = this;
 
+                // 자리 이미지 팝업
                 _self.myPhotoBrowserPopupDark = app.photoBrowser.create({
                     photos : [
                         '../static/images/seat/img1.png',
@@ -261,6 +262,7 @@
                     type: 'popup'
                 });
 
+                //자리 선택
                 this.picker = app.picker.create({
                     containerEl: '#picker-seat-container',
                     backdrop: false,
