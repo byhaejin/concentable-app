@@ -189,15 +189,6 @@ var routes = [
             transition: 'f7-cover',
         },
     },
-    {// 전지점 실시간이용현황
-        name: 'zonepresent',
-        path: '/zonepresent/',
-        componentUrl: '../sub/zonepresent.html',
-        //beforeEnter: checkAuth,//로그인 이후 가능
-        options: {
-            transition: 'f7-cover',
-        },
-    },
     {// 알림
         name: 'alert',
         path: '/alert/',
