@@ -1,9 +1,32 @@
 <template>
     <div class="page mypage">
-        <sub-header title="1:1문의"  nomenu="true"></sub-header>
-        <div class="page-content">
-                <h3> 1:1문의 </h3>
+        <!-- <sub-header title="1:1문의"  nomenu="true"></sub-header> -->
 
+        <!-- navbar -->
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+                <div class="title">1:1문의</div>
+            </div>
+        </div>
+
+        <!-- messagebar -->
+        <div class="toolbar messagebar messagebar-init" data-max-height="200">
+            <div class="toolbar-inner">
+                <div class="messagebar-area">                    
+                    <!-- <textarea class="resizable" placeholder="Message"></textarea> -->
+                    <textarea placeholder="Message"></textarea>
+                </div>
+                <a href="#" class="link">입력</a>
+            </div>
+            <div class="messagebar-sheet"></div>
+        </div>
+        
+        <!-- page-content/messages-content -->
+        <div class="page-content messages-content">
+            <div class="messages">
+                ...
+            </div>
         </div>
     </div>
 </template>
@@ -20,8 +43,6 @@
         on: {
             pageInit: function () {
                 const _self = this;
-
-
             }
         },
     }
