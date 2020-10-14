@@ -28,7 +28,7 @@ const app = new Framework7({
     id: 'com.v', // App id
     root: '#app', // App root element
     name: 'concentable App',
-    theme: 'auto',
+    theme: 'ios',
     componentUrl: componentsPath + 'layout.component.html',
     methods: {
         //현재 자리이용상태 초기화
