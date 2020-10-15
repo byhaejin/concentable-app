@@ -1,0 +1,103 @@
+<template>
+    <div class="page mypage">
+        <sub-header title="지난 문의 내역"  nomenu="true"></sub-header>
+        <div class="page-content messages-content">
+            <div class="padding">
+
+                <div class="messages">
+                    {{#each messagesAry}}
+                        {{#if this.date}}
+                    <hr class="width-100">
+                    <div class="text-align-center text-color-gray update"><b>{{this.date}}</b></div>
+                        {{/if}}
+
+                        {{#if this.writer}}
+                            <!-- receiver message -->
+                            <div class="message message-received message-appear-from-bottom message-first message-last message-tail">
+                                <div class="message-avatar"
+                                     style="background-image:url({{this.writerPhoto}})"></div>
+                                <div class="message-content">
+                                    <div class="message-name">{{this.writer}} {{this.time}}</div>
+                                    <div class="message-bubble">
+                                        <div class="message-text">{{this.message}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{else}}
+                            {{#unless this.date}}
+                            <!-- user message -->
+                            <div class="message message-sent message-appear-from-bottom message-first message-last message-tail">
+                                <div class="message-content">
+                                    <div class="message-name">{{this.time}}</div>
+                                    <div class="message-bubble">
+                                        <div class="message-text">{{this.message}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/unless}}
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="block">
+                <a href="/mypage/qna/" class="width-100 button button-large button-fill">
+                    <i class="icon icon-ellipses_bubble"></i>
+                    1:1문의
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            return {
+                messagesAry: [],
+            }
+        },
+        methods: {
+            getFachHistory: function () {
+                const _self = this;
+                const rel = new Date().getTime();
+                app.request.get('../static/js/sample-qna-history.JSON?rel=' + rel, function (res) {
+                    let dataAry  = JSON.parse(res).data;
+                    let msgAry = [];
+                    let day = '';
+
+                    // 날짜구분선 추가용
+                    function addDay(date) {
+                        day = moment(Number(date)).format('YYYY-MM-DD');
+                        msgAry.push({date: moment(Number(date)).format('ll')})
+                    }
+
+                    dataAry.map((item, index) => {
+                        if (index === 0) {
+                            //최초 메시지에서 첫날짜 추출
+                            addDay(item.update);
+                        } else {
+                            // 이전날짜와 다를경우 추가
+                            if (day !== moment(Number(item.update)).format('YYYY-MM-DD')) {
+                                addDay(item.update);
+                            }
+                        }
+
+                        //입력시간추가
+                        item.time = moment(Number(item.update)).format('LT');
+                        msgAry.push(item)
+                    });
+
+                    console.log("qna-history", msgAry)
+                    _self.$setState({ messagesAry : msgAry });
+                });
+            },
+        },
+        on: {
+            pageInit: function () {
+                const _self = this;
+                this.getFachHistory();
+
+            }
+        },
+    }
+</script>

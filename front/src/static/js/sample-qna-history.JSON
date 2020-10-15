@@ -1,0 +1,88 @@
+{
+  "data": [
+    {
+      "update": "1602729605646",
+      "message": "빈좌석인데 사용중으로 떠요.\n외출중은 아니에요!"
+    },
+    {
+      "update": "1602729795272",
+      "writer": "상담원 1",
+      "writerPhoto": "../static/images/people-100x100-1.png",
+      "message": "퇴실처리 되지않은 좌석인 것 같아요. 우선, 앉아서 사용하고 계시면 확인된 사항을 카카오톡(또는 MMS)로 안내 드리겠습니다."
+    },
+    {
+      "update": "1602734757257",
+      "message": "사용가능 자리인데 짐이 있어요."
+    },
+    {
+      "update": "1602734775017",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "외출(자리비움)후 복귀처리가 되지 않았거나, 퇴실시 짐정리가 되지 않은 좌석인 것 같아요.\n사석화바구니에 짐을 옮긴후 사용하시면 됩니다."
+    },
+    {
+      "update": "1602734956736",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "지점내 빨간 바구니를 찾아주세요!"
+    },
+    {
+      "update": "1602734985855",
+      "message": "너무 오래 자리가 비워져있어요."
+    },
+    {
+      "update": "1602735024904",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "혹시 사석화가 아닌지 확인해보고 확인된 사항을 안내드리겠습니다."
+    },
+    {
+      "update": "1602735058312",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "지점내 빨간 바구니를 찾아주세요!"
+    },
+    {
+      "update": "1602825300000",
+      "message": "빈좌석인데 사용중으로 떠요.\n외출중은 아니에요!"
+    },
+    {
+      "update": "1602825600000",
+      "writer": "상담원 1",
+      "writerPhoto": "../static/images/people-100x100-1.png",
+      "message": "퇴실처리 되지않은 좌석인 것 같아요. 우선, 앉아서 사용하고 계시면 확인된 사항을 카카오톡(또는 MMS)로 안내 드리겠습니다."
+    },
+    {
+      "update": "1602825617000",
+      "message": "사용가능 자리인데 짐이 있어요."
+    },
+    {
+      "update": "1602828682000",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "외출(자리비움)후 복귀처리가 되지 않았거나, 퇴실시 짐정리가 되지 않은 좌석인 것 같아요.\n사석화바구니에 짐을 옮긴후 사용하시면 됩니다."
+    },
+    {
+      "update": "1602828988000",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "지점내 빨간 바구니를 찾아주세요!"
+    },
+    {
+      "update": "1602833668000",
+      "message": "너무 오래 자리가 비워져있어요."
+    },
+    {
+      "update": "1602833647000",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "혹시 사석화가 아닌지 확인해보고 확인된 사항을 안내드리겠습니다."
+    },
+    {
+      "update": "1602833891000",
+      "writer": "상담원 2",
+      "writerPhoto": "../static/images/people-100x100-2.png",
+      "message": "지점내 빨간 바구니를 찾아주세요!"
+    }
+  ]
+}

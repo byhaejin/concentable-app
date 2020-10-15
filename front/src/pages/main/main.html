@@ -301,7 +301,7 @@
                 const _self = this;
                 let eventTime, currentTime, duration, interval, timeout;
                 interval = 1000; // 1 second
-                eventTime = moment(app.data.seatState.staytime).add(1, 'minutes');
+                eventTime = moment(app.data.seatState.staytime).add(90, 'minutes');
                 currentTime = moment.tz();
 
                 duration = moment.duration(eventTime.diff(currentTime));

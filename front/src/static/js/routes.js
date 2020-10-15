@@ -253,18 +253,18 @@ var routes = [
         },
     },
     {// 마이페이지 / 1:1문의
-        name: 'enquiry',
-        path: '/mypage/enquiry/',
-        componentUrl: '../mypage/enquiry.html',
+        name: 'qna',
+        path: '/mypage/qna/',
+        componentUrl: '../mypage/qna.html',
         //beforeEnter: checkAuth,//로그인 이후 가능
         options: {
             transition: 'f7-cover',
         },
     },
     {// 마이페이지 / 1:1문의 / 지난 문의 내역
-        name: 'enquiry-history',
-        path: '/mypage/enquiry/history/',
-        componentUrl: '../mypage/enquiry-history.html',
+        name: 'qna-history',
+        path: '/mypage/qna/history/',
+        componentUrl: '../mypage/qna-history.html',
         //beforeEnter: checkAuth,//로그인 이후 가능
         options: {
             transition: 'f7-cover',

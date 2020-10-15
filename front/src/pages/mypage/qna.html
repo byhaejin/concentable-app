@@ -16,8 +16,13 @@
         
         <!-- page-content/messages-content -->
         <div class="page-content messages-content">
-            <div class="messages">
-                ...
+            <div class="padding">
+                <div class="messages">
+                    <hr class="width-100" />
+                    <div class="text-align-center text-color-gray update"><b>{{today}}</b></div>
+
+                    <!-- message add -->
+                </div>
             </div>
         </div>
     </div>
@@ -29,6 +34,7 @@
                 messages: null,
                 messagebar: null,
                 responseInProgress: false,
+                today: moment().format('ll')
             }
         },
         methods: {
@@ -86,7 +92,6 @@
                 // Send Message
                 $$('.send-link').on('click', function () {
                     var text =  _self.messagebar.getValue().replace(/\n/g, '<br>').trim();
-                    console.log('msg', text)
 
                     // return if empty message
                     if (!text.length) return;
@@ -100,39 +105,42 @@
                     // Add message to messages
                     _self.messages.addMessage({
                         text: text,
+                        name: moment().format('LT'),
                     });
 
                     if (_self.responseInProgress) return;
+
                     // Receive dummy message
                     receiveMessage();
                 });
 
-                // Dummy response
+                /** 이하 가상의 메시지 답변처리 */
                 var answers = [
-                    'Yes!',
-                    'No',
-                    'Hm...',
-                    'I am not sure',
-                    'And what about you?',
-                    'May be ;)',
-                    'Lorem ipsum dolor sit amet, consectetur',
-                    'What?',
-                    'Are you sure?',
-                    'Of course',
-                    'Need to think about it',
-                    'Amazing!!!'
+                    '맞습니다!',
+                    '아니오',
+                    '아...',
+                    '잘 모르 겠습니다.',
+                    '당신을 무엇을 하고 싶습니까?',
+                    '아마도.. ;)',
+                    '확인해보고 다시 안내해 드리겠습니다.',
+                    '뭔가요?',
+                    '확신하시나요?',
+                    '물론 입니다.',
+                    '다른일에 대해 알아야 될거 같네요.',
+                    '훌륭해요!!!'
                 ]
                 var people = [
                     {
-                        name: 'Kate Johnson',
-                        avatar: 'https://cdn.framework7.io/placeholder/people-100x100-9.jpg'
+                        name: '컨센터블',
+                        avatar: '../static/images/people-100x100-1.png'
                     },
                     {
-                        name: 'Blue Ninja',
-                        avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg'
+                        name: '상담원 1',
+                        avatar: '../static/images/people-100x100-2.png'
                     }
                 ];
 
+                /** 가상 메세지 답변 **/
                 function receiveMessage() {
                     _self.responseInProgress = true;
                     setTimeout(function () {
@@ -151,7 +159,7 @@
                             _self.messages.addMessage({
                                 text: answer,
                                 type: 'received',
-                                name: person.name,
+                                name: person.name + ' ' + moment().format('LT'),
                                 avatar: person.avatar
                             });
                             // Hide typing indicator
