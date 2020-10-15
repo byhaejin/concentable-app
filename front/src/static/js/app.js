@@ -22,7 +22,8 @@ const app = new Framework7({
                 name: '',   //현재 이용중인 자리의 이름
                 state: null,   //현재 이용중인 자리의 상태/ null(없음), true(사용중), false(외출중)
                 staytime: '' //자리비움시 비운 시간
-            }
+            },
+            chattingToday: [],
         };
     },
     id: 'com.v', // App id
@@ -42,7 +43,7 @@ const app = new Framework7({
         addDataFrom: function (data) {
             this.data.dataForm = data;
             console.log("dataForm", this.data.dataForm);
-        }
+        },
     },
     on: {
         init: function () {
@@ -52,7 +53,7 @@ const app = new Framework7({
                 on: {
                     init: function () {
 
-                        // this.router.navigate({ name: 'qna-history', animate: false });
+                        // this.router.navigate({ name: 'qna', animate: false });
                         // intro 화면을 확인했을 경우
                         if (localStorage.getItem('isIntro') === 'true') {
                             this.router.navigate('/auth/login/',{ animate: false });

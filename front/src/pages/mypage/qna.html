@@ -18,8 +18,38 @@
         <div class="page-content messages-content">
             <div class="padding">
                 <div class="messages">
-                    <hr class="width-100" />
-                    <div class="text-align-center text-color-gray update"><b>{{today}}</b></div>
+                    {{#each messagesAry}}
+                    {{#if this.date}}
+                    <hr class="width-100">
+                    <div class="text-align-center text-color-gray update"><b>{{this.date}}</b></div>
+                    {{/if}}
+
+                    {{#if this.writer}}
+                    <!-- receiver message -->
+                    <div class="message message-received message-appear-from-bottom message-first message-last message-tail">
+                        <div class="message-avatar"
+                             style="background-image:url({{this.avatar}})"></div>
+                        <div class="message-content">
+                            <div class="message-name">{{this.writer}} {{this.time}}</div>
+                            <div class="message-bubble">
+                                <div class="message-text">{{this.message}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{else}}
+                    {{#unless this.date}}
+                    <!-- user message -->
+                    <div class="message message-sent message-appear-from-bottom message-first message-last message-tail">
+                        <div class="message-content">
+                            <div class="message-name">{{this.time}}</div>
+                            <div class="message-bubble">
+                                <div class="message-text">{{this.message}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/unless}}
+                    {{/if}}
+                    {{/each}}
 
                     <!-- message add -->
                 </div>
@@ -31,18 +61,54 @@
     return {
         data: function () {
             return {
+                messagesAry: [],
                 messages: null,
                 messagebar: null,
                 responseInProgress: false,
-                today: moment().format('ll')
             }
         },
         methods: {
+            /** 오늘 혹은 앱종료 전에 기록해던 채팅정보를 불러온다 **/
+            getFachHistory: function () {
+                const _self = this;
+                const rel = new Date().getTime();
+                let dataAry = app.data.chattingToday;
+                let msgAry = [];
+                let day = '';
 
+                // 날짜구분선 추가용
+                function addDay(date) {
+                    day = moment(Number(date)).format('YYYY-MM-DD');
+                    msgAry.push({date: moment(Number(date)).format('ll')})
+                }
+
+                if (dataAry.length && dataAry.length > 0 ) {
+                    dataAry.map((item, index) => {
+                        if (index === 0) {
+                            //최초 메시지에서 첫날짜 추출
+                            addDay(item.update);
+                        } else {
+                            // 이전날짜와 다를경우 추가
+                            if (day !== moment(Number(item.update)).format('YYYY-MM-DD')) {
+                                addDay(item.update);
+                            }
+                        }
+
+                        //입력시간추가
+                        item.time = moment(Number(item.update)).format('LT');
+                        msgAry.push(item)
+                    });
+
+                    _self.$setState({ messagesAry : msgAry });
+                } else {
+                    addDay(new Date().getTime());
+                }
+            },
         },
         on: {
             pageInit: function () {
                 const _self = this;
+                this.getFachHistory();
 
                 this.messages = app.messages.create({
                     el: '.messages',
@@ -108,6 +174,15 @@
                         name: moment().format('LT'),
                     });
 
+                    /** todo 채팅내용 서버에 저장
+                     * 현재는 app 에 임시 저장
+                     * */
+                    const msg = {
+                        message: text,
+                        update: new Date().getTime()
+                    }
+                    app.data.chattingToday.push(msg)
+
                     if (_self.responseInProgress) return;
 
                     // Receive dummy message
@@ -162,6 +237,20 @@
                                 name: person.name + ' ' + moment().format('LT'),
                                 avatar: person.avatar
                             });
+
+
+                            /** todo 채팅내용 서버에 저장
+                             * 현재는 app 에 임시 저장
+                             * */
+                            const msg = {
+                                update: new Date().getTime(),
+                                message: answer,
+                                writer: person.name,
+                                avatar: person.avatar
+                            }
+                            app.data.chattingToday.push(msg)
+
+
                             // Hide typing indicator
                             _self.messages.hideTyping();
                             _self.responseInProgress = false;
