@@ -53,7 +53,7 @@ const app = new Framework7({
                 on: {
                     init: function () {
 
-                        // this.router.navigate({ name: 'qna', animate: false });
+                        // this.router.navigate({ name: 'high3-step2', animate: false });
                         // intro 화면을 확인했을 경우
                         if (localStorage.getItem('isIntro') === 'true') {
                             this.router.navigate('/auth/login/',{ animate: false });

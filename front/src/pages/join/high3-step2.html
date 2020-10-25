@@ -2,36 +2,32 @@
 <template>
     <div class="page member color-theme-green">
         <sub-header title="고3 회원가입/이용지점 선택" nomenu="true"></sub-header>
-        <div class="page-content">            
-            <form id="emailcertification-form">
-                <div class="list">
-                    <ul>
-                        <li class="item-content item-input item-input-outline">                                
-                            <div class="item-inner" style="padding-top: var(--f7-list-item-padding-vertical);">
-                                <div class="item-title item-floating-label">이용할 지점 선택</div>
-                                <div class="item-input-wrap input-dropdown-wrap">
-                                    <select name="gender" placeholder="Please choose..." class="input-with-value">
-                                        <option>선택</option>
-                                        <option value="컨센터블24시독서실1호점()">컨센터블24시독서실1호점()</option>
-                                        <option value="컨센터블24시독서실2호점()">컨센터블24시독서실2호점()</option>
-                                        <option value="컨센터블24시독서실3호점()">컨센터블24시독서실3호점()</option>
-                                        <option value="컨센터블24시독서실4호점()">컨센터블24시독서실4호점()</option>
-                                        <option value="컨센터블24시독서실5호점()">컨센터블24시독서실5호점()</option>
-                                        </select>                                        
-                                </div>
+        <div class="page-content">
+            <div class="list">
+                <ul>
+                    <li class="item-content item-input item-input-outline">
+                        <div class="item-inner" style="padding-top: var(--f7-list-item-padding-vertical);">
+                            <div class="item-title item-floating-label">이용할 지점 선택</div>
+                            <div class="item-input-wrap input-dropdown-wrap">
+                                <select id="zonelist" name="zonelist" placeholder="Please choose..." class="input-with-value">
+                                    <option>선택</option>
+                                    {{#each zoneSouce}}
+                                    <option value="{{zoneId}}">{{zoneName}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
-                        </li>
-                        <li>
-                            <div class="map" style="height: 40vh;">
-                                <img src="../static/images/map.jpg">
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="block">
-                    <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">다음<i class="icon-arrow_right"></i></button>
-                </div>                
-            </form>            
+                        </div>
+                    </li>
+                    <li class="padding-left padding-right">
+                        <iframe src="{{selectZone.zoneMap}}"
+                                width="100%" height="360"
+                                frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </li>
+                </ul>
+            </div>
+            <div class="block">
+                <button type="button" class="col button button-fill button-large button-outline color-green" @click="nextStep">다음<i class="icon-arrow_right"></i></button>
+            </div>
         </div>        
     </div>
 </template>
@@ -43,16 +39,56 @@
 </style>
 <script>
     return {
+        data: function () {
+            return {
+                zoneSouce: [],
+                selectZone: {},
+            }
+        },
         methods: {
-            //'인증번호 확인'
+            /** 지점 목록 불러오기 */
+            getFachSeatInfo: function () {
+                const _self = this;
+                app.request.get('../static/js/sample-place.JSON?rel=1234', { barcode:'123456' }, function (res) {
+                    let dataAry  = JSON.parse(res).data;
+
+                    //소스 데이터 저장
+                    _self.$setState({ zoneSouce : dataAry });
+                });
+            },
+            /** 선택한 지도 */
+            setSelectZone:  function(zoneId) {
+                const _self = this;
+
+                _self.zoneSouce.map((item, index) => {
+                    if (item.zoneId === zoneId) {
+                        this.$setState({ selectZone: item });
+
+                        return  false;
+                    }
+                });
+            },
+            // 다음으로
             nextStep: function() {
+                /**
+                 * todo 현재 선택한 지점값을 (임시)지정한후 다음 페이지로 넘어간다.
+                 */
+                console.log('선택된 지점정보', this.selectZone)
                 mainView.router.navigate('/auth/join/high3-step3/');
             },
         },
         on: {
             pageInit: function () {
-                // 파라메타가 email 일경우 이메일 확인
+                const _self = this;
 
+                //지점 정보 불러오기
+                this.getFachSeatInfo();
+
+                // 지점선택을 한다.
+                $$('[name="zonelist"]').on('change', function (e) {
+                    const id = $$(this).val();
+                    _self.setSelectZone(id);
+                });
             },
         }
     }
