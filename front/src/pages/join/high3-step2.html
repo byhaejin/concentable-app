@@ -10,7 +10,6 @@
                             <div class="item-title item-floating-label">이용할 지점 선택</div>
                             <div class="item-input-wrap input-dropdown-wrap">
                                 <select id="zonelist" name="zonelist" placeholder="Please choose..." class="input-with-value">
-                                    <option>선택</option>
                                     {{#each zoneSouce}}
                                     <option value="{{zoneId}}">{{zoneName}}</option>
                                     {{/each}}
@@ -54,6 +53,11 @@
 
                     //소스 데이터 저장
                     _self.$setState({ zoneSouce : dataAry });
+
+                    //첫번째 select 선택
+                    setTimeout(() => {
+                        $$('[name="zonelist"] option').eq(0).prop("selected",true).trigger('change');
+                    },300)
                 });
             },
             /** 선택한 지도 */
