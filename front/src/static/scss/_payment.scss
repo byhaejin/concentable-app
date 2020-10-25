@@ -174,5 +174,12 @@
 
 }
 
+// help-form
+#help-form {
+  .list li {border: 1px solid #b1b1b1; border-radius: var(--f7-button-border-radius); margin-bottom: var(--f7-block-title-margin-bottom);}
+  .block-title i {margin-right: 6px; color: #059b5c;}
+}
+
+
 .toolbar-inner a { color: #fff;}
 .picker.sheet-modal { background-color: #fff;}
