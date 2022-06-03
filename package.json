@@ -29,7 +29,7 @@
     "gulp-watch": "^5.0.1",
     "gulp-webserver": "^0.9.1",
     "jquery": "^3.5.1",
-    "jquery-validation": "^1.19.2"
+    "jquery-validation": "^1.19.4"
   },
   "devDependencies": {
     "moment": "^2.27.0",
